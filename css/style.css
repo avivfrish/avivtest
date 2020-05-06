@@ -54,7 +54,15 @@ table.table th, table.table td {
      opacity: 1;
  }
 
+#heatMapGraphAggregate .highcharts-container .highcharts-root .highcharts-series-group .highcharts-markers{
+    opacity: 1;
+}
+
 #heatMapUser .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series{
+    opacity: 1;
+}
+
+#heatMapUser .highcharts-container .highcharts-root .highcharts-series-group .highcharts-markers{
     opacity: 1;
 }
 
