@@ -7,7 +7,7 @@ $serverName = "tcp:avivtest.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
 $sql="select (select count(*)
-                from (
+        from (
                  select sch_id_1, sch_id_2
                  from exp_results
                  where user_id = users.user_id and exp_id = users.exp_id and exp_results.user_ans_is_match = 1 and exp_results.sch_id_1 != 0
@@ -15,11 +15,12 @@ $sql="select (select count(*)
                  select sch_id_1, sch_id_2
                  from exp_pairs
                  where realConf = 1 and exp_id = users.exp_id and exp_pairs.[order] <= experiments.max_num_pairs and exp_pairs.sch_id_1 != 0) A) as commonCorrNum,
-        (select count(*)
+       (select count(*)
         from exp_results
-        where user_id = users.user_id and exp_id = users.exp_id and exp_results.user_ans_is_match = 1 and exp_results.sch_id_1 != 0) as matchNum,
-from exp_results users join experiments on users.exp_id = experiments.id 
-where users.user_id = ". $curr_user . " and users.exp_id = ". $curr_exp_id;
+        where user_id = users.user_id and exp_id = users.exp_id and exp_results.user_ans_is_match = 1 and exp_results.sch_id_1 != 0) as matchNum
+from exp_results users join experiments on users.exp_id = experiments.id
+where users.user_id = ". $curr_user ." and users.exp_id = ". $curr_exp_id ." 
+group by users.user_id, users.exp_id, experiments.max_num_pairs";
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
