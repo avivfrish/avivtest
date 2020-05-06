@@ -78,8 +78,20 @@ ng-click="show_coordinate($event)">
                     </td>
                 </tr>
             </table>
-            <div class="container" style="width: 100%">
-                <table class="table" id="HierarchyTable" style="height: 70%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
+            <div class="container" id="HierarchyTable" style="width: 100%; padding-right: 0; padding-left: 0">
+                <table class="table" style="height: 20%;">
+                    <tbody style="display: table; width: 100%">
+                    <tr style="height: 15%;">
+                        <th scope="col" style="width: 50%; text-align:center; font-weight: 400">
+                            Term A Hierarchy
+                        </th>
+                        <th scope="col" style="width: 50%; text-align:center; font-weight: 400">
+                            Term B Hierarchy
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table" style="height: 50%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
                     <tbody style="display: table; width: 100%">
                         <tr style="height: 15%;">
                             <th scope="col" style="width: 50%; text-align:center; font-weight: 400">
