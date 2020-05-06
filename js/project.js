@@ -2353,7 +2353,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }
         }).then(function (data) {
             console.log(data.data);
-            if (data.data !== 1 && data.data.length > 0) {
+            if (data.data !== "1" && data.data.length > 0) {
                 document.getElementById("closestMatch").innerText = "";
                 let dataVal = [];
                 for (let item in data.data){
