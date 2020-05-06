@@ -2440,7 +2440,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(true);
             } else {
                 //console.log('Data for similarity to matcher - empty');
-                document.getElementById("closestMatch").innerText = "No data is available to show.";
+                document.getElementById("closestMatch").innerHTML = "<h2>No data is available to show.</h2>";
                 callback(false);
 
             }
