@@ -55,7 +55,7 @@ table.table th, table.table td {
  }
 
 #heatMapGraphAggregate .highcharts-container .highcharts-root .highcharts-series-group .highcharts-markers{
-    opacity: 1;
+    opacity: 0.5;
 }
 
 #heatMapUser .highcharts-container .highcharts-root .highcharts-series-group .highcharts-series{
@@ -63,7 +63,7 @@ table.table th, table.table td {
 }
 
 #heatMapUser .highcharts-container .highcharts-root .highcharts-series-group .highcharts-markers{
-    opacity: 1;
+    opacity: 0.5;
 }
 
 #closestMatch .highcharts-container .highcharts-root .highcharts-credits{
