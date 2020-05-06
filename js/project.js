@@ -2352,7 +2352,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(function (data) {
-
+            console.log(data.data);
             if (data.data !== 1 && data.data.length > 0) {
                 document.getElementById("closestMatch").innerText = "";
                 let dataVal = [];
