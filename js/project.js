@@ -123,7 +123,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $("#riddle").hide();
         $("#experiment").hide();
         $("#begin_exp_user").hide();
-        $("#finish_exp").hide();
+        $("#finish_exp_full").hide();
+        $("#finish_exp_empty").hide();
         $("#loading").hide();
         $("#instruction_after").hide();
         $("#statistics").hide();
@@ -136,7 +137,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $("#riddle").hide();
         $("#experiment").hide();
         $("#begin_exp_user").hide();
-        $("#finish_exp").hide();
+        $("#finish_exp_empty").hide();
+        $("#finish_exp_full").hide();
         $("#loading").hide();
         $("#instruction_after").hide();
         $("#statistics").hide();
@@ -642,30 +644,36 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         var isSingleUser = 'True';
                         $scope.showConfidenceLineGraph(function(finish_conf) {
 
-                            $scope.showTimeRangeBarGraph(function(finish_time) {
+                            if(finish_conf === true){
+                                $scope.showTimeRangeBarGraph(function(finish_time) {
 
-                                $scope.get_mouse_click_data(function(finish_click_data) {
+                                    $scope.get_mouse_click_data(function(finish_click_data) {
 
-                                    $scope.create_heat_map(function(finish_heatmap) {
+                                        $scope.create_heat_map(function(finish_heatmap) {
 
-                                        $scope.findClosestMatcher(function(finish_matcher) {
+                                            $scope.findClosestMatcher(function(finish_matcher) {
 
-                                            $scope.findPrecisionForUser(function(finish_precision) {
+                                                $scope.findPrecisionForUser(function(finish_precision) {
 
-                                                // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
-                                                $("#loading").hide();
-                                                $("#finish_exp").show();
-                                                $scope.curr_order = 1;
-                                                $scope.curr_count_ans = 0;
+                                                    // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
+                                                    $("#loading").hide();
+                                                    $("#finish_exp_full").show();
+                                                    $scope.curr_order = 1;
+                                                    $scope.curr_count_ans = 0;
+                                                });
                                             });
-                                        });
+
+                                        }, isSingleUser);
 
                                     }, isSingleUser);
 
-                                }, isSingleUser);
-
-                            });
-
+                                });
+                            } else {
+                                $("#loading").hide();
+                                $("#finish_exp_empty").show();
+                                $scope.curr_order = 1;
+                                $scope.curr_count_ans = 0;
+                            }
                         });
                     }
 
@@ -729,30 +737,36 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 var isSingleUser = 'True';
                 $scope.showConfidenceLineGraph(function(finish_conf) {
 
-                    $scope.showTimeRangeBarGraph(function(finish_time) {
+                    if(finish_conf === true){
+                        $scope.showTimeRangeBarGraph(function(finish_time) {
 
-                        $scope.get_mouse_click_data(function(finish_click_data) {
+                            $scope.get_mouse_click_data(function(finish_click_data) {
 
-                            $scope.create_heat_map(function(finish_heatmap) {
+                                $scope.create_heat_map(function(finish_heatmap) {
 
-                                $scope.findClosestMatcher(function(finish_matcher) {
+                                    $scope.findClosestMatcher(function(finish_matcher) {
 
-                                    $scope.findPrecisionForUser(function(finish_precision) {
+                                        $scope.findPrecisionForUser(function(finish_precision) {
 
-                                        // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
-                                        $("#loading").hide();
-                                        $("#finish_exp").show();
-                                        $scope.curr_order = 1;
-                                        $scope.curr_count_ans = 0;
+                                            // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
+                                            $("#loading").hide();
+                                            $("#finish_exp_full").show();
+                                            $scope.curr_order = 1;
+                                            $scope.curr_count_ans = 0;
+                                        });
                                     });
-                                });
+
+                                }, isSingleUser);
 
                             }, isSingleUser);
 
-                        }, isSingleUser);
-
-                    });
-
+                        });
+                    } else {
+                        $("#loading").hide();
+                        $("#finish_exp_empty").show();
+                        $scope.curr_order = 1;
+                        $scope.curr_count_ans = 0;
+                    }
                 });
             }
 
@@ -1437,7 +1451,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(true);
 
             } else {
-                console.log('Get line graph data - confidence levels failed');
+                //console.log('Data for line graph data - confidence levels is empty');
                 callback(false);
 
             }
@@ -1537,7 +1551,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(true);
 
             } else {
-                console.log('Get bar graph data - time range failed');
+                //console.log('Data for bar graph data - time range is empty');
                 callback(false);
             }
         });
