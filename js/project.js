@@ -2440,7 +2440,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(true);
             } else {
                 //console.log('Data for similarity to matcher - empty');
-                document.getElementById("closestMatch").innerHTML = "<h2>No data is available to show.</h2>";
+                document.getElementById("closestMatch").innerHTML = '<h2 style="margin-top: 30%; display: inline-block;">' +
+                                     "No data is available to show for Similarity To Algorithms.</h2>";
                 callback(false);
 
             }
@@ -2461,7 +2462,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }
         }).then(function (data) {
 
-            if (data.data !== 'err') {
+            if (data.data !== 'err' && data.data > 0) {
                 const precision = data.data;
                 //console.log(precision);
                 //console.log(typeof precision);
@@ -2472,7 +2473,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }
                 callback(true);
             } else {
-                console.log('Get precision for user - failed');
+                //console.log('Data for precision of user - empty');
                 callback(false);
             }
         });
