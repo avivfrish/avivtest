@@ -650,11 +650,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                         $scope.findClosestMatcher(function(finish_matcher) {
 
-                                            // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
-                                            $("#loading").hide();
-                                            $("#finish_exp").show();
-                                            $scope.curr_order = 1;
-                                            $scope.curr_count_ans = 0;
+                                            $scope.findPrecisionForUser(function(finish_precision) {
+
+                                                // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
+                                                $("#loading").hide();
+                                                $("#finish_exp").show();
+                                                $scope.curr_order = 1;
+                                                $scope.curr_count_ans = 0;
+                                            });
                                         });
 
                                     }, isSingleUser);
@@ -734,11 +737,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                 $scope.findClosestMatcher(function(finish_matcher) {
 
-                                    // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
-                                    $("#loading").hide();
-                                    $("#finish_exp").show();
-                                    $scope.curr_order = 1;
-                                    $scope.curr_count_ans = 0;
+                                    $scope.findPrecisionForUser(function(finish_precision) {
+
+                                        // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
+                                        $("#loading").hide();
+                                        $("#finish_exp").show();
+                                        $scope.curr_order = 1;
+                                        $scope.curr_count_ans = 0;
+                                    });
                                 });
 
                             }, isSingleUser);
