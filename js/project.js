@@ -2427,6 +2427,34 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
     };
 
+    $scope.findPrecisionForUser = function (callback) {
+        $http({
+            method: 'POST',
+            url: 'php/compute_precision_for_user.php',
+            data: $.param({
+                curr_user: $scope.curr_user['id'],
+                curr_exp_id: $scope.curr_exp_id
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (data) {
+
+            if (data.data !== 'err') {
+                const precision = data.data;
+                if (precision > 0.5){
+                    document.getElementById("user_finish_msg").innerText = "Thank You! Good job, you have being very precise.";
+                } else {
+                    document.getElementById("user_finish_msg").innerText = "Thank You! You can do better.";
+                }
+                callback(true);
+            } else {
+                console.log('Get precision for user - failed');
+                callback(false);
+            }
+        });
+    };
+
     /*$scope.capture_screen = function()
     {
         const body_id = document.body.id;

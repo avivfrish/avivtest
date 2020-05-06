@@ -37,9 +37,9 @@
     <script src="js/chart.js"></script>
     <script src="randexp/build/randexp.min.js"></script>
 
-    <!-- new script -->
-    <script src="highchart/highcharts.js"></script>
-    <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
+    <!-- new script
+    <script src="highchart/highcharts.js"></script>-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <!--<script src="https://code.highcharts.com/modules/heatmap.js"></script>-->
     <script src="https://code.highcharts.com/stock/modules/heatmap.js">
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
