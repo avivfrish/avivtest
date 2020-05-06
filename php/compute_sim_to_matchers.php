@@ -30,6 +30,7 @@ if ($getResults == FALSE)
     echo "1";
 
 $array = array();
+$token_path = "";
 while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
     $token_path = $row['Token_Path_Sim'];
     $term_match = $row['Term_Match_Sim'];
@@ -67,4 +68,8 @@ while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
     );
 }
 sqlsrv_free_stmt($getResults);
-echo json_encode($array);
+if(is_null($token_path)){
+    echo "1";
+} else{
+    echo json_encode($array);
+}
