@@ -2353,8 +2353,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }
         }).then(function (data) {
 
-            if (data.data !== 1) {
-
+            if (data.data !== 1 && data.data.length > 0) {
+                document.getElementById("closestMatch").innerText = "";
                 let dataVal = [];
                 for (let item in data.data){
                     const algName = (data.data)[item]['algName'];
@@ -2439,7 +2439,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 });
                 callback(true);
             } else {
-                console.log('Get similarity to matcher - failed');
+                //console.log('Data for similarity to matcher - empty');
+                document.getElementById("closestMatch").innerText = "No data is available to show.";
                 callback(false);
 
             }
