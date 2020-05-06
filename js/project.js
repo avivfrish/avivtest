@@ -2448,6 +2448,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             if (data.data !== 'err') {
                 const precision = data.data;
+                console.log(precision);
                 if (precision > 0.5){
                     document.getElementById("user_finish_msg").innerText = "Thank You! Good job, you have being very precise.";
                 } else {
