@@ -118,6 +118,75 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     };
 
     $scope.show_home = function(){
+        const ctx = document.getElementById("chart").getContext("2d");
+
+        Chart.defaults.global.defaultFontColor = 'black';
+        Chart.defaults.global.defaultFontFamily = "Calibri";
+        Chart.defaults.global.defaultFontSize = 14;
+
+        let confidenceLineGraph$scope = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [1,2,3],
+                datasets: [{
+                    label: "User Confidence Level and Correct Answers",
+                    data: [1,2,3],
+                    borderColor: "#000000",
+                    borderWidth: 0.7,
+                    pointRadius: 5,
+                    pointHoverRadius: 7,
+                    icons: ["\uf00c","\uf00c","\uf00c"],
+                    //pointBackgroundColor: colorOfPoints,
+                    fill: false,
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            min: 0,
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: '%'
+                        }
+                    }],
+                    xAxes: [{
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Question Number'
+                        }
+                    }],
+                },
+                legend: {
+                    display: true
+                },
+                title: {
+                    display: true,
+                    text: 'Confidence Level & Answer as function of number of Questions',
+                    fontSize: 18
+                },
+                plugins: {
+                    datalabels: {
+                        align: 'center',
+                        anchor: 'end',
+                        color: ["#0ccd00", "#0ccd00", "#0ccd00"],
+                        font: {
+                            family: 'FontAwesome',
+                            size: 20
+                        },
+                        formatter: function(value, context) {
+                            return context.dataset.icons[context.dataIndex];
+                        }
+                    }
+                }
+            }
+        });
+        document.getElementById("chart").innerHTML = confidenceLineGraph;
+
+
+
+
         // this function show the home div - the instructions.
         $("#home").hide();
         $("#riddle").hide();
@@ -1353,7 +1422,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 borderWidth: 0.7,
                                 pointRadius: 5,
                                 pointHoverRadius: 7,
-                                icons: ["\uf00c","\uf00c","\uf00c","\uf00c","\uf00c",
+                                icons: ['\uf00c',"\uf00c","\uf00c","\uf00c","\uf00c",
                                     "\uf00c","\uf00c","\uf00c","\uf00c","\uf00c",
                                     "\uf00c","\uf00c","\uf00c","\uf00c","\uf00c"],
                                 //pointBackgroundColor: colorOfPoints,
