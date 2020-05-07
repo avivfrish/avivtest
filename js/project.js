@@ -1291,7 +1291,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                         j++;
                     }
-
+                    console.log(exps_id);
                     $http({
                         method: 'POST',
                         url: 'php/get_confidence_and_answer_values.php',
