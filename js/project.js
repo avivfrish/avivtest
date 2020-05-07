@@ -1300,6 +1300,64 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         borderColor: "#000dad",
                         fill: false,
                     }];
+                    /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
+                yDataCorrAns = [0.25,0.64,0.7,0.1435526,0.51,0.184345,0.6,0.48,0.89,0.4,0.333,0.54,0.868,0.4465,0.76,0.57,0.66,0.39,0.6,0.3];
+
+                data.data = [{'avgTime': 17, 'avgCorrAns': 0.25},{'avgTime': 9, 'avgCorrAns': 0.64},
+                    {'avgTime': 8, 'avgCorrAns': 0.7},{'avgTime': 19, 'avgCorrAns': 0.1435526},
+                    {'avgTime': 11, 'avgCorrAns': 0.51},{'avgTime': 18, 'avgCorrAns': 0.184345},
+                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 14, 'avgCorrAns': 0.48},
+                    {'avgTime': 5, 'avgCorrAns': 0.89},{'avgTime': 13, 'avgCorrAns': 0.4},
+                    {'avgTime': 16, 'avgCorrAns': 0.333},{'avgTime': 9, 'avgCorrAns': 0.54},
+                    {'avgTime': 4, 'avgCorrAns': 0.868},{'avgTime': 14, 'avgCorrAns': 0.4465},
+                    {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
+                    {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
+                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];*/
+                    const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
+                    if ($scope.confidenceLineGraphAggregate){
+                        $scope.confidenceLineGraphAggregate.destroy();
+                    }
+
+                    Chart.defaults.global.defaultFontColor = 'black';
+                    Chart.defaults.global.defaultFontFamily = "Calibri";
+                    Chart.defaults.global.defaultFontSize = 14;
+
+                    $scope.confidenceLineGraphAggregate = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: xLabels,
+                            datasets: datasets_val
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: '%'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Question Number'
+                                    }
+                                }],
+                            },
+                            legend: {
+                                display: true
+                            },
+                            title: {
+                                display: true,
+                                text: 'Confidence Level & Answer as function of number of Questions',
+                                fontSize: 18
+                            }
+                        }
+                    });
+                    document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
+                    callback(true);
                 } else {
                     console.log('Get line graph data - confidence levels failed');
                     callback(false);
@@ -1343,14 +1401,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         borderColor: "#000dad",
                         fill: false,
                     }];
-                } else {
-                    console.log('Get line graph data - confidence levels failed');
-                    callback(false);
-                }
-            });
-        }
-
-        /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
+                    /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
                 yDataCorrAns = [0.25,0.64,0.7,0.1435526,0.51,0.184345,0.6,0.48,0.89,0.4,0.333,0.54,0.868,0.4465,0.76,0.57,0.66,0.39,0.6,0.3];
 
                 data.data = [{'avgTime': 17, 'avgCorrAns': 0.25},{'avgTime': 9, 'avgCorrAns': 0.64},
@@ -1363,51 +1414,59 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
                     {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
                     {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];*/
-        const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
-        if ($scope.confidenceLineGraphAggregate){
-            $scope.confidenceLineGraphAggregate.destroy();
+                    const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
+                    if ($scope.confidenceLineGraphAggregate){
+                        $scope.confidenceLineGraphAggregate.destroy();
+                    }
+
+                    Chart.defaults.global.defaultFontColor = 'black';
+                    Chart.defaults.global.defaultFontFamily = "Calibri";
+                    Chart.defaults.global.defaultFontSize = 14;
+
+                    $scope.confidenceLineGraphAggregate = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: xLabels,
+                            datasets: datasets_val
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        min: 0,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: '%'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Question Number'
+                                    }
+                                }],
+                            },
+                            legend: {
+                                display: true
+                            },
+                            title: {
+                                display: true,
+                                text: 'Confidence Level & Answer as function of number of Questions',
+                                fontSize: 18
+                            }
+                        }
+                    });
+                    document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
+                    callback(true);
+                } else {
+                    console.log('Get line graph data - confidence levels failed');
+                    callback(false);
+                }
+            });
         }
 
-        Chart.defaults.global.defaultFontColor = 'black';
-        Chart.defaults.global.defaultFontFamily = "Calibri";
-        Chart.defaults.global.defaultFontSize = 14;
 
-        $scope.confidenceLineGraphAggregate = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: xLabels,
-                datasets: datasets_val
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: '%'
-                        }
-                    }],
-                    xAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Question Number'
-                        }
-                    }],
-                },
-                legend: {
-                    display: true
-                },
-                title: {
-                    display: true,
-                    text: 'Confidence Level & Answer as function of number of Questions',
-                    fontSize: 18
-                }
-            }
-        });
-        document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
-        callback(true);
     };
 
     $scope.showConfidenceLineGraph = function (callback) {
