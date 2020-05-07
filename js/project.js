@@ -1305,6 +1305,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     }).then(function (data) {
 
                         if (data.data.length !== 0) {
+                            console.log(data.data);
 
                             let yData_user = [];
                             let colorOfPoints = [];
@@ -1314,7 +1315,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 const user_conf = (data.data)[item]['user_conf'];
                                 const isCorrectAnswer = (data.data)[item]['isCorrectAnswer'];
 
-                                xLabels.push(j);
                                 yData_user.push(user_conf);
 
                                 if(isCorrectAnswer == 1){
@@ -1327,16 +1327,17 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
 
                             datasets_val = [{
-                                label: "Confidence Avg. Level",
+                                label: "All Confidence Avg. Level",
                                 data: yDataConf,
                                 borderColor: "#0DAD00",
                                 fill: false,
                             }, {
-                                label: "Correct Number Of Answers Avg. Level",
+                                label: "All Correct Number Of Answers Avg. Level",
                                 data: yDataCorrAns,
                                 borderColor: "#000dad",
                                 fill: false,
                             }, {
+                                label: "User Confidence Level and Correct Answers",
                                 data: yData_user,
                                 borderColor: "#000000",
                                 pointBackgroundColor: colorOfPoints,
