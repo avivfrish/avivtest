@@ -136,7 +136,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     pointRadius: 5,
                     pointHoverRadius: 7,
                     icons: ["\uf00c","\uf00c","\uf00c"],
-                    //pointBackgroundColor: colorOfPoints,
+                    //pointBackgroundColor: colorOfPoints,?
                     fill: false,
                 }]
             },

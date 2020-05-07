@@ -51,6 +51,7 @@
     <!--<script src="https://code.highcharts.com/stock/highstock.js"></script>
     <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
     <script type="text/javascript" src="https://www.highcharts.com/samples/data/usdeur.js"></script>-->
+    <script src="js/mdb.min.js"></script>
 
     <!--New scripts-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
@@ -73,6 +74,5 @@
 	?>
 
 </body>
-    <script src="js/mdb.min.js"></script>
 
 </html>
