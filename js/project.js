@@ -1318,14 +1318,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                 if(isCorrectAnswer == 1){
                                     colorOfPoints.push("#0ccd00");
-                                    iconOfPoints.push('\\uf00c');
+                                    iconOfPoints.push("\\uf00c");
                                 }else{
                                     colorOfPoints.push("#cd0800");
-                                    iconOfPoints.push('\\uf00d');
+                                    iconOfPoints.push("\\uf00d");
                                 }
 
                                 j++;
                             }
+                            console.log(iconOfPoints);
 
                             datasets_val = [{
                                 label: "All Confidence Avg. Level",
