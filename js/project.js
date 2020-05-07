@@ -1294,7 +1294,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         method: 'POST',
                         url: 'php/get_confidence_and_answer_values.php',
                         data: $.param({
-                            curr_user: $scope.curr_user['id'],
+                            curr_user: $scope.usersToShowStats[0],
                             curr_exp_id: all_exps
                         }),
                         headers: {
