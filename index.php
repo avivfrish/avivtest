@@ -68,6 +68,5 @@
 
 </body>
 <script src="js/mdb.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
 </html>
