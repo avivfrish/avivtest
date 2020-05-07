@@ -1,18 +1,14 @@
 <?php
 $curr_user = stripcslashes($_POST['curr_user']);
-$curr_exp_id = stripcslashes($_POST['curr_exp_id']);
-$multi_exp = stripcslashes($_POST['multi_exp']);
-/*
+$curr_exp_id = $_POST['curr_exp_id'];
+$multi_exp = $_POST['multi_exp'];
+
 $exp_where_clause = "";
 if($multi_exp){
     $exp_where_clause = "exp_id IN (". implode(',', $curr_exp_id).")";
 } else{
     $exp_where_clause = "exp_id = ". $curr_exp_id;
-}*/
-$exp_where_clause = "exp_id IN (". implode(',', $curr_exp_id).")";
-
-echo $curr_exp_id;
-echo $multi_exp;
+}
 
 $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Database" => "avivtest", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:avivtest.database.windows.net,1433";
