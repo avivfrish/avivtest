@@ -1329,7 +1329,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yDataConf,
                                 borderColor: "#0DAD00",
                                 borderWidth: 0.7,
-                                pointRadius: 15,
+                                pointRadius: 3,
                                 pointBackgroundColor: "#0DAD00",
                                 fill: false,
                             }, {
@@ -1337,7 +1337,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yDataCorrAns,
                                 borderColor: "#000dad",
                                 borderWidth: 0.7,
-                                pointRadius: 15,
+                                pointRadius: 3,
                                 pointBackgroundColor: "#000dad",
                                 fill: false,
                             }, {
@@ -1345,7 +1345,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yData_user,
                                 borderColor: "#000000",
                                 borderWidth: 0.7,
-                                pointRadius: 15,
+                                pointRadius: 3,
                                 pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
@@ -1449,7 +1449,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         data: yDataConf,
                         borderColor: "#0DAD00",
                         borderWidth: 0.7,
-                        pointRadius: 15,
+                        pointRadius: 5,
                         pointBackgroundColor: "#0DAD00",
                         fill: false,
                     }, {
@@ -1457,7 +1457,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         data: yDataCorrAns,
                         borderColor: "#000dad",
                         borderWidth: 0.7,
-                        pointRadius: 15,
+                        pointRadius: 5,
                         pointBackgroundColor: "#000dad",
                         fill: false,
                     }];
