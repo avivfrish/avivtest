@@ -1252,6 +1252,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         if($scope.usersToShowStats.length === 1){
             let all_users = [];
             let all_exps = [];
+            let exps_id = [];
             for (let index in $scope.allUserNames){
                 if(index >= 2){
                     all_users.push($scope.allUserNames[index].id);
@@ -1261,6 +1262,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 if(index >= 2){
                     all_exps.push({"id" : $scope.allTestExpNames[index].id,
                         "max_num_pairs" : $scope.allTestExpNames[index].max_num_pairs});
+                    exps_id.push($scope.allTestExpNames[index].id);
                 }
             }
             $http({
@@ -1295,7 +1297,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         url: 'php/get_confidence_and_answer_values.php',
                         data: $.param({
                             curr_user: $scope.usersToShowStats[0],
-                            curr_exp_id: all_exps
+                            curr_exp_id: exps_id
                         }),
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
