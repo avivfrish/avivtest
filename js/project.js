@@ -1418,7 +1418,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                             anchor: 'end',
                                             color: colorOfPoints,
                                             font: {
-                                                family: 'Font Awesome 5 Free',
+                                                family: 'FontAwesome',
                                                 size: 30
                                             },
                                             formatter: function(value, context) {
