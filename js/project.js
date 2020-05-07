@@ -1307,6 +1307,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         if (data.data.length !== 0) {
                             let yData_user = [];
                             let colorOfPoints = [];
+                            let iconOfPoints = [];
 
                             let j = 1;
                             for (let item in data.data){
@@ -1317,8 +1318,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                 if(isCorrectAnswer == 1){
                                     colorOfPoints.push("#0ccd00");
+                                    iconOfPoints.push("\uf00c");
                                 }else{
                                     colorOfPoints.push("#cd0800");
+                                    iconOfPoints.push("\uf00d");
                                 }
 
                                 j++;
@@ -1329,7 +1332,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yDataConf,
                                 borderColor: "#0DAD00",
                                 borderWidth: 0.7,
-                                pointRadius: 3,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
                                 pointBackgroundColor: "#0DAD00",
                                 fill: false,
                             }, {
@@ -1337,7 +1341,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yDataCorrAns,
                                 borderColor: "#000dad",
                                 borderWidth: 0.7,
-                                pointRadius: 3,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
                                 pointBackgroundColor: "#000dad",
                                 fill: false,
                             }, {
@@ -1345,8 +1350,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yData_user,
                                 borderColor: "#000000",
                                 borderWidth: 0.7,
-                                pointRadius: 3,
-                                pointBackgroundColor: colorOfPoints,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                icons: iconOfPoints,
+                                //pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
 
@@ -1403,6 +1410,20 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         display: true,
                                         text: 'Confidence Level & Answer as function of number of Questions',
                                         fontSize: 18
+                                    },
+                                    plugins: {
+                                        datalabels: {
+                                            align: 'center',
+                                            anchor: 'end',
+                                            color: colorOfPoints,
+                                            font: {
+                                                family: 'FontAwesome',
+                                                size: 30
+                                            },
+                                            formatter: function(value, context) {
+                                                return context.dataset.icons[context.dataIndex];
+                                            }
+                                        }
                                     }
                                 }
                             });
@@ -1450,6 +1471,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         borderColor: "#0DAD00",
                         borderWidth: 0.7,
                         pointRadius: 5,
+                        pointHoverRadius: 7,
                         pointBackgroundColor: "#0DAD00",
                         fill: false,
                     }, {
@@ -1458,6 +1480,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         borderColor: "#000dad",
                         borderWidth: 0.7,
                         pointRadius: 5,
+                        pointHoverRadius: 7,
                         pointBackgroundColor: "#000dad",
                         fill: false,
                     }];
