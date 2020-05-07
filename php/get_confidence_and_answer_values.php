@@ -2,13 +2,15 @@
 $curr_user = stripcslashes($_POST['curr_user']);
 $curr_exp_id = stripcslashes($_POST['curr_exp_id']);
 $multi_exp = stripcslashes($_POST['multi_exp']);
-
+/*
 $exp_where_clause = "";
 if($multi_exp){
     $exp_where_clause = "exp_id IN (". implode(',', $curr_exp_id).")";
 } else{
     $exp_where_clause = "exp_id = ". $curr_exp_id;
-}
+}*/
+$exp_where_clause = "exp_id IN (". implode(',', $curr_exp_id).")";
+
 echo $curr_exp_id;
 echo $multi_exp;
 
