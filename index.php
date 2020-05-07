@@ -45,7 +45,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
-    <script src="js/mdb.min.js"></script>
     <!--New scripts-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -69,5 +68,6 @@
 	?>
 
 </body>
+<script src="js/mdb.min.js"></script>
 
 </html>
