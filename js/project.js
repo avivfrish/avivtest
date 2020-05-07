@@ -1353,7 +1353,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 borderWidth: 0.7,
                                 pointRadius: 5,
                                 pointHoverRadius: 7,
-                                icons: iconOfPoints,
+                                icons: ["\uf00c","\uf00c","\uf00c","\uf00c","\uf00c",
+                                    "\uf00c","\uf00c","\uf00c","\uf00c","\uf00c",
+                                    "\uf00c","\uf00c","\uf00c","\uf00c","\uf00c"],
                                 //pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
@@ -1416,7 +1418,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         datalabels: {
                                             align: 'center',
                                             anchor: 'end',
-                                            color: colorOfPoints,
+                                            //color: colorOfPoints,
                                             font: {
                                                 family: 'FontAwesome',
                                                 size: 30
