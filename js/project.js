@@ -1297,7 +1297,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         url: 'php/get_confidence_and_answer_values.php',
                         data: $.param({
                             curr_user: $scope.usersToShowStats[0],
-                            curr_exp_id: exps_id
+                            curr_exp_id: exps_id,
+                            multi_exp: true
                         }),
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
@@ -1525,7 +1526,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             url: 'php/get_confidence_and_answer_values.php',
             data: $.param({
                 curr_user: $scope.curr_user['id'],
-                curr_exp_id: $scope.curr_exp_id
+                curr_exp_id: $scope.curr_exp_id,
+                multi_exp: false
             }),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
