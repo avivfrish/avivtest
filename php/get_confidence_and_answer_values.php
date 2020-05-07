@@ -9,6 +9,8 @@ if($multi_exp){
 } else{
     $exp_where_clause = "exp_id = ". $curr_exp_id;
 }
+echo $curr_exp_id;
+echo $multi_exp;
 
 $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Database" => "avivtest", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:avivtest.database.windows.net,1433";
