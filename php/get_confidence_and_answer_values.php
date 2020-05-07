@@ -19,7 +19,7 @@ $sql="select userconf, IIF(realconf = user_ans_is_match, 1, 0) as isCorrectAnswe
 from exp_results
 where exp_results.sch_id_1 != 0 and user_id = ". $curr_user ." and " . $exp_where_clause ." 
 order by rec_time asc";
-echo $sql;
+
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
     echo "1";

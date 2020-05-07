@@ -1291,7 +1291,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                         j++;
                     }
-                    console.log(exps_id);
                     $http({
                         method: 'POST',
                         url: 'php/get_confidence_and_answer_values.php',
@@ -1306,8 +1305,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     }).then(function (data) {
 
                         if (data.data.length !== 0) {
-                            console.log(data.data);
-
                             let yData_user = [];
                             let colorOfPoints = [];
 
