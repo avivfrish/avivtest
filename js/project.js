@@ -1329,7 +1329,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yDataConf,
                                 borderColor: "#0DAD00",
                                 borderWidth: 0.7,
-                                pointRadius: 1.3,
+                                pointRadius: 15,
                                 pointBackgroundColor: "#0DAD00",
                                 fill: false,
                             }, {
@@ -1337,7 +1337,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yDataCorrAns,
                                 borderColor: "#000dad",
                                 borderWidth: 0.7,
-                                pointRadius: 1.3,
+                                pointRadius: 15,
                                 pointBackgroundColor: "#000dad",
                                 fill: false,
                             }, {
@@ -1345,7 +1345,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 data: yData_user,
                                 borderColor: "#000000",
                                 borderWidth: 0.7,
-                                pointRadius: 1.3,
+                                pointRadius: 15,
                                 pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
@@ -1448,11 +1448,17 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         label: "Confidence Avg. Level",
                         data: yDataConf,
                         borderColor: "#0DAD00",
+                        borderWidth: 0.7,
+                        pointRadius: 15,
+                        pointBackgroundColor: "#0DAD00",
                         fill: false,
                     }, {
                         label: "Correct Number Of Answers Avg. Level",
                         data: yDataCorrAns,
                         borderColor: "#000dad",
+                        borderWidth: 0.7,
+                        pointRadius: 15,
+                        pointBackgroundColor: "#000dad",
                         fill: false,
                     }];
                     /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
