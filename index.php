@@ -51,7 +51,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 
-
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
 </head>
 <body ng-controller='avivTest' ng-init="init_avivTest()" id="all_body">
     
@@ -67,6 +68,5 @@
 	?>
 
 </body>
-<script src="js/mdb.min.js"></script>
 
 </html>
