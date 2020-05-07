@@ -1328,16 +1328,19 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 label: "All Confidence Avg. Level",
                                 data: yDataConf,
                                 borderColor: "#0DAD00",
+                                borderWidth: 0.5,
                                 fill: false,
                             }, {
                                 label: "All Correct Number Of Answers Avg. Level",
                                 data: yDataCorrAns,
                                 borderColor: "#000dad",
+                                borderWidth: 0.5,
                                 fill: false,
                             }, {
                                 label: "User Confidence Level and Correct Answers",
                                 data: yData_user,
                                 borderColor: "#000000",
+                                borderWidth: 0.5,
                                 pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
