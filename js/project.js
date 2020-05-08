@@ -1381,8 +1381,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                         if (data.data.length !== 0) {
                             let yData_user = [];
-                            let colorOfPoints = [];
-                            let iconOfPoints = [];
+                            //let colorOfPoints = [];
+                            //let iconOfPoints = [];
+                            let point_styles = [];
+
+                            var checkmark_icon = new Image();
+                            checkmark_icon.src = '/images/checkmark_icon.png';
+
+                            var x_icon = new Image();
+                            x_icon.src = '/images/x_icon.png';
 
                             let j = 1;
                             for (let item in data.data){
@@ -1392,16 +1399,17 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 yData_user.push(user_conf);
 
                                 if(isCorrectAnswer == 1){
-                                    colorOfPoints.push("#0ccd00");
-                                    iconOfPoints.push("\uf00c");
+                                    point_styles.push(checkmark_icon);
+                                    //colorOfPoints.push("#0ccd00");
+                                    //iconOfPoints.push("\uf00c");
                                 }else{
-                                    colorOfPoints.push("#cd0800");
-                                    iconOfPoints.push("\uf00d");
+                                    point_styles.push(x_icon);
+                                    //colorOfPoints.push("#cd0800");
+                                    //iconOfPoints.push("\uf00d");
                                 }
 
                                 j++;
                             }
-                            console.log(iconOfPoints);
 
                             datasets_val = [{
                                 label: "All Confidence Avg. Level",
@@ -1428,9 +1436,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 borderWidth: 0.7,
                                 pointRadius: 5,
                                 pointHoverRadius: 7,
-                                icons: ['\uf00c',"\uf00c","\uf00c","\uf00c","\uf00c",
-                                    "\uf00c","\uf00c","\uf00c","\uf00c","\uf00c",
-                                    "\uf00c","\uf00c","\uf00c","\uf00c","\uf00c"],
+                                pointStyle: point_styles,
                                 //pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
@@ -1489,7 +1495,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         text: 'Confidence Level & Answer as function of number of Questions',
                                         fontSize: 18
                                     },
-                                    plugins: {
+                                    /*plugins: {
                                         datalabels: {
                                             align: 'center',
                                             anchor: 'end',
@@ -1502,7 +1508,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                                 return context.dataset.icons[context.dataIndex];
                                             }
                                         }
-                                    }
+                                    }*/
                                 }
                             });
                             document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
