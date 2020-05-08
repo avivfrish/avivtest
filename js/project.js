@@ -124,6 +124,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         Chart.defaults.global.defaultFontFamily = "Calibri";
         Chart.defaults.global.defaultFontSize = 14;
 
+        var sun = new Image();
+        sun.src = '/images/systemLogo.png';
+
         let confidenceLineGraph$scope = new Chart(ctx, {
             type: 'line',
             data: {
@@ -135,7 +138,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     borderWidth: 0.7,
                     pointRadius: 5,
                     pointHoverRadius: 7,
-                    icons: ["\uf00c","\uf00c","\uf00c"],
+                    pointStyle: [sun, sun, sun],
+                    //icons: ["\uf00c","\uf00c","\uf00c"],
                     //pointBackgroundColor: colorOfPoints,?
                     fill: false,
                 }]
