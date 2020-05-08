@@ -126,6 +126,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         var sun = new Image();
         sun.src = '/images/systemLogo.png';
+        sun.width = "20px";
+        sun.height = "20px";
 
         let confidenceLineGraph$scope = new Chart(ctx, {
             type: 'line',
