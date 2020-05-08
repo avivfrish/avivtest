@@ -128,6 +128,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         sun.src = '/images/checkmark_icon.png';
         //sun.width = "50";
         //sun.height = "50";
+        var x_icon = new Image();
+        x_icon.src = '/images/x_icon.png';
 
         let confidenceLineGraph$scope = new Chart(ctx, {
             type: 'line',
@@ -140,7 +142,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     borderWidth: 0.7,
                     pointRadius: 5,
                     pointHoverRadius: 7,
-                    pointStyle: [sun, sun, sun],
+                    pointStyle: [sun, x_icon, sun],
                     //icons: ["\uf00c","\uf00c","\uf00c"],
                     //pointBackgroundColor: colorOfPoints,?
                     fill: false,
