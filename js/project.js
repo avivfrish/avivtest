@@ -118,93 +118,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     };
 
     $scope.show_home = function(){
-        const ctx = document.getElementById("chart").getContext("2d");
-
-        Chart.defaults.global.defaultFontColor = 'black';
-        Chart.defaults.global.defaultFontFamily = "Calibri";
-        Chart.defaults.global.defaultFontSize = 14;
-
-        var sun = new Image();
-        sun.src = '/images/checkmark_icon.png';
-        //sun.width = "50";
-        //sun.height = "50";
-        var x_icon = new Image();
-        x_icon.src = '/images/x_icon.png';
-
-        let confidenceLineGraph$scope = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: [1,2,3],
-                datasets: [{
-                    label: "User Confidence Level and Correct Answers",
-                    data: [1,2,3],
-                    borderColor: "#000000",
-                    borderWidth: 0.7,
-                    pointRadius: 5,
-                    pointHoverRadius: 7,
-                    pointStyle: [sun, x_icon, sun],
-                    //icons: ["\uf00c","\uf00c","\uf00c"],
-                    //pointBackgroundColor: colorOfPoints,?
-                    fill: false,
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            min: 0,
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: '%'
-                        }
-                    }],
-                    xAxes: [{
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Question Number'
-                        }
-                    }],
-                },
-                legend: {
-                    display: true
-                },
-                title: {
-                    display: true,
-                    text: 'Confidence Level & Answer as function of number of Questions',
-                    fontSize: 18
-                },
-                plugins: {
-                    datalabels: {
-                        align: 'center',
-                        anchor: 'end',
-                        color: ["#0ccd00", "#0ccd00", "#0ccd00"],
-                        font: {
-                            family: 'FontAwesome',
-                            size: 20
-                        },
-                        formatter: function(value, context) {
-                            return context.dataset.icons[context.dataIndex];
-                        }
-                    }
-                }
-            }
-        });
-        document.getElementById("chart").innerHTML = confidenceLineGraph;
-
-
-
-
         // this function show the home div - the instructions.
-        $("#home").hide();
-        $("#riddle").hide();
-        $("#experiment").hide();
-        $("#begin_exp_user").hide();
-        $("#finish_exp_full").hide();
-        $("#finish_exp_empty").hide();
-        $("#loading").hide();
-        $("#instruction_after").hide();
-        $("#statistics").hide();
         $("#home").show();
     };
 
@@ -1662,7 +1576,18 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                 let xLabels = [];
                 let yData = [];
-                let colorOfPoints = [];
+                //let colorOfPoints = [];
+                let point_styles = [];
+
+                var checkmark_icon = new Image();
+                checkmark_icon.src = '/images/checkmark_icon.png';
+                checkmark_icon.height = "20";
+                checkmark_icon.width = "20";
+
+                var x_icon = new Image();
+                x_icon.src = '/images/x_icon.png';
+                x_icon.height = "20";
+                x_icon.width = "20";
 
                 let j = 1;
                 for (let item in data.data){
@@ -1673,9 +1598,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     yData.push(user_conf);
 
                     if(isCorrectAnswer == 1){
-                        colorOfPoints.push("#0ccd00");
+                        point_styles.push(checkmark_icon);
+                        //colorOfPoints.push("#0ccd00");
                     }else{
-                        colorOfPoints.push("#cd0800");
+                        point_styles.push(x_icon);
+                        //colorOfPoints.push("#cd0800");
                     }
 
                     j++;
@@ -1697,7 +1624,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         datasets: [{
                             data: yData,
                             borderColor: "#000000",
-                            pointBackgroundColor: colorOfPoints,
+                            pointStyle: point_styles,
+                            //pointBackgroundColor: colorOfPoints,
                             fill: false,
                         }
                         ]
