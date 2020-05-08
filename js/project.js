@@ -125,9 +125,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         Chart.defaults.global.defaultFontSize = 14;
 
         var sun = new Image();
-        sun.src = '/images/systemLogo.png';
-        sun.width = "50";
-        sun.height = "50";
+        sun.src = '/images/checkmark_icon.png';
+        //sun.width = "50";
+        //sun.height = "50";
 
         let confidenceLineGraph$scope = new Chart(ctx, {
             type: 'line',
