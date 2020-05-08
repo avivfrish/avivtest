@@ -1625,6 +1625,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             data: yData,
                             borderColor: "#000000",
                             pointStyle: point_styles,
+                            borderWidth: 0.7,
+                            pointRadius: 5,
+                            pointHoverRadius: 7,
                             //pointBackgroundColor: colorOfPoints,
                             fill: false,
                         }
