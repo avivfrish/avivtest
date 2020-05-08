@@ -115,6 +115,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.filter_stat_by_group = "";
         $scope.usersToShowStats = [];
         $scope.groupsToShowStats = [];
+
+        $scope.timeElapsed = "";
     };
 
     $scope.show_home = function(){
@@ -133,6 +135,12 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $("#loading").hide();
         $("#instruction_after").hide();
         $("#statistics").hide();
+
+        if($scope.timeElapsed !== ""){
+            document.getElementById("time_elapsed").innerHTML =  "";
+            clearInterval($scope.timeElapsed);
+        }
+
         document.getElementById("schemaMatchingExp").style.overflow = 'auto';
     };
 
