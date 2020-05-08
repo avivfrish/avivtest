@@ -1389,9 +1389,13 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                             var checkmark_icon = new Image();
                             checkmark_icon.src = '/images/checkmark_icon.png';
+                            checkmark_icon.height = "20";
+                            checkmark_icon.width = "20";
 
                             var x_icon = new Image();
                             x_icon.src = '/images/x_icon.png';
+                            x_icon.height = "20";
+                            x_icon.width = "20";
 
                             let j = 1;
                             for (let item in data.data){
