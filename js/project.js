@@ -1272,6 +1272,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     for (let i = 0; i < data.data.length; i++){
                         allTestExpNames.push({"exp_name" : data.data[i]['exp_name'],
                             "id" : data.data[i]['id'], "max_num_pairs" : data.data[i]['max_num_pairs']});
+                        exps_id.push(data.data[i]['id']);
                     }
 
                     $http({
