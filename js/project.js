@@ -2408,7 +2408,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.computeMeasuresByOption(function(expNames, precision, recall, cal, res){
 
             let column_names = expNames;
-            console.log(expNames);
+            //console.log(expNames);
             let precision_by_name = precision;
             let recall_by_name = recall;
             let cal_by_name = cal;
@@ -2482,91 +2482,172 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     cal_by_name.push(avg_cal);
                     res_by_name.push(avg_res);
 
+                    document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = "";
+                    var ctx = document.getElementById("evaluationMeasuresGraphAggregate").getContext("2d");
+
+                    if ($scope.evaluationMeasuresGraphAggregate){
+                        $scope.evaluationMeasuresGraphAggregate.destroy();
+                    }
+
+                    Chart.defaults.global.defaultFontColor = 'black';
+                    Chart.defaults.global.defaultFontFamily = "Calibri";
+                    Chart.defaults.global.defaultFontSize = 14;
+
+                    $scope.evaluationMeasuresGraphAggregate = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: column_names,
+                            datasets: [
+                                {
+                                    label: "Precision",
+                                    backgroundColor: "blue",
+                                    data: precision_by_name
+                                },
+                                {
+                                    label: "Recall",
+                                    backgroundColor: "green",
+                                    data: recall_by_name
+                                },
+                                {
+                                    label: "Calibration",
+                                    backgroundColor: "orange",
+                                    data: cal_by_name
+                                },
+                                {
+                                    label: "Resolution",
+                                    backgroundColor: "red",
+                                    data: res_by_name
+                                }]
+                        },
+                        options: {
+                            barValueSpacing: 20,
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: '%'
+                                    }
+                                }],
+                                xAxes: [{
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Group Names'
+                                    }
+                                }],
+                            },
+                            legend: {
+                                display: true
+                            },
+                            title: {
+                                display: true,
+                                text: 'Evaluation Measures',
+                                fontSize: 18
+                            }
+                        },
+                        plugins: [{
+                            beforeInit: function (chart) {
+                                chart.data.labels.forEach(function (e, i, a) {
+                                    if (/\n/.test(e)) {
+                                        a[i] = e.split(/\n/)
+                                    }
+                                })
+                            }
+                        }]
+
+                    });
+
+                    document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = $scope.evaluationMeasuresGraphAggregate;
+
+                    callback(true);
+
                 }, all_users, all_exps);
 
 
-            }
+            } else{
+                document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = "";
+                var ctx = document.getElementById("evaluationMeasuresGraphAggregate").getContext("2d");
 
-            document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = "";
-            var ctx = document.getElementById("evaluationMeasuresGraphAggregate").getContext("2d");
+                if ($scope.evaluationMeasuresGraphAggregate){
+                    $scope.evaluationMeasuresGraphAggregate.destroy();
+                }
 
-            if ($scope.evaluationMeasuresGraphAggregate){
-                $scope.evaluationMeasuresGraphAggregate.destroy();
-            }
+                Chart.defaults.global.defaultFontColor = 'black';
+                Chart.defaults.global.defaultFontFamily = "Calibri";
+                Chart.defaults.global.defaultFontSize = 14;
 
-            Chart.defaults.global.defaultFontColor = 'black';
-            Chart.defaults.global.defaultFontFamily = "Calibri";
-            Chart.defaults.global.defaultFontSize = 14;
-
-            $scope.evaluationMeasuresGraphAggregate = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: column_names,
-                    datasets: [
-                        {
-                            label: "Precision",
-                            backgroundColor: "blue",
-                            data: precision_by_name
-                        },
-                        {
-                            label: "Recall",
-                            backgroundColor: "green",
-                            data: recall_by_name
-                        },
-                        {
-                            label: "Calibration",
-                            backgroundColor: "orange",
-                            data: cal_by_name
-                        },
-                        {
-                            label: "Resolution",
-                            backgroundColor: "red",
-                            data: res_by_name
-                        }]
-                },
-                options: {
-                    barValueSpacing: 20,
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
+                $scope.evaluationMeasuresGraphAggregate = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: column_names,
+                        datasets: [
+                            {
+                                label: "Precision",
+                                backgroundColor: "blue",
+                                data: precision_by_name
                             },
-                            scaleLabel: {
-                                display: true,
-                                labelString: '%'
-                            }
-                        }],
-                        xAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Group Names'
-                            }
-                        }],
+                            {
+                                label: "Recall",
+                                backgroundColor: "green",
+                                data: recall_by_name
+                            },
+                            {
+                                label: "Calibration",
+                                backgroundColor: "orange",
+                                data: cal_by_name
+                            },
+                            {
+                                label: "Resolution",
+                                backgroundColor: "red",
+                                data: res_by_name
+                            }]
                     },
-                    legend: {
-                        display: true
+                    options: {
+                        barValueSpacing: 20,
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: '%'
+                                }
+                            }],
+                            xAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Group Names'
+                                }
+                            }],
+                        },
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Evaluation Measures',
+                            fontSize: 18
+                        }
                     },
-                    title: {
-                        display: true,
-                        text: 'Evaluation Measures',
-                        fontSize: 18
-                    }
-                },
-                plugins: [{
-                    beforeInit: function (chart) {
-                        chart.data.labels.forEach(function (e, i, a) {
-                            if (/\n/.test(e)) {
-                                a[i] = e.split(/\n/)
-                            }
-                        })
-                    }
-                }]
+                    plugins: [{
+                        beforeInit: function (chart) {
+                            chart.data.labels.forEach(function (e, i, a) {
+                                if (/\n/.test(e)) {
+                                    a[i] = e.split(/\n/)
+                                }
+                            })
+                        }
+                    }]
 
-            });
+                });
 
-            document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = $scope.evaluationMeasuresGraphAggregate;
+                document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = $scope.evaluationMeasuresGraphAggregate;
 
-            callback(true);
+                callback(true);
+            }
         }, $scope.usersToShowStats, $scope.groupsToShowStats);
     };
 
