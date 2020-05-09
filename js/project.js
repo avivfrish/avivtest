@@ -1353,11 +1353,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     datasets_val = [{
                                         label: "All Confidence Avg. Level",
                                         data: yDataConf,
-                                        borderColor: "#0DAD00",
+                                        borderColor: "#ff8405",
                                         borderWidth: 0.7,
                                         pointRadius: 5,
                                         pointHoverRadius: 7,
-                                        pointBackgroundColor: "#0DAD00",
+                                        pointBackgroundColor: "#ff8405",
                                         fill: false,
                                     }, {
                                         label: "All Correct Number Of Answers Avg. Level",
@@ -2408,6 +2408,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.computeMeasuresByOption(function(expNames, precision, recall, cal, res){
 
             let column_names = expNames;
+            console.log(expNames);
             let precision_by_name = precision;
             let recall_by_name = recall;
             let cal_by_name = cal;
