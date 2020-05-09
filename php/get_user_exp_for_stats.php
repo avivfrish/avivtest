@@ -5,7 +5,7 @@ $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Databa
 $serverName = "tcp:avivtest.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
-$sql="select distinct exp_id, max_num_pairs, schema_name 
+$sql="select distinct exp_results.exp_id as id, experiments.max_num_pairs as max_num_pairs, experiments.schema_name as schema_name 
 from exp_results inner join experiments on exp_results.exp_id = experiments.id
 where user_id = ". $user_id ." and [name] != 'Test'";
 

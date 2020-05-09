@@ -1250,7 +1250,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         if($scope.usersToShowStats.length === 1){
             let all_users = [];
-            let all_exps = [];
             let exps_id = [];
             for (let index in $scope.allUserNames){
                 if(index >= 2){
@@ -1268,13 +1267,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function (data) {
-
                 if (data.data !== '1') {
-
                     let allTestExpNames = [];
-
-                    for (let i = 0; i < data.data.length; i++)
-                    {
+                    for (let i = 0; i < data.data.length; i++){
                         allTestExpNames.push({"exp_name" : data.data[i]['exp_name'],
                             "id" : data.data[i]['id'], "max_num_pairs" : data.data[i]['max_num_pairs']});
                     }
