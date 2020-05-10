@@ -1316,8 +1316,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                 if (data.data.length !== 0) {
                                     let yData_user = [];
-                                    //let colorOfPoints = [];
-                                    //let iconOfPoints = [];
                                     let point_styles = [];
 
                                     var checkmark_icon = new Image();
@@ -1339,19 +1337,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                         if(isCorrectAnswer == 1){
                                             point_styles.push(checkmark_icon);
-                                            //colorOfPoints.push("#0ccd00");
-                                            //iconOfPoints.push("\uf00c");
                                         }else{
                                             point_styles.push(x_icon);
-                                            //colorOfPoints.push("#cd0800");
-                                            //iconOfPoints.push("\uf00d");
                                         }
 
                                         j++;
                                     }
 
                                     datasets_val = [{
-                                        label: "All Confidence Avg. Level",
+                                        label: "Confidence Avg. Level in User Exp",
                                         data: yDataConf,
                                         borderColor: "#ff8405",
                                         borderWidth: 0.7,
@@ -1360,7 +1354,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         pointBackgroundColor: "#ff8405",
                                         fill: false,
                                     }, {
-                                        label: "All Correct Number Of Answers Avg. Level",
+                                        label: "Correct Number Of Answers Avg. Level in User Exp",
                                         data: yDataCorrAns,
                                         borderColor: "#000dad",
                                         borderWidth: 0.7,
@@ -1498,11 +1492,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     datasets_val = [{
                         label: "Confidence Avg. Level",
                         data: yDataConf,
-                        borderColor: "#0DAD00",
+                        borderColor: "#ff8405",
                         borderWidth: 0.7,
                         pointRadius: 5,
                         pointHoverRadius: 7,
-                        pointBackgroundColor: "#0DAD00",
+                        pointBackgroundColor: "#ff8405",
                         fill: false,
                     }, {
                         label: "Correct Number Of Answers Avg. Level",
@@ -1886,10 +1880,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 if ($scope.timeBarGraphAggregate){
                     $scope.timeBarGraphAggregate.destroy();
                 }
-
-                //console.log(xLabels);
-                //console.log(yData);
-                //console.log(colorOfPoints);
 
                 Chart.defaults.global.defaultFontColor = 'black';
                 Chart.defaults.global.defaultFontFamily = "Calibri";
