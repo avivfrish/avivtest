@@ -595,6 +595,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.exp_res = function(){
         //this function save user answer for current pair to DB.
 
+        /*if(document.getElementById("user_confidence").value === 0.5){
+
+        }*/
         $http({
             method: 'POST',
             url: 'php/exp_res.php',
