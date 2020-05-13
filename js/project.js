@@ -138,6 +138,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         if($scope.timeElapsed !== ""){
             document.getElementById("time_elapsed").innerHTML =  "";
+            document.getElementById("time_remains_riddles").innerHTML =  "";
             clearInterval($scope.timeElapsed);
         }
 
