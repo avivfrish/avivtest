@@ -171,6 +171,22 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         let str2="#tr_riddle_"+hide2;
         $(str1).hide();
         $(str2).hide();
+
+        const countDownDate = new Date().getTime() + 3 * 60000;
+        $scope.timeElapsed = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            if (distance <= 0){
+                clearInterval($scope.timeElapsed);
+                document.getElementById("time_remains_riddles").innerHTML =  "";
+                $scope.show_test();
+            } else {
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("time_remains_riddles").innerHTML =  "Time Remains: " + minutes + "m, " + seconds + "s ";
+            }
+        }, 1000);
     };
 
     $scope.show_exp = function () {
@@ -586,7 +602,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("B_col_name").innerText='Term B - ' + $scope.schema2[0]['col_name'];
                 document.getElementById("B_col_type").innerText=$scope.schema2[0]['col_type'];
                 document.getElementById("B_col_instance").innerText=str_instance;
-                document.getElementById("exp_pair_score").innerText= Math.round(($scope.schema2[0]['score'] + Number.EPSILON) * 100) +" Similar";
+                document.getElementById("exp_pair_score").innerText= Math.round(($scope.schema2[0]['score'] + Number.EPSILON) * 100) +"% Similar";
                 document.getElementById("HierarchyTable_content").scrollTo(0,0);
             });
         },exp_id);
@@ -599,8 +615,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
     $scope.exp_res = function(){
         //this function save user answer for current pair to DB.
-        console.log(document.getElementById("user_confidence").value);
-        console.log(typeof document.getElementById("user_confidence").value);
 
         if(document.getElementById("user_confidence").value == 50){
             $("#illegal_conf_choice").modal('show');
@@ -733,7 +747,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             var now = new Date().getTime();
             var distance = countDownDate - now;
 
-            if (distance <= 0){ // End the exp when 3 minutes are done
+            if (distance <= 0){ // End the exp when allocated time has passed
                 $("#experiment").hide();
                 clearInterval($scope.timeElapsed);
 
@@ -2777,7 +2791,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 if (parseFloat(precision) > 0.5){
                     document.getElementById("user_finish_msg").innerText = "Thank You! Good job, you have been very precise.";
                 } else {
-                    document.getElementById("user_finish_msg").innerText = "Thank You! You can do better.";
+                    document.getElementById("user_finish_msg").innerText = "Thank You!";
                 }
                 callback(true);
             } else {

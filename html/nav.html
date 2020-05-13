@@ -28,7 +28,7 @@
 						<a class="nav-link waves-effect" href="#" ng-click="hide_pages();show_exp()">
 							<span class="glyphicon glyphicon glyphicon-option-vertical" aria-hidden="true" >
 							</span>
-							The Experiment
+							The Task
 						</a>
 					</li>
 
@@ -52,23 +52,18 @@
 						   aria-expanded="false">More</a>
 						<div class="dropdown-menu  dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" id="navbar_admin">
 							<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#admin_login">Log in</a>
-							<!--<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#new_admin">New Admin</a>
-							<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#add_exp_modal">Add Experiment</a>
-							<a class="dropdown-item" href="#"  data-toggle="modal" data-target="#update_exp_modal" ng-click="get_exp_for_update()">Update Experiment</a>-->
 						</div>
 					 </li>
 				</ul>
 			</div>
-			<!-- Items -->
 		</div>
 	</nav>
-		<!-- Static navbar -->
 
 	<div class="modal fade" id="add_exp_modal" tabindex="-1" role="dialog" aria-labelledby="Add Exp Modal" aria-hidden="true">
 		<div class="modal-dialog modal-lg" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" >Add Experiment</h5>
+					<h5 class="modal-title" >Add Task</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="clear_add_exp_form()">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -79,7 +74,7 @@
 						<div class="form-row">
 							<div class="col">
 								<div class="col-sm-10 md-form">
-									<input type="text" id="exp_name" class="form-control" placeholder="Experiment Name" aria-label="Experiment Name" aria-describedby="material-addon1">
+									<input type="text" id="exp_name" class="form-control" placeholder="Task Name" aria-label="Task Name" aria-describedby="material-addon1">
 
 								</div>
 								<div class="col-sm-10 md-form mb-4">
@@ -92,7 +87,7 @@
 								</div>
 
 								<div class="col-sm-10 md-form mb-4">
-									<input type="text" id="exp_max_duration" class="form-control" placeholder="Max. Experiment Duration (Minutes)" aria-label="Max. Experiment Duration"
+									<input type="text" id="exp_max_duration" class="form-control" placeholder="Max. Task Duration (Minutes)" aria-label="Max. Task Duration"
 										   aria-describedby="material-addon3">
 								</div>
 							</div>
@@ -212,7 +207,7 @@
 					<div id="add_exp_log">
 
 					</div>
-					<button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="add_exp()">Add Experiment</button>
+					<button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="add_exp()">Add Task</button>
 					<button class="btn btn-md btn-info m-0 px-3" type="button" data-dismiss="modal" ng-click="clear_add_exp_form()">Close</button>
 				</div>
 			</div>
@@ -303,11 +298,11 @@
 		</div>
 	</div>
 
-	<div class="modal fade" id="update_exp_modal" tabindex="-1" role="dialog" aria-labelledby="Update Experiment Modal" aria-hidden="true">
+	<div class="modal fade" id="update_exp_modal" tabindex="-1" role="dialog" aria-labelledby="Update Task Modal" aria-hidden="true">
 		<div class="modal-dialog modal-fluid" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" >Update Experiments</h5>
+					<h5 class="modal-title" >Update Tasks</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -329,7 +324,7 @@
 								Max. Pairs to Display
 							</th>
 							<th>
-								Max. Experiment Duration
+								Max. Task Duration
 							</th>
 							<th>
 								Display Types
@@ -452,7 +447,7 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					In this experiment you will be asked to decide whether pair is a match. <br>
+					In this task you will be asked to decide whether pair is a match. <br>
 					Regarding each pair, you will be decided to scale your confidence level.
 					<br>
 					Each pair consists of 2 terms from two different schemata, where term is a field in schema.
