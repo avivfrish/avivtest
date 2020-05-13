@@ -599,6 +599,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
     $scope.exp_res = function(){
         //this function save user answer for current pair to DB.
+        console.log(document.getElementById("user_confidence").value);
+        console.log(typeof document.getElementById("user_confidence").value);
 
         if(document.getElementById("user_confidence").value == 50){
             $("#illegal_conf_choice").modal('show');
