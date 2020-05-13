@@ -17,7 +17,7 @@ ng-click="show_coordinate($event)">
         </div>
     </div>
 
-    <div class="row" style="height: 70%">
+    <div class="row" style="height: 50%">
 
         <div class="col-sm-1" style="height: 100%"></div>
 
@@ -71,7 +71,7 @@ ng-click="show_coordinate($event)">
                     </tbody>
                 </table>
                 <hr style="height: 1%; margin-bottom: 0px; margin-top: 0px;">
-                <table id="HierarchyTable_content" class="table" style="height: 60%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
+                <table id="HierarchyTable_content" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
                     <tbody style="display: table; width: 100%;">
                         <tr style="height: 85%;">
                             <td style="width: 50%">
@@ -157,29 +157,32 @@ ng-click="show_coordinate($event)">
         <div class="col-sm-1" style="height: 100%"></div>
     </div>
 
+    <hr style="width: 83.3333%; height: 20%; margin-top: 0.5%; margin-bottom: 0.5%;">
+
     <div class="row" style="height: 20%">
         <div class="col-sm-4" style="height: 100%"></div>
 
-        <div class="col-sm-4" style="height: 100%">
+        <div class="col-sm-4" style="height: 100%; margin-top: 1%;">
             <table class="table" id="suggestionAndMajorOpinionTable" style="height: 25%;/* display: block; */
                                                             overflow: auto; margin-bottom: 0;">
                 <tr>
                     <th id="system_suggest" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
-                        System Suggestion
+                        Algorithm Similarity Result
                     </th>
-                    <th id="major_decision" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
-                        Majority decision
-                    </th>
+                    <td id="exp_pair_score" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
+                        60%
+                    </td>
                 </tr>
 
                 <tr>
-                    <td id="exp_pair_score" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
-                        0.6
-                    </td>
+                    <th id="major_decision" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
+                        Majority decision
+                    </th>
                     <td id="exp_pair_major" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
                         80% Match
                     </td>
                 </tr>
+
             </table>
         </div>
 
@@ -228,8 +231,6 @@ ng-click="show_coordinate($event)">
         <div class="col-sm-1" style="height: 100%"></div>
     </div>
 
-
-
     <div class="modal fade" id="pause_exp_modal" tabindex="-1" role="dialog" aria-labelledby="Pause exp Modal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -269,6 +270,25 @@ ng-click="show_coordinate($event)">
                 <div class="modal-footer">
 
                     <button class="btn btn-md btn-info m-0 px-3" type="button" data-dismiss="modal" ng-click="show_pause_after_feedback()">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="illegal_conf_choice" tabindex="-1" role="dialog" aria-labelledby="Try Again" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" >Try Again</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                Please select again your confidence level.<br>
+                Pay attention, 50% is an illegal choice.
+                <div class="modal-footer">
+                    <button class="btn btn-md btn-info m-0 px-3" type="button" data-dismiss="modal">Close</button>
                 </div>
 
             </div>

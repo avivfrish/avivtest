@@ -586,7 +586,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("B_col_name").innerText='Term B - ' + $scope.schema2[0]['col_name'];
                 document.getElementById("B_col_type").innerText=$scope.schema2[0]['col_type'];
                 document.getElementById("B_col_instance").innerText=str_instance;
-                document.getElementById("exp_pair_score").innerText= Math.round(($scope.schema2[0]['score'] + Number.EPSILON) * 100) / 100+" similar";
+                document.getElementById("exp_pair_score").innerText= Math.round(($scope.schema2[0]['score'] + Number.EPSILON) * 100) +" Similar";
                 document.getElementById("HierarchyTable_content").scrollTo(0,0);
             });
         },exp_id);
@@ -600,109 +600,106 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.exp_res = function(){
         //this function save user answer for current pair to DB.
 
-        /*if(document.getElementById("user_confidence").value === 0.5){
+        if(document.getElementById("user_confidence").value === 50){
+            $("#illegal_conf_choice").modal('show');
+        } else {
+            $http({
+                method: 'POST',
+                url: 'php/exp_res.php',
+                data: $.param({
+                    exp_id: $scope.curr_exp_id,
+                    user_id: $scope.curr_user['id'],
+                    sch_id_1: $scope.schema[0]['sch_id'],
+                    sch_id_2: $scope.schema2[0]['sch_id'],
+                    realconf: $scope.schema[0]['realConf'],
+                    userconf: document.getElementById("user_confidence").value,
+                    mouse_loc: $scope.mouse_moves,
+                    user_ans_match: $scope.user_ans_match
+                }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function (data) {
+                if (data.data === "1") {
+                    $scope.getExp($scope.curr_exp_id); // TODO: check for move it to the end
+                    document.getElementById("user_confidence").value = 50;
+                    document.getElementById("text_confidence_input").value = 50;
 
-        }*/
-        $http({
-            method: 'POST',
-            url: 'php/exp_res.php',
-            data: $.param({
-                exp_id: $scope.curr_exp_id,
-                user_id: $scope.curr_user['id'],
-                sch_id_1: $scope.schema[0]['sch_id'],
-                sch_id_2: $scope.schema2[0]['sch_id'],
-                realconf: $scope.schema[0]['realConf'],
-                userconf: document.getElementById("user_confidence").value,
-                mouse_loc: $scope.mouse_moves,
-                user_ans_match: $scope.user_ans_match
-            }),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then(function (data) {
-            if (data.data === "1")
-            {
-                $scope.getExp($scope.curr_exp_id); // TODO: check for move it to the end
-                document.getElementById("user_confidence").value = 50;
-                document.getElementById("text_confidence_input").value = 50;
+                    // to disable init array of mouse locations add the comment sign
+                    $scope.mouse_moves = [];
 
-                // to disable init array of mouse locations add the comment sign
-                $scope.mouse_moves=[];
-
-                $scope.curr_count_ans = $scope.curr_count_ans + 1;
-                if ($scope.curr_count_ans >=  $scope.total_ans_needed) // check if exp is done
-                {
-                    if($scope.done_test === false) // check if user in test exp, if yes - show instruction, else show finished
+                    $scope.curr_count_ans = $scope.curr_count_ans + 1;
+                    if ($scope.curr_count_ans >= $scope.total_ans_needed) // check if exp is done
                     {
-                        $scope.done_test = true;
-                        $scope.curr_order = 0;
-                        $scope.curr_count_ans = 0;
+                        if ($scope.done_test === false) // check if user in test exp, if yes - show instruction, else show finished
+                        {
+                            $scope.done_test = true;
+                            $scope.curr_order = 0;
+                            $scope.curr_count_ans = 0;
 
-                        $("#experiment").hide();
-                        $("#instruction_after").show();
-                    }
-                    else {
-                        $("#experiment").hide();
-                        clearInterval($scope.timeElapsed);
+                            $("#experiment").hide();
+                            $("#instruction_after").show();
+                        } else {
+                            $("#experiment").hide();
+                            clearInterval($scope.timeElapsed);
 
-                        document.getElementById("schemaMatchingExp").style.overflow = 'auto';
+                            document.getElementById("schemaMatchingExp").style.overflow = 'auto';
 
-                        $("#loading").show();
-                        var isSingleUser = 'True';
-                        $scope.showConfidenceLineGraph(function(finish_conf) {
+                            $("#loading").show();
+                            var isSingleUser = 'True';
+                            $scope.showConfidenceLineGraph(function (finish_conf) {
 
-                            if(finish_conf === true){
-                                $scope.showTimeRangeBarGraph(function(finish_time) {
+                                if (finish_conf === true) {
+                                    $scope.showTimeRangeBarGraph(function (finish_time) {
 
-                                    $scope.get_mouse_click_data(function(finish_click_data) {
+                                        $scope.get_mouse_click_data(function (finish_click_data) {
 
-                                        $scope.create_heat_map(function(finish_heatmap) {
+                                            $scope.create_heat_map(function (finish_heatmap) {
 
-                                            $scope.findClosestMatcher(function(finish_matcher) {
+                                                $scope.findClosestMatcher(function (finish_matcher) {
 
-                                                $scope.findPrecisionForUser(function(finish_precision) {
+                                                    $scope.findPrecisionForUser(function (finish_precision) {
 
-                                                    // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
-                                                    $("#loading").hide();
-                                                    $("#finish_exp_full").show();
-                                                    $scope.curr_order = 1;
-                                                    $scope.curr_count_ans = 0;
+                                                        // document.getElementById("figureEightValidateField").placeholder = ($scope.validFieldFigureEight).toString();
+                                                        $("#loading").hide();
+                                                        $("#finish_exp_full").show();
+                                                        $scope.curr_order = 1;
+                                                        $scope.curr_count_ans = 0;
+                                                    });
                                                 });
-                                            });
+
+                                            }, isSingleUser);
 
                                         }, isSingleUser);
 
-                                    }, isSingleUser);
+                                    });
+                                } else {
+                                    $("#loading").hide();
+                                    $("#finish_exp_empty").show();
+                                    $scope.curr_order = 1;
+                                    $scope.curr_count_ans = 0;
+                                }
+                            });
+                        }
 
-                                });
-                            } else {
-                                $("#loading").hide();
-                                $("#finish_exp_empty").show();
-                                $scope.curr_order = 1;
-                                $scope.curr_count_ans = 0;
-                            }
-                        });
+                    } else if ($scope.done_test === true && ($scope.curr_count_ans % $scope.time_to_pause === 0)) {
+                        // show pause modal every $scope.time_to_pause answers
+                        // show pause only for non-test schema
+                        document.getElementById("pause_modal_body").innerHTML = "Get ready for the next Step." +
+                            "<br>Pairs remaining: " + ($scope.total_ans_needed - $scope.curr_count_ans);
+                        ;
+                        $("#pause_exp_modal").modal('show');
+                        //console.log("pause");
                     }
-
+                    $scope.last_ans = $scope.user_ans_match;
+                    $scope.user_ans_match = false; // init radio button match/no match
+                } else // error while update the answer from user
+                {
+                    console.log(data.data);
                 }
 
-                else if($scope.done_test === true && ($scope.curr_count_ans % $scope.time_to_pause === 0)){
-                    // show pause modal every $scope.time_to_pause answers
-                    // show pause only for non-test schema
-                    document.getElementById("pause_modal_body").innerHTML="Get ready for the next Step." +
-                        "<br>Pairs remaining: " + ($scope.total_ans_needed - $scope.curr_count_ans);;
-                    $("#pause_exp_modal").modal('show');
-                    //console.log("pause");
-                }
-                $scope.last_ans = $scope.user_ans_match;
-                $scope.user_ans_match = false; // init radio button match/no match
-            }
-            else // error while update the answer from user
-            {
-                console.log(data.data);
-            }
-
-        });
+            });
+        }
     };
 
     $scope.show_pause_after_feedback = function() {
