@@ -57,27 +57,6 @@ ng-click="show_coordinate($event)">
         </div>
 
         <div class="col-sm-4" style="height: 100%">
-
-            <table class="table" id="suggestionAndMajorOpinionTable" style="height: 25%;/* display: block; */
-                                                            overflow: auto; margin-bottom: 0;">
-                <tr>
-                    <th id="system_suggest" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
-                        System Suggestion
-                    </th>
-                    <th id="major_decision" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
-                        Majority decision
-                    </th>
-                </tr>
-
-                <tr>
-                    <td id="exp_pair_score" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
-                        0.6
-                    </td>
-                    <td id="exp_pair_major" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
-                        80% Match
-                    </td>
-                </tr>
-            </table>
             <div class="container" id="HierarchyTable" style="width: 100%; padding-right: 0; padding-left: 0">
                 <table class="table" style="height: 11%; margin-bottom: 0px">
                     <tbody style="display: table; width: 100%">
@@ -179,6 +158,35 @@ ng-click="show_coordinate($event)">
     </div>
 
     <div class="row" style="height: 20%">
+        <div class="col-sm-4" style="height: 100%"></div>
+
+        <div class="col-sm-4" style="height: 100%">
+            <table class="table" id="suggestionAndMajorOpinionTable" style="height: 25%;/* display: block; */
+                                                            overflow: auto; margin-bottom: 0;">
+                <tr>
+                    <th id="system_suggest" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
+                        System Suggestion
+                    </th>
+                    <th id="major_decision" scope="col" style="height: 50%; width: 50%; text-align:center; font-weight: 400">
+                        Majority decision
+                    </th>
+                </tr>
+
+                <tr>
+                    <td id="exp_pair_score" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
+                        0.6
+                    </td>
+                    <td id="exp_pair_major" scope="col" style="height: 50%; width: 25%; text-align:center; font-weight: 100">
+                        80% Match
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-sm-4" style="height: 100%"></div>
+    </div>
+
+    <div class="row" style="height: 20%">
         <div class="col-sm-1" style="height: 100%"></div>
 
         <div class="col-sm-10" style="height: 100%">
@@ -186,12 +194,12 @@ ng-click="show_coordinate($event)">
                 <tr>
                     <td style="width: 35%; text-align: center">
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="user_ans_yes" ng-model="user_ans_match" ng-value="1" name="user_ans_match">
+                            <input type="radio" class="custom-control-input" id="user_ans_yes" ng-click="reset_conf_value()" ng-model="user_ans_match" ng-value="1" name="user_ans_match">
                             <label class="custom-control-label" for="user_ans_yes">Match</label>
                         </div>
 
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" class="custom-control-input" id="user_ans_no" ng-model="user_ans_match" ng-value="0" name="user_ans_match">
+                            <input type="radio" class="custom-control-input" id="user_ans_no" ng-click="reset_conf_value()" ng-model="user_ans_match" ng-value="0" name="user_ans_match">
                             <label class="custom-control-label" for="user_ans_no">No Match</label>
                         </div>
                     </td>

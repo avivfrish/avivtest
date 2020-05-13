@@ -592,6 +592,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         },exp_id);
     };
 
+    $scope.reset_conf_value = function() {
+        document.getElementById("user_confidence").value = 50;
+        document.getElementById("text_confidence_input").value = 50;
+    };
+
     $scope.exp_res = function(){
         //this function save user answer for current pair to DB.
 
