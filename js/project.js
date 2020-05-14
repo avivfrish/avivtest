@@ -1443,7 +1443,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                                 }],
                                             },
                                             legend: {
-                                                display: true
+                                                display: true,
+                                                labels: {
+                                                    usePointStyle: true,
+                                                }
                                             },
                                             title: {
                                                 display: true,
@@ -1565,7 +1568,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 }],
                             },
                             legend: {
-                                display: true
+                                display: true,
+                                labels: {
+                                    usePointStyle: true,
+                                }
                             },
                             title: {
                                 display: true,
