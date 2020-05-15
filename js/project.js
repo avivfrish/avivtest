@@ -455,6 +455,30 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         });
     };
 
+    $scope.send_comments = function(){
+        // this function create new user for experiment.
+
+        $scope.curr_count_ans=0;
+        $http({
+            method: 'POST',
+            url: 'php/exp_send_user_comments.php',
+            data: $.param({
+                user_id: $scope.curr_user['id'],
+                comments: document.getElementById("user_comments").value
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (data) {
+            if (data.data !== "err")
+            {
+            } else {
+                console.log(data.data);
+            }
+        });
+    };
+
+
     $scope.getExp2 = function (callback,exp_id) {
         // function to retrieves the term from shcema 1
         $http({

@@ -15,7 +15,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 
 $sql="Insert INTO exp_users(u_nickname, email, u_country, education, occupation, english_level, age, gender, u_exp_reason, u_end_comments) 
 OUTPUT INSERTED.id
-values ('$u_nickname','$email','$u_country','$education','$occupation',$english_level,'$age','$gender','$u_exp_reason',null)";
+values ('$u_nickname','$email','$u_country','$education','$occupation','$english_level','$age','$gender','$u_exp_reason',null)";
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
