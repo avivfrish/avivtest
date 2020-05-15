@@ -2,7 +2,7 @@
 $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Database" => "avivtest", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:avivtest.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
-$sql="select CONCAT(u_first, ' ', u_last) as fullName, id
+$sql="select u_nickname as fullName, id
 from exp_users
 where id in (
     select distinct user_id

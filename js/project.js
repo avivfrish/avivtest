@@ -84,7 +84,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.h_2=[];
         $scope.last_time_mouse="";
         $scope.mouse_moves=[];
-        $scope.new_user_gender_val="";
         $scope.curr_user={};
         $scope.curr_exp_id="";
         $scope.curr_count_ans=0;
@@ -381,7 +380,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.2);
         $scope.getExp($scope.curr_exp_id);
-        document.getElementById("exp_hello").innerText="Hello, " + $scope.curr_user["last"] + " " + $scope.curr_user['first'];
+        document.getElementById("exp_hello").innerText="Hello, " + $scope.curr_user["nickname"];
 
         // Insert tuple that presents the start of the exp
         $http({
@@ -406,17 +405,16 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.clear_user_form = function()
     {
         //this function clear the new user form after data saved.
-        document.getElementById("new_user_first").value="";
-        document.getElementById("new_user_last").value="";
+        document.getElementById("new_user_nickname").value="";
         document.getElementById("new_user_email").value="";
         document.getElementById("new_user_country").value="";
-        document.getElementById("new_user_lang").value="";
+        document.getElementById("new_user_education").value="";
+
+        document.getElementById("new_user_occupation").value="";
+        document.getElementById("new_user_english_level").value="";
         document.getElementById("new_user_age").value="";
-        document.getElementById("new_user_occ").value="";
-        document.getElementById("new_user_edu").value="";
-        document.getElementById("new_user_woman").checked = false;
-        document.getElementById("new_user_man").checked = false;
-        document.getElementById("new_user_other").checked = false;
+        document.getElementById("new_user_gender").value="";
+        document.getElementById("new_user_exp_reason").value="";
     };
 
     $scope.new_user_exp = function(){
@@ -427,15 +425,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             method: 'POST',
             url: 'php/exp_new_user.php',
             data: $.param({
-                u_first: document.getElementById("new_user_first").value,
-                u_last: document.getElementById("new_user_last").value,
-                u_email: document.getElementById("new_user_email").value,
-                u_loc: document.getElementById("new_user_country").value,
-                u_lang: document.getElementById("new_user_lang").value,
-                u_age: document.getElementById("new_user_age").value,
-                u_occ: document.getElementById("new_user_occ").value,
-                u_edu: document.getElementById("new_user_edu").value,
-                u_gender: $scope.new_user_gender_val
+                u_nickname: document.getElementById("new_user_nickname").value,
+                email: document.getElementById("new_user_email").value,
+                u_country: document.getElementById("new_user_country").value,
+                education: document.getElementById("new_user_education").value,
+                occupation: document.getElementById("new_user_occupation").value,
+                english_level: document.getElementById("new_user_english_level").value,
+                age: document.getElementById("new_user_age").value,
+                gender: document.getElementById("new_user_gender").value,
+                u_exp_reason: document.getElementById("new_user_exp_reason").value,
             }),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
@@ -445,22 +443,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             {
                 $("#begin_exp_user").hide();
                 $scope.exp_after_test = data.data[0];
-
                 $scope.test_schema=data.data[1];
-                $scope.curr_user={"first":document.getElementById("new_user_first").value,
-                    "last":document.getElementById("new_user_last").value,
+                $scope.curr_user={"nickname":document.getElementById("new_user_nickname").value,
                     "id": data.data[2]
                 };
-
                 $scope.show_riddle();
-
                 $scope.clear_user_form();
-            }
-            else
-            {
+            } else {
                 console.log(data.data);
             }
-
         });
     };
 
