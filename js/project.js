@@ -178,8 +178,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             var distance = countDownDate - now;
 
             if (distance <= 0){
-                clearInterval($scope.timeElapsed);
-                document.getElementById("time_remains_riddles").innerHTML =  "";
                 $scope.show_test();
             } else {
                 var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -201,6 +199,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     };
 
     $scope.show_test = function() {
+        clearInterval($scope.timeElapsed);
+        document.getElementById("time_remains_riddles").innerHTML =  "";
 
         $http({
             method: 'POST',
