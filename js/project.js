@@ -190,6 +190,17 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         }, 1000);
     };
 
+    $scope.SyncScroll = function (table_id) {
+        var table_idA = document.getElementById("HierarchyTable_contentA");
+        var table_idB = document.getElementById("HierarchyTable_contentB");
+        if (table_id=="HierarchyTable_contentA") {
+            table_idB.scrollTop = table_idA.scrollTop;
+        }
+        else {
+            table_idA.scrollTop = table_idB.scrollTop;
+        }
+    };
+
     $scope.show_exp = function () {
         // this function show the new user form after clicking on the "experiment" in the nav bar.
         $scope.exclude_ids="";

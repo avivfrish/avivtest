@@ -23,7 +23,7 @@ ng-click="show_coordinate($event)">
 
         <div class="col-sm-3 border-top border-bottom border-left rounded-right" style="height: 100%">
 
-            <div id="A_col_name" style="height: 15%; text-align:center; font-weight: 700; font-size: larger;">
+            <div id="A_col_name" style="margin-top: 3%; height: 15%; text-align:center; font-weight: 700; font-size: larger;">
                 Term A - FirstName
             </div>
 
@@ -69,7 +69,8 @@ ng-click="show_coordinate($event)">
                     </tbody>
                 </table>
                 <hr style="height: 1%; margin-bottom: 0; margin-top: 0;">
-                <table id="HierarchyTable_contentA" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
+                <table id="HierarchyTable_contentA" class="table" onscroll="SyncScroll('HierarchyTable_contentA')"
+                       style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
                     <tbody style="display: table; width: 100%;">
                     <tr style="height: 85%;">
                         <td style="width: 100%">
@@ -107,7 +108,8 @@ ng-click="show_coordinate($event)">
                     </tbody>
                 </table>
                 <hr style="height: 1%; margin-bottom: 0px; margin-top: 0px;">
-                <table id="HierarchyTable_contentB" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
+                <table id="HierarchyTable_contentB" class="table" onscroll="SyncScroll('HierarchyTable_contentB')"
+                       style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
                     <tbody style="display: table; width: 100%;">
                     <tr style="height: 85%;">
                         <td style="width: 100%">
@@ -138,7 +140,7 @@ ng-click="show_coordinate($event)">
 
         <div class="col-sm-3 border-top border-bottom border-right rounded-right" style="height: 100%">
 
-            <div id="B_col_name" style="height: 15%; text-align:center; font-weight: 700; font-size: larger;">
+            <div id="B_col_name" style="margin-top: 3%; height: 15%; text-align:center; font-weight: 700; font-size: larger;">
                 Term B - FirstName
             </div>
 
