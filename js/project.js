@@ -134,6 +134,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $("#loading").hide();
         $("#instruction_after").hide();
         $("#statistics").hide();
+        window.scrollTo(0,0);
 
         if($scope.timeElapsed !== ""){
             document.getElementById("time_elapsed").innerHTML =  "";
@@ -171,6 +172,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         let str2="#tr_riddle_"+hide2;
         $(str1).hide();
         $(str2).hide();
+        window.scrollTo(0,0);
 
         const countDownDate = new Date().getTime() + 3 * 60000;
         $scope.timeElapsed = setInterval(function() {
@@ -722,7 +724,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         // show pause modal every $scope.time_to_pause answers
                         // show pause only for non-test schema
                         document.getElementById("pause_modal_body").innerHTML = "Get ready for the next Step." +
-                            "<br>Pairs remaining: " + ($scope.total_ans_needed - $scope.curr_count_ans);
+                            "<br>Time remaines: " + document.getElementById("time_elapsed").innerHTML;
                         ;
                         $("#pause_exp_modal").modal('show');
                         //console.log("pause");
@@ -1830,11 +1832,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     },
 
                     options: {
-                        displayColors: false,
                         tooltips: {
+                            displayColors: false,
                             callbacks: {
                                 title: function (tooltipItem, data) {
-                                    return data['labels'][tooltipItem[0]['index']];
+                                    return 'Correspondence Order' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
                                     var pointColor = data['datasets'][0]['backgroundColor'][tooltipItem['index']];
