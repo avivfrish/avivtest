@@ -21,155 +21,151 @@ ng-click="show_coordinate($event)">
 
         <div class="col-sm-1" style="height: 100%"></div>
 
-        <div class="border rounded">
-            <div class="col-sm-3" style="height: 100%">
+        <div class="col-sm-3" style="height: 100%">
 
-                <div id="A_col_name" style="height: 15%; text-align:center; font-weight: 700; font-size: larger;">
-                    Term A - FirstName
-                </div>
-
-                <div id="row_type_A" style="height: 8%; font-weight: 400; text-align:center">
-                    Column Type
-                </div>
-
-                <div id="A_col_type" style="height: 15%; font-weight: 100; text-align:center">
-                    String
-                </div>
-
-
-                <div id="row_instance_A" style="height: 8%; font-weight: 400; text-align:center">
-                    Instance Example
-                </div>
-
-                <div id="A_col_instance" style="height: 15%; font-weight: 100; text-align:center">
-                    A, B
-                </div>
-
-                <!--<br>
-
-                <div id="more_shared_correspondence_A" style="font-weight: 400; text-align:center">
-                    Other Correspondence With Term A
-                </div>
-
-                <div id="A_more_shared_correspondence_names" style="font-weight: 100; text-align:center">
-                    Name, Room, Building
-                </div>-->
-
+            <div id="A_col_name" style="height: 15%; text-align:center; font-weight: 700; font-size: larger;">
+                Term A - FirstName
             </div>
 
-            <div class="col-sm-2" style="height: 100%">
-                <div class="container" id="HierarchyTableA" style="width: 100%; padding-right: 0; padding-left: 0">
-                    <table class="table" style="height: 11%; margin-bottom: 0px">
-                        <tbody style="display: table; width: 100%">
-                        <tr style="height: 15%;">
-                            <th scope="col" style="width: 100%; text-align:center; font-weight: 400">
-                                Term A Hierarchy
-                            </th>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <hr style="height: 1%; margin-bottom: 0px; margin-top: 0px;">
-                    <table id="HierarchyTable_contentA" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
-                        <tbody style="display: table; width: 100%;">
-                        <tr style="height: 85%;">
-                            <td style="width: 100%">
-                                <table class="table table-borderless"  id="term_a_table_h">
-                                    <tbody ng-repeat="item in h_1">
-                                    <tr ng-if="item.index==0">
-                                        <td  style="color:{{item.color}}; width: 25%">
-                                            <i class="fas fa-folder"></i>{{item.val}}
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="item.index!=0">
-                                        <td style="color:{{item.color}}; font-weight:{{item.weight}}; width: 25%">
-                                            <i class="fa fa-angle-double-right" ng-repeat="t in getCustomRepeatArray(item.index)"></i><i class="fa fa-folder-open"></i>{{item.val}}
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div id="row_type_A" style="height: 8%; font-weight: 400; text-align:center">
+                Column Type
+            </div>
+
+            <div id="A_col_type" style="height: 15%; font-weight: 100; text-align:center">
+                String
+            </div>
+
+
+            <div id="row_instance_A" style="height: 8%; font-weight: 400; text-align:center">
+                Instance Example
+            </div>
+
+            <div id="A_col_instance" style="height: 15%; font-weight: 100; text-align:center">
+                A, B
+            </div>
+
+            <!--<br>
+
+            <div id="more_shared_correspondence_A" style="font-weight: 400; text-align:center">
+                Other Correspondence With Term A
+            </div>
+
+            <div id="A_more_shared_correspondence_names" style="font-weight: 100; text-align:center">
+                Name, Room, Building
+            </div>-->
+
+        </div>
+
+        <div class="col-sm-2" style="height: 100%">
+            <div class="container" id="HierarchyTableA" style="width: 100%; padding-right: 0; padding-left: 0">
+                <table class="table" style="height: 11%; margin-bottom: 0px">
+                    <tbody style="display: table; width: 100%">
+                    <tr style="height: 15%;">
+                        <th scope="col" style="width: 100%; text-align:center; font-weight: 400">
+                            Term A Hierarchy
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr style="height: 1%; margin-bottom: 0px; margin-top: 0px;">
+                <table id="HierarchyTable_contentA" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
+                    <tbody style="display: table; width: 100%;">
+                    <tr style="height: 85%;">
+                        <td style="width: 100%">
+                            <table class="table table-borderless"  id="term_a_table_h">
+                                <tbody ng-repeat="item in h_1">
+                                <tr ng-if="item.index==0">
+                                    <td  style="color:{{item.color}}; width: 25%">
+                                        <i class="fas fa-folder"></i>{{item.val}}
+                                    </td>
+                                </tr>
+                                <tr ng-if="item.index!=0">
+                                    <td style="color:{{item.color}}; font-weight:{{item.weight}}; width: 25%">
+                                        <i class="fa fa-angle-double-right" ng-repeat="t in getCustomRepeatArray(item.index)"></i><i class="fa fa-folder-open"></i>{{item.val}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="border rounded">
-            <div class="col-sm-2" style="height: 100%">
-                <div class="container" id="HierarchyTableB" style="width: 100%; padding-right: 0; padding-left: 0">
-                    <table class="table" style="height: 11%; margin-bottom: 0px">
-                        <tbody style="display: table; width: 100%">
-                        <tr style="height: 15%;">
-                            <th scope="col" style="width: 100%; padding-right: 8.5%; text-align:center; font-weight: 400">
-                                Term B Hierarchy
-                            </th>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <hr style="height: 1%; margin-bottom: 0px; margin-top: 0px;">
-                    <table id="HierarchyTable_contentB" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
-                        <tbody style="display: table; width: 100%;">
-                        <tr style="height: 85%;">
-                            <td style="width: 100%">
-                                <table class="table table-borderless" id="term_b_table_h">
-                                    <tbody ng-repeat="item2 in h_2">
-                                    <tr ng-if="item2.index==0">
-                                        <td  style="color:{{item2.color}}; width: 25%">
-                                            <i class="fas fa-folder"></i> {{item2.val}}
-                                        </td>
-                                    </tr>
-                                    <tr ng-if="item2.index!=0" >
-                                        <!--<td id="table_b_{{$index}}">
-                                            {{decorateWithSpace($index,item2.val)}}
-                                        </td>-->
-                                        <td style="color:{{item2.color}}; font-weight:{{item2.weight}}; width: 25%">
-                                            <i class="fa fa-angle-double-right" ng-repeat="t in getCustomRepeatArray(item2.index)"></i><i class="fa fa-folder-open"></i>{{item2.val}}
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-            </div>
-
-            <div class="col-sm-3" style="height: 100%">
-
-                <div id="B_col_name" style="height: 15%; text-align:center; font-weight: 700; font-size: larger;">
-                    Term B - FirstName
-                </div>
-
-                <div id="row_type_B" style="height: 8%; font-weight: 400; text-align:center">
-                    Column Type
-                </div>
-
-                <div id="B_col_type" style="height: 15%; font-weight: 100; text-align:center">
-                    String
-                </div>
-
-                <div id="row_instance_B" style="height: 8%; font-weight: 400; text-align:center">
-                    Instance Example
-                </div>
-
-                <div id="B_col_instance" style="height: 15%; font-weight: 100; text-align:center">
-                    A, B
-                </div>
-
-                <!--<br>
-
-                <div id="more_shared_correspondence_B" style="font-weight: 400; text-align:center">
-                    Other Correspondence With Term B
-                </div>
-
-                <div id="B_more_shared_correspondence_names" style="font-weight: 100; text-align:center">
-                    Name, Room, Building
-                </div>-->
+        <div class="col-sm-2" style="height: 100%">
+            <div class="container" id="HierarchyTableB" style="width: 100%; padding-right: 0; padding-left: 0">
+                <table class="table" style="height: 11%; margin-bottom: 0px">
+                    <tbody style="display: table; width: 100%">
+                    <tr style="height: 15%;">
+                        <th scope="col" style="width: 100%; padding-right: 8.5%; text-align:center; font-weight: 400">
+                            Term B Hierarchy
+                        </th>
+                    </tr>
+                    </tbody>
+                </table>
+                <hr style="height: 1%; margin-bottom: 0px; margin-top: 0px;">
+                <table id="HierarchyTable_contentB" class="table" style="height: 80%; display: block; overflow: auto; padding-right: 0; padding-left: 0">
+                    <tbody style="display: table; width: 100%;">
+                    <tr style="height: 85%;">
+                        <td style="width: 100%">
+                            <table class="table table-borderless" id="term_b_table_h">
+                                <tbody ng-repeat="item2 in h_2">
+                                <tr ng-if="item2.index==0">
+                                    <td  style="color:{{item2.color}}; width: 25%">
+                                        <i class="fas fa-folder"></i> {{item2.val}}
+                                    </td>
+                                </tr>
+                                <tr ng-if="item2.index!=0" >
+                                    <!--<td id="table_b_{{$index}}">
+                                        {{decorateWithSpace($index,item2.val)}}
+                                    </td>-->
+                                    <td style="color:{{item2.color}}; font-weight:{{item2.weight}}; width: 25%">
+                                        <i class="fa fa-angle-double-right" ng-repeat="t in getCustomRepeatArray(item2.index)"></i><i class="fa fa-folder-open"></i>{{item2.val}}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
 
             </div>
+        </div>
+
+        <div class="col-sm-3" style="height: 100%">
+
+            <div id="B_col_name" style="height: 15%; text-align:center; font-weight: 700; font-size: larger;">
+                Term B - FirstName
+            </div>
+
+            <div id="row_type_B" style="height: 8%; font-weight: 400; text-align:center">
+                Column Type
+            </div>
+
+            <div id="B_col_type" style="height: 15%; font-weight: 100; text-align:center">
+                String
+            </div>
+
+            <div id="row_instance_B" style="height: 8%; font-weight: 400; text-align:center">
+                Instance Example
+            </div>
+
+            <div id="B_col_instance" style="height: 15%; font-weight: 100; text-align:center">
+                A, B
+            </div>
+
+            <!--<br>
+
+            <div id="more_shared_correspondence_B" style="font-weight: 400; text-align:center">
+                Other Correspondence With Term B
+            </div>
+
+            <div id="B_more_shared_correspondence_names" style="font-weight: 100; text-align:center">
+                Name, Room, Building
+            </div>-->
+
         </div>
 
         <div class="col-sm-1" style="height: 100%"></div>
