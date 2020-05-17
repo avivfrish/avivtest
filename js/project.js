@@ -72,6 +72,17 @@ app.service('fileUpload', ['$http', function ($http) {
 
 // myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
 
+function SyncScroll(table_id) {
+    var table_idA = document.getElementById("HierarchyTable_contentA");
+    var table_idB = document.getElementById("HierarchyTable_contentB");
+    if (table_id=="HierarchyTable_contentA") {
+        table_idB.scrollTop = table_idA.scrollTop;
+    }
+    else {
+        table_idA.scrollTop = table_idB.scrollTop;
+    }
+};
+
 app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
 
     $scope.init_avivTest = function () {
@@ -188,17 +199,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("time_remains_riddles").innerHTML =  "Time Remains: " + minutes + "m, " + seconds + "s ";
             }
         }, 1000);
-    };
-
-    $scope.SyncScroll = function (table_id) {
-        var table_idA = document.getElementById("HierarchyTable_contentA");
-        var table_idB = document.getElementById("HierarchyTable_contentB");
-        if (table_id=="HierarchyTable_contentA") {
-            table_idB.scrollTop = table_idA.scrollTop;
-        }
-        else {
-            table_idA.scrollTop = table_idB.scrollTop;
-        }
     };
 
     $scope.show_exp = function () {
