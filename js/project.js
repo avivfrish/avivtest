@@ -1455,7 +1455,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                                         return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                                     },
                                                     label: function (tooltipItem, data) {
-                                                        var xLabel = data.datasets[t.datasetIndex].label;
+                                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                                         var yLabel = tooltipItem.yLabel;
                                                         return xLabel + ': ' + yLabel + '%';
                                                     }
@@ -1580,7 +1580,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                     },
                                     label: function (tooltipItem, data) {
-                                        var xLabel = data.datasets[t.datasetIndex].label;
+                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                         var yLabel = tooltipItem.yLabel;
                                         return xLabel + ': ' + yLabel + '%';
                                     }
@@ -2577,7 +2577,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             tooltips: {
                                 callbacks: {
                                     label: function (tooltipItem, data) {
-                                        var xLabel = data.datasets[t.datasetIndex].label;
+                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                         var yLabel = tooltipItem.yLabel;
                                         return xLabel + ': ' + yLabel + '%';
                                     }
@@ -2671,7 +2671,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         tooltips: {
                             callbacks: {
                                 label: function (tooltipItem, data) {
-                                    var xLabel = data.datasets[t.datasetIndex].label;
+                                    var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                     var yLabel = tooltipItem.yLabel;
                                     return xLabel + ': ' + yLabel + '%';
                                 }
