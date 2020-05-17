@@ -16,16 +16,18 @@
 
 			<div class="col-sm-10">
 
-				<div class="row" style="display: inline">
-					<div class="md-form" style="width: 100%">
+				<div class="row">
+					<div class="md-form" style="width: 100%; display: inline-block; margin-top: 2.5%;
+					margin-bottom: 0px;">
 						<i class="fas fa-user prefix"></i>
 						<input type="text" class="form-control" id="new_user_nickname" required>
 						<label for="new_user_nickname">Enter your Nick Name (required)</label>
 					</div>
 				</div>
 
-				<div class="row" style="display: inline">
-					<div class="md-form">
+				<div class="row">
+					<div class="md-form" style="width: 100%; display: inline-block; margin-top: 2.5%;
+					margin-bottom: 0;">
 						<i class="fas fa-envelope prefix"></i>
 						<input type="email" id="new_user_email" class="form-control validate">
 						<label for="new_user_email" data-error="wrong" data-success="right">Type your email (optional)</label>
@@ -33,9 +35,9 @@
 				</div>
 
 				<div class="row">
-					<div class="col">
+					<div class="col" style="padding-left: 0;">
 						<div class="md-form">
-							<label for="new_user_country">Country</label>
+							<label for="new_user_country" style="top: -80%;">Country</label>
 							<select class="browser-default custom-select" id="new_user_country">
 								<option value="" selected="selected">Select your Country</option>
 								<option value="United States">United States</option>
@@ -282,9 +284,9 @@
 							</select>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col" style="padding-right: 0;">
 						<div class="md-form">
-							<label for="new_user_education">Education</label>
+							<label for="new_user_education" style="top: -80%;">Education</label>
 							<select class="browser-default custom-select" id="new_user_education">
 								<option value="" selected="selected">Select your Education level</option>
 								<option value="Some high school, no diploma">Some high school, no diploma</option>
@@ -303,9 +305,9 @@
 				</div>
 
 				<div class="row">
-					<div class="col">
+					<div class="col" style="padding-left: 0;">
 						<div class="md-form">
-							<label for="new_user_occupation">Occupation</label>
+							<label for="new_user_occupation" style="top: -80%;">Occupation</label>
 							<select class="browser-default custom-select" id="new_user_occupation">
 								<option value="" selected="selected">Select your Occupation</option>
 								<option value="Employed">Employed</option>
@@ -323,9 +325,9 @@
 							</select>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col" style="padding-right: 0;">
 						<div class="md-form">
-							<label for="new_user_english_level">English Proficiency</label>
+							<label for="new_user_english_level" style="top: -80%;">English Proficiency</label>
 							<select class="browser-default custom-select" id="new_user_english_level">
 								<option value="" selected="selected">Select your English level</option>
 								<option value="Beginner">Beginner</option>
@@ -339,9 +341,9 @@
 				</div>
 
 				<div class="row">
-					<div class="col">
+					<div class="col" style="padding-left: 0;">
 						<div class="md-form">
-							<label for="new_user_age">Age Level</label>
+							<label for="new_user_age" style="top: -80%;">Age Level</label>
 							<select class="browser-default custom-select" id="new_user_age">
 								<option value="" selected="selected">Select your Age range</option>
 								<option value="20-29">20-29</option>
@@ -352,9 +354,9 @@
 							</select>
 						</div>
 					</div>
-					<div class="col">
+					<div class="col" style="padding-right: 0;">
 						<div class="md-form">
-							<label for="new_user_gender">Gender</label>
+							<label for="new_user_gender" style="top: -80%;">Gender</label>
 							<select class="browser-default custom-select" id="new_user_gender">
 								<option value="" selected="selected">Select your Gender</option>
 								<option value="Male">Male</option>
@@ -366,8 +368,9 @@
 					</div>
 				</div>
 
-				<div class="row" style="display: inline">
-					<div class="md-form" style="width: 100%">
+				<div class="row">
+					<div class="md-form" style="width: 100%; display: inline-block; margin-top: 1%;
+					margin-bottom: 0;">
 						<i class="fas fa-question prefix"></i>
 						<input type="text" class="form-control" id="new_user_exp_reason">
 						<label for="new_user_exp_reason">Enter why you choose to start the task (optional)</label>
@@ -376,7 +379,7 @@
 
 
 				<div id="add_user_log"></div>
-				<div style="text-align: center">
+				<div style="text-align: center; margin-top: 3.5%;">
 					<button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="new_user_exp()">Add User</button>
 				</div>
 				<br>
