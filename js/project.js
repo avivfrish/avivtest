@@ -201,13 +201,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         }, 1000);
     };
 
-    $scope.show_exp = function () {
+    $scope.show_exp = function (exp_type) {
         // this function show the new user form after clicking on the "experiment" in the nav bar.
         $scope.exclude_ids="";
         $scope.curr_order=1;
         $scope.mouse_moves=[];
         $scope.done_test=false;
         $scope.disp_feedback=false;
+        $scope.exp_type = exp_type;
         $("#begin_exp_user").show();
 
     };
@@ -246,7 +247,12 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("time_elapsed").innerHTML =  "";
                 document.getElementById("pause_modal_body").innerHTML = "";
 
-                $scope.begin_exp($scope.test_schema);
+                if($scope.exp_type === 'demo'){
+                    $scope.begin_exp($scope.exp_after_test);
+                    $scope.done_test = true;
+                } else {
+                    $scope.begin_exp($scope.test_schema);
+                }
             } else {
                 console.log(data.data);
             }
@@ -392,12 +398,12 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             $("#exp_pair_major").show();
         }
 
-        $scope.curr_exp_id=exp['id'];
+        $scope.curr_exp_id = exp['id'];
         $scope.total_ans_needed = exp['max_num_pairs'];
 
         $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.2);
         $scope.getExp($scope.curr_exp_id);
-        document.getElementById("exp_hello").innerText="Hello, " + $scope.curr_user["nickname"];
+        document.getElementById("exp_hello").innerText = "Hello, " + $scope.curr_user["nickname"];
 
         // Insert tuple that presents the start of the exp
         $http({

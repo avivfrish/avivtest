@@ -37,8 +37,8 @@ SCHEMA MATCHING is the first step in this process. The matching aimed at
  Regarding each pair, the following information will be provided for each term:
  name, type, hierarchy, instances (if exist), system suggestion, and
  majority decision.
-
- <img border="0" alt="user_task_screen" src="/images/questionScreen.PNG" style="height: 50%;">
+ <br>
+ <img border="0" alt="user_task_screen" src="/images/questionScreen.PNG" style="height: 75%; width: 90%">
  <br>
  The figure above shows an example to screen exp that you will see.
  <br>
@@ -49,12 +49,14 @@ SCHEMA MATCHING is the first step in this process. The matching aimed at
  <em style="color: red">Red</em> - The Term.
  <br>
  <em style="color: blue">Blue</em> - Sibling of the term in the hierarchy.
- <br>
-Please click at "The Task" at the top of the page.
+ <br><br>
 
-<button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="">DEMO</button>
+Click on the button DEMO if you would like to have short demonstration.
+ Otherwise, Click on the button ACTUAL TASK.
  <br>
- <button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="">REAL TASK</button>
+<button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="hide_pages();show_exp('demo')">DEMO</button>
+ <br>
+ <button class="btn btn-md btn-info m-1 px-3" type="button" ng-click="hide_pages();show_exp('actual_task')">ACTUAL TASK</button>
 
 
  <!--...
