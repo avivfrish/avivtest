@@ -248,8 +248,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("pause_modal_body").innerHTML = "";
 
                 if($scope.exp_type === 'demo'){
-                    $scope.begin_exp($scope.exp_after_test);
                     $scope.done_test = true;
+                    $scope.after_instructions();
                 } else {
                     $scope.begin_exp($scope.test_schema);
                 }
