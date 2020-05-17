@@ -138,6 +138,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         if($scope.timeElapsed !== ""){
             document.getElementById("time_elapsed").innerHTML =  "";
+            document.getElementById("pause_modal_body").innerHTML = "";
             document.getElementById("time_remains_riddles").innerHTML =  "";
             clearInterval($scope.timeElapsed);
         }
@@ -232,6 +233,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("riddle_7").value = "";
 
                 document.getElementById("time_elapsed").innerHTML =  "";
+                document.getElementById("pause_modal_body").innerHTML = "";
 
                 $scope.begin_exp($scope.test_schema);
             } else {
@@ -723,11 +725,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     } else if ($scope.done_test === true && ($scope.curr_count_ans % $scope.time_to_pause === 0)) {
                         // show pause modal every $scope.time_to_pause answers
                         // show pause only for non-test schema
-                        document.getElementById("pause_modal_body").innerHTML = "Get ready for the next Step." +
-                            "<br>Time remaines: " + document.getElementById("time_elapsed").innerHTML;
-                        ;
                         $("#pause_exp_modal").modal('show');
-                        //console.log("pause");
                     }
                     $scope.last_ans = $scope.user_ans_match;
                     $scope.user_ans_match = false; // init radio button match/no match
@@ -817,6 +815,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
             document.getElementById("time_elapsed").innerHTML =  "Time Remains: " + minutes + "m, " + seconds + "s ";
+            document.getElementById("pause_modal_body").innerHTML = "Get ready for the next Step." +
+                "<br>" + "Time Remains: " + minutes + "m, " + seconds + "s ";
         }, 1000);
 
     };
