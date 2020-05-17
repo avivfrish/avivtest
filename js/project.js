@@ -1720,12 +1720,12 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     if (image == checkmark_icon){
                                         var imgString = '<div><img src="'+checkmark_icon.src+'" height="'+checkmark_icon.height+'"' +
                                             ' width="'+checkmark_icon.width+'"/></div>';
-                                        return imgString + ' Correct Answer\nConfidence Level: ' + yLabel + '%';
+                                        return [imgString + ' Correct Answer','Confidence Level: ' + yLabel + '%'];
                                     }
                                     else {
                                         var imgString = '<div><img src="'+x_icon.src+'" height="'+x_icon.height+'"' +
                                             ' width="'+x_icon.width+'"/></div>';
-                                        return x_icon + ' Incorrect Answer\n Confidence Level: ' + yLabel + '%';
+                                        return [x_icon + ' Incorrect Answer', 'Confidence Level: ' + yLabel + '%'];
                                     }
                                 }
                             }
@@ -1756,15 +1756,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             fontSize: 18
                         }
                     },
-                    plugins: [{
-                        beforeInit: function (chart) {
-                            chart.tooltips.label.forEach(function (e, i, a) {
-                                if (/\n/.test(e)) {
-                                    a[i] = e.split(/\n/)
-                                }
-                            })
-                        }
-                    }]
                 });
 
                 document.getElementById("confidenceLineGraph").innerHTML = $scope.confidenceLineGraph;
@@ -1847,10 +1838,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 label: function (tooltipItem, data) {
                                     var pointColor = data.datasets[tooltipItem.datasetIndex].backgroundColor;
                                     var yLabel = tooltipItem.yLabel;
-                                    if(pointColor === "#0ccd00"){
-                                        return 'Correct Answer\nAnswer time: ' + yLabel + ' seconds';
+                                    if(pointColor == "#0ccd00"){
+                                        return ['Correct Answer','Answer time: ' + yLabel + ' seconds'];
                                     }else {
-                                        return 'Incorrect Answer\nAnswer time: ' + yLabel + ' seconds';
+                                        return ['Incorrect Answer','Answer time: ' + yLabel + ' seconds'];
                                     }
                                 }
                             }
@@ -1881,15 +1872,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }],
                         }
                     },
-                    plugins: [{
-                        beforeInit: function (chart) {
-                            chart.data.labels.forEach(function (e, i, a) {
-                                if (/\n/.test(e)) {
-                                    a[i] = e.split(/\n/)
-                                }
-                            })
-                        }
-                    }]
                 });
 
                 document.getElementById("timeBarGraph").innerHTML = $scope.timeBarGraph;
