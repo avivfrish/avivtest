@@ -1715,16 +1715,16 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
-                                    var image = data.datasets[tooltipItem.datasetIndex].pointStyle.src;
+                                    var image = data.datasets[tooltipItem.datasetIndex].pointStyle;
                                     var yLabel = tooltipItem.yLabel;
-                                    if (image === '/images/checkmark_icon.png'){
-                                        var imgString = '<img src="'+checkmark_icon.src+'" height="'+checkmark_icon.height+'"' +
-                                            ' width="'+checkmark_icon.width+'"/>';
+                                    if (image == checkmark_icon){
+                                        var imgString = '<div><img src="'+checkmark_icon.src+'" height="'+checkmark_icon.height+'"' +
+                                            ' width="'+checkmark_icon.width+'"/></div>';
                                         return imgString + ' Correct Answer\nConfidence Level: ' + yLabel + '%';
                                     }
                                     else {
-                                        var imgString = '<img src="'+x_icon.src+'" height="'+x_icon.height+'"' +
-                                            ' width="'+x_icon.width+'"/>';
+                                        var imgString = '<div><img src="'+x_icon.src+'" height="'+x_icon.height+'"' +
+                                            ' width="'+x_icon.width+'"/></div>';
                                         return x_icon + ' Incorrect Answer\n Confidence Level: ' + yLabel + '%';
                                     }
                                 }
@@ -1758,7 +1758,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     },
                     plugins: [{
                         beforeInit: function (chart) {
-                            chart.data.labels.forEach(function (e, i, a) {
+                            chart.tooltips.label.forEach(function (e, i, a) {
                                 if (/\n/.test(e)) {
                                     a[i] = e.split(/\n/)
                                 }
@@ -2498,6 +2498,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         expMeasures[exp_id]['avgCal'] = (expMeasures[exp_id]['sumCal']) / expMeasures[exp_id]['sumUsers'];
                         expMeasures[exp_id]['avgRes'] = (expMeasures[exp_id]['sumGamma'] * 100 ) / expMeasures[exp_id]['sumUsers'];
 
+                        expNames.push(expMeasures[exp_id]['expName']);
                         precision.push(Math.round(expMeasures[exp_id]['avgPrec'] * 100) / 100);
                         recall.push(Math.round(expMeasures[exp_id]['avgRec'] * 100) / 100);
                         cal.push(Math.round(expMeasures[exp_id]['avgCal'] * 100) / 100);
@@ -2588,7 +2589,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     avg_res = avg_res / num_of_exp;
 
                     column_names.push('All Users, All Exp');
-
                     precision_by_name.push(Math.round(avg_precision * 100) / 100);
                     recall_by_name.push(Math.round(avg_recall * 100) / 100);
                     cal_by_name.push(Math.round(avg_cal * 100) / 100);
@@ -2632,6 +2632,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 }]
                         },
                         options: {
+                            tooltips: {
+                                callbacks: {
+                                    label: function (tooltipItem, data) {
+                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                        var yLabel = tooltipItem.yLabel;
+                                        return xLabel + ': ' + yLabel + '%';
+                                    }
+                                }
+                            },
                             barValueSpacing: 20,
                             scales: {
                                 yAxes: [{
@@ -2717,6 +2726,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }]
                     },
                     options: {
+                        tooltips: {
+                            callbacks: {
+                                label: function (tooltipItem, data) {
+                                    var xLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                    var yLabel = tooltipItem.yLabel;
+                                    return xLabel + ': ' + yLabel + '%';
+                                }
+                            }
+                        },
                         barValueSpacing: 20,
                         scales: {
                             yAxes: [{
