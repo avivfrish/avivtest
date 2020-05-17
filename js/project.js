@@ -1715,17 +1715,17 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
-                                    var image = data.datasets[tooltipItem.datasetIndex].pointStyle;
+                                    var image = data['datasets'][0]['pointStyle'][tooltipItem['index']];
                                     var yLabel = tooltipItem.yLabel;
                                     if (image == checkmark_icon){
                                         var imgString = '<div><img src="'+checkmark_icon.src+'" height="'+checkmark_icon.height+'"' +
                                             ' width="'+checkmark_icon.width+'"/></div>';
-                                        return [imgString + ' Correct Answer','Confidence Level: ' + yLabel + '%'];
+                                        return ['Correct Answer','Confidence Level: ' + yLabel + '%'];
                                     }
                                     else {
                                         var imgString = '<div><img src="'+x_icon.src+'" height="'+x_icon.height+'"' +
                                             ' width="'+x_icon.width+'"/></div>';
-                                        return [x_icon + ' Incorrect Answer', 'Confidence Level: ' + yLabel + '%'];
+                                        return ['Incorrect Answer', 'Confidence Level: ' + yLabel + '%'];
                                     }
                                 }
                             }
@@ -1830,13 +1830,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     },
 
                     options: {
+                        displayColors: false,
                         tooltips: {
                             callbacks: {
                                 title: function (tooltipItem, data) {
                                     return data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
-                                    var pointColor = data.datasets[tooltipItem.datasetIndex].backgroundColor;
+                                    var pointColor = data['datasets'][0]['backgroundColor'][tooltipItem['index']];
                                     var yLabel = tooltipItem.yLabel;
                                     if(pointColor == "#0ccd00"){
                                         return ['Correct Answer','Answer time: ' + yLabel + ' seconds'];
