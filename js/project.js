@@ -352,11 +352,13 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         }
         if (exp['disp_h'] === 0)
         {
-            $("#HierarchyTable").hide();
+            $("#HierarchyTableA").hide();
+            $("#HierarchyTableB").hide();
         }
         else
         {
-            $("#HierarchyTable").show();
+            $("#HierarchyTableA").show();
+            $("#HierarchyTableB").show();
         }
         if (exp['disp_system_sugg'] === 0)
         {
@@ -625,7 +627,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 document.getElementById("B_col_type").innerText=$scope.schema2[0]['col_type'];
                 document.getElementById("B_col_instance").innerText=str_instance;
                 document.getElementById("exp_pair_score").innerText= Math.round(($scope.schema2[0]['score'] + Number.EPSILON) * 100) +"% Similar";
-                document.getElementById("HierarchyTable_content").scrollTo(0,0);
+                document.getElementById("HierarchyTable_contentA").scrollTo(0,0);
+                document.getElementById("HierarchyTable_contentB").scrollTo(0,0);
             });
         },exp_id);
     };
