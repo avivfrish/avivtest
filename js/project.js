@@ -1397,7 +1397,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         pointRadius: 5,
                                         pointHoverRadius: 7,
                                         pointBackgroundColor: "#ff8405",
-                                        //fill: false,
+                                        fill: false,
                                     }, {
                                         label: "Correct Number Of Answers Avg. Level in User Exp",
                                         data: yDataCorrAns,
@@ -1406,7 +1406,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         pointRadius: 5,
                                         pointHoverRadius: 7,
                                         pointBackgroundColor: "#000dad",
-                                        //fill: false,
+                                        fill: false,
                                     }, {
                                         label: "User Confidence Level and Correct Answers",
                                         data: yData_user,
@@ -1416,7 +1416,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         pointHoverRadius: 7,
                                         pointStyle: point_styles,
                                         //pointBackgroundColor: colorOfPoints,
-                                        //fill: false,
+                                        fill: false,
                                     }];
 
                                     /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
@@ -1545,7 +1545,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         pointRadius: 5,
                         pointHoverRadius: 7,
                         pointBackgroundColor: "#ff8405",
-                        //fill: false,
+                        fill: false,
                     }, {
                         label: "Correct Number Of Answers Avg. Level",
                         data: yDataCorrAns,
@@ -1554,7 +1554,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         pointRadius: 5,
                         pointHoverRadius: 7,
                         pointBackgroundColor: "#000dad",
-                        //fill: false,
+                        fill: false,
                     }];
 
                     const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
@@ -1611,7 +1611,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             },
                             title: {
                                 display: true,
-                                text: 'Confidence Level & Answer as function of number of Correspondence Order',
+                                text: 'Confidence Level & Answer as function of Correspondence Order',
                                 fontSize: 18
                             }
                         }
@@ -1706,6 +1706,23 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         ]
                     },
                     options: {
+                        tooltips: {
+                            callbacks: {
+                                title: function (tooltipItem, data) {
+                                    return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
+                                },
+                                label: function (tooltipItem, data) {
+                                    var image = data.datasets[tooltipItem.datasetIndex].pointStyle.src;
+                                    var yLabel = tooltipItem.yLabel;
+                                    if (image === '/images/checkmark_icon.png'){
+                                        return 'Correct Answer with Confidence Level of: ' + yLabel + '%';
+                                    }
+                                    else {
+                                        return 'Incorrect Answer with Confidence Level of: ' + yLabel + '%';
+                                    }
+                                }
+                            }
+                        },
                         scales: {
                             yAxes: [{
                                 ticks: {
@@ -1728,7 +1745,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Confidence Level as function of number of Correspondence Order',
+                            text: 'Confidence Level as function of Correspondence Order',
                             fontSize: 18
                         }
                     }
@@ -1806,12 +1823,24 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     },
 
                     options: {
+                        tooltips: {
+                            callbacks: {
+                                title: function (tooltipItem, data) {
+                                    return data['labels'][tooltipItem[0]['index']];
+                                },
+                                label: function (tooltipItem, data) {
+                                    var xLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                    var yLabel = tooltipItem.yLabel;
+                                    return xLabel + ': ' + yLabel + 'seconds';
+                                }
+                            }
+                        },
                         legend: {
                             display: false
                         },
                         title: {
                             display: true,
-                            text: 'Time Range as function of number of Correspondence Order',
+                            text: 'Time Range as function of Correspondence Order',
                             fontSize: 18
                         },
                         scales: {
@@ -1979,7 +2008,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Time Range as function of number of Correspondence Order',
+                            text: 'Time Range as function of Correspondence Order',
                             fontSize: 18
                         },
                         scales: {
@@ -2576,6 +2605,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         options: {
                             tooltips: {
                                 callbacks: {
+                                    title: function (tooltipItem, data) {
+                                        return data['labels'][tooltipItem[0]['index']];
+                                    },
                                     label: function (tooltipItem, data) {
                                         var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                         var yLabel = tooltipItem.yLabel;
