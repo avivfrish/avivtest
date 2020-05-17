@@ -610,7 +610,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 }).then(function (data) {
-                    console.log((data.data));
+                    //console.log((data.data));
                     if (data.data === "1") { console.log(data.data); } //error
                     else {
                         document.getElementById("exp_pair_major").innerHTML= data.data + "% Match";
@@ -1044,8 +1044,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.show_coordinate = function($event){
         var xCor = ( $event['pageX'] * 1280 ) / document.body.clientWidth;
         var yCor = ( $event['pageY'] * 720 ) / document.body.clientHeight;
-        console.log(xCor);
-        console.log(yCor);
+        //console.log(xCor);
+        //console.log(yCor);
     };
 
 
@@ -1706,6 +1706,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     },
                     options: {
                         tooltips: {
+                            displayColors: false,
                             callbacks: {
                                 custom: function(tooltip) {
                                     tooltip.displayColors = false;
@@ -1717,10 +1718,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     var image = data.datasets[tooltipItem.datasetIndex].pointStyle.src;
                                     var yLabel = tooltipItem.yLabel;
                                     if (image === '/images/checkmark_icon.png'){
-                                        return checkmark_icon + ' Correct Answer <br> Confidence Level: ' + yLabel + '%';
+                                        var imgString = '<img src="'+checkmark_icon.src+'" height="'+checkmark_icon.height+'"' +
+                                            ' width="'+checkmark_icon.width+'"/>';
+                                        return imgString + ' Correct Answer\nConfidence Level: ' + yLabel + '%';
                                     }
                                     else {
-                                        return x_icon + ' Incorrect Answer <br>  Confidence Level: ' + yLabel + '%';
+                                        var imgString = '<img src="'+x_icon.src+'" height="'+x_icon.height+'"' +
+                                            ' width="'+x_icon.width+'"/>';
+                                        return x_icon + ' Incorrect Answer\n Confidence Level: ' + yLabel + '%';
                                     }
                                 }
                             }
@@ -1750,7 +1755,16 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             text: 'Confidence Level as function of Correspondence Order',
                             fontSize: 18
                         }
-                    }
+                    },
+                    plugins: [{
+                        beforeInit: function (chart) {
+                            chart.data.labels.forEach(function (e, i, a) {
+                                if (/\n/.test(e)) {
+                                    a[i] = e.split(/\n/)
+                                }
+                            })
+                        }
+                    }]
                 });
 
                 document.getElementById("confidenceLineGraph").innerHTML = $scope.confidenceLineGraph;
@@ -1834,9 +1848,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     var pointColor = data.datasets[tooltipItem.datasetIndex].backgroundColor;
                                     var yLabel = tooltipItem.yLabel;
                                     if(pointColor === "#0ccd00"){
-                                        return 'Correct Answer <br> Answer time: ' + yLabel + ' seconds';
+                                        return 'Correct Answer\nAnswer time: ' + yLabel + ' seconds';
                                     }else {
-
+                                        return 'Incorrect Answer\nAnswer time: ' + yLabel + ' seconds';
                                     }
                                 }
                             }
@@ -1866,7 +1880,16 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 }
                             }],
                         }
-                    }
+                    },
+                    plugins: [{
+                        beforeInit: function (chart) {
+                            chart.data.labels.forEach(function (e, i, a) {
+                                if (/\n/.test(e)) {
+                                    a[i] = e.split(/\n/)
+                                }
+                            })
+                        }
+                    }]
                 });
 
                 document.getElementById("timeBarGraph").innerHTML = $scope.timeBarGraph;
@@ -2002,10 +2025,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
-                                    return 'Avg. Time: ' + data['datasets'][0]['data'][tooltipItem['index']] + ' seconds';
+                                    return 'Avg. Correct Answers: ' + avgCorrAnsArr[tooltipItem['index']] + ' %';
                                 },
                                 afterLabel: function (tooltipItem, data) {
-                                    return 'Avg. correct answers ' + avgCorrAnsArr[tooltipItem['index']] + ' %';
+                                    return 'Avg. Answer Time: ' + data['datasets'][0]['data'][tooltipItem['index']] + ' seconds';
                                 }
                             }
                         },
@@ -2609,18 +2632,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 }]
                         },
                         options: {
-                            tooltips: {
-                                callbacks: {
-                                    title: function (tooltipItem, data) {
-                                        return data['labels'][tooltipItem[0]['index']];
-                                    },
-                                    label: function (tooltipItem, data) {
-                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
-                                        var yLabel = tooltipItem.yLabel;
-                                        return xLabel + ': ' + yLabel + '%';
-                                    }
-                                }
-                            },
                             barValueSpacing: 20,
                             scales: {
                                 yAxes: [{
@@ -2706,18 +2717,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }]
                     },
                     options: {
-                        tooltips: {
-                            callbacks: {
-                                title: function (tooltipItem, data) {
-                                    return data['labels'][tooltipItem[0]['index']];
-                                },
-                                label: function (tooltipItem, data) {
-                                    var xLabel = data.datasets[tooltipItem.datasetIndex].label;
-                                    var yLabel = tooltipItem.yLabel;
-                                    return xLabel + ': ' + yLabel + '%';
-                                }
-                            }
-                        },
                         barValueSpacing: 20,
                         scales: {
                             yAxes: [{
@@ -2776,7 +2775,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(function (data) {
-            console.log(data.data);
+            //console.log(data.data);
             if (data.data !== "1" && data.data.length > 0) {
                 document.getElementById("closestMatch").innerText = "";
                 let dataVal = [];
