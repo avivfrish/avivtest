@@ -1336,7 +1336,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             let j = 1;
                             for (let item in data.data){
 
-
                                 const avgConf = Math.round((data.data)[item]['avgConf'] * 100) / 100;
                                 const avgCorrAns = Math.round((data.data)[item]['avgCorrAns'] * 100) / 100;
 
@@ -1708,6 +1707,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     options: {
                         tooltips: {
                             callbacks: {
+                                custom: function(tooltip) {
+                                    tooltip.displayColors = false;
+                                },
                                 title: function (tooltipItem, data) {
                                     return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
@@ -1715,10 +1717,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     var image = data.datasets[tooltipItem.datasetIndex].pointStyle.src;
                                     var yLabel = tooltipItem.yLabel;
                                     if (image === '/images/checkmark_icon.png'){
-                                        return 'Correct Answer with Confidence Level of: ' + yLabel + '%';
+                                        return checkmark_icon + ' Correct Answer <br> Confidence Level: ' + yLabel + '%';
                                     }
                                     else {
-                                        return 'Incorrect Answer with Confidence Level of: ' + yLabel + '%';
+                                        return x_icon + ' Incorrect Answer <br>  Confidence Level: ' + yLabel + '%';
                                     }
                                 }
                             }
@@ -1829,9 +1831,13 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     return data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
-                                    var xLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                    var pointColor = data.datasets[tooltipItem.datasetIndex].backgroundColor;
                                     var yLabel = tooltipItem.yLabel;
-                                    return xLabel + ': ' + yLabel + 'seconds';
+                                    if(pointColor === "#0ccd00"){
+                                        return 'Correct Answer <br> Answer time: ' + yLabel + ' seconds';
+                                    }else {
+
+                                    }
                                 }
                             }
                         },
@@ -1840,7 +1846,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Time Range as function of Correspondence Order',
+                            text: 'Answer Time as function of Correspondence Order',
                             fontSize: 18
                         },
                         scales: {
@@ -2702,6 +2708,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     options: {
                         tooltips: {
                             callbacks: {
+                                title: function (tooltipItem, data) {
+                                    return data['labels'][tooltipItem[0]['index']];
+                                },
                                 label: function (tooltipItem, data) {
                                     var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                     var yLabel = tooltipItem.yLabel;
