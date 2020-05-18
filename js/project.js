@@ -291,38 +291,54 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }
 
             if( ($scope.usersToShowStats.length === 0) || ( $scope.groupsToShowStats.length === 0)){
-
                 $("#loading").hide();
                 $("#statistics_body_full").hide();
                 $("#statistics_body_empty").show();
                 $("#statistics").show();
-
             } else {
 
                 var isSingleUser = 'False';
-                $scope.showAggregateConfidenceLineGraph(function(finish_conf) {
 
-                    $scope.showAggregateTimeRangeBarGraph(function(finish_conf) {
+                $scope.get_rel_exp_by_users(function(finish_rel_exp) {
 
-                        $scope.computeMeasures(function(finish_conf) {
+                    var no_rel_exp = true;
+                    for (let index_1 in $scope.groupsToShowStats){
+                        for (let index_2 in $scope.relExpForUsersToShowStats){
+                            if($scope.groupsToShowStats[index_1].id === $scope.relExpForUsersToShowStats[index_2].id){
+                                no_rel_exp = false;
+                            }
+                        }
+                    }
+                    if(no_rel_exp === true){
+                        $("#loading").hide();
+                        $("#statistics_body_full").hide();
+                        $("#statistics_body_empty").show();
+                        $("#statistics").show();
+                    } else {
+                        $scope.showAggregateConfidenceLineGraph(function(finish_conf) {
 
-                            $scope.get_mouse_click_data(function(finish_click_data) {
+                            $scope.showAggregateTimeRangeBarGraph(function(finish_conf) {
 
-                                $scope.create_heat_map(function(finish_heat_map) {
+                                $scope.computeMeasures(function(finish_conf) {
 
-                                    $("#loading").hide();
-                                    $("#statistics_body_empty").hide();
-                                    $("#statistics_body_full").show();
-                                    $("#statistics").show();
+                                    $scope.get_mouse_click_data(function(finish_click_data) {
 
-                                }, isSingleUser);
-                            }, isSingleUser);
+                                        $scope.create_heat_map(function(finish_heat_map) {
+
+                                            $("#loading").hide();
+                                            $("#statistics_body_empty").hide();
+                                            $("#statistics_body_full").show();
+                                            $("#statistics").show();
+
+                                        }, isSingleUser);
+                                    }, isSingleUser);
+                                });
+
+                            });
+
                         });
-
-                    });
-
+                    }
                 });
-
             }
         });
     };
@@ -1489,10 +1505,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                                         if(xLabel == 'User Confidence Level and Correct Answers'){
                                                             var image = point_styles[tooltipItem['index']];
                                                             if (image == checkmark_icon){
-                                                                return 'Correct Answer with Confidence Level of: ' + yLabel + '%';
+                                                                return 'User answers correct with Confidence Level of: ' + yLabel + '%';
                                                             }
                                                             else {
-                                                                return 'Incorrect Answer with Confidence Level of: ' + yLabel + '%';
+                                                                return 'User answers incorrect with Confidence Level of: ' + yLabel + '%';
                                                             }
                                                         } else {
                                                             return xLabel + ': ' + yLabel + '%';
@@ -2058,7 +2074,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                             return 'Incorrect Answer';
                                         }
                                     } else {
-                                        return 'Avg. Correct Answers: ' + yLabel + ' %';
+                                        return 'Avg. Correct Answers: ' + yLabel + '%';
                                     }
                                 },
                                 afterLabel: function (tooltipItem, data) {
@@ -2268,8 +2284,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             const max_x = 1280; //window.innerWidth + (100 - (window.innerWidth % 100));
             const max_y = 720; //window.innerHeight + (100 - (window.innerHeight % 100));
-            const jump_in_x = 80; //30;
-            const jump_in_y = 80; //80; // 100 \ 30;
+            const jump_in_x = 80;
+            const jump_in_y = 80;
 
             $scope.arrForHeatMap = {};
             for(let x=jump_in_x; x<=max_x; x=x+jump_in_x){
@@ -2316,6 +2332,35 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         });
     };
+
+
+    $scope.get_rel_exp_by_users = function (callback) {
+        $http({
+            method: 'POST',
+            url: 'php/get_rel_exp_by_users.php',
+            data: $.param({
+                usersToShowStats : $scope.usersToShowStats
+            }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        }).then(function (data) {
+            $scope.relExpForUsersToShowStats = [];
+            if (data.data !== '1') {
+
+                for (let i = 0; i < data.data.length; i++)
+                {
+                    $scope.relExpForUsersToShowStats.push({"id" : data.data[i]['id'],
+                        "max_num_pairs" : data.data[i]['max_num_pairs']});
+                }
+                callback(true);
+            } else {
+                console.log('Get rel task for filtered users failed');
+                callback(false);
+            }
+        });
+    };
+
 
     $scope.getDataForFiterStatistics = function (callback) {
 
