@@ -2931,6 +2931,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         });
     };
 
+    $scope.show_notification_admin = function (callback) {
+        $('#notification_toast .toast').toast('show');
+    };
+
     /*$scope.capture_screen = function()
     {
         const body_id = document.body.id;
