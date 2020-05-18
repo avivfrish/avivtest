@@ -301,11 +301,15 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                 $scope.get_rel_exp_by_users(function(finish_rel_exp) {
 
+                    console.log($scope.groupsToShowStats);
+                    console.log($scope.relExpForUsersToShowStats);
+
                     var no_rel_exp = true;
                     for (let index_1 in $scope.groupsToShowStats){
                         for (let index_2 in $scope.relExpForUsersToShowStats){
                             if($scope.groupsToShowStats[index_1].id === $scope.relExpForUsersToShowStats[index_2].id){
                                 no_rel_exp = false;
+                                break;
                             }
                         }
                     }
