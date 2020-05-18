@@ -1344,7 +1344,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }
             }
             for (let i = 0; i < $scope.relExpForUsersToShowStats; i++){
-                exps_id.push($scope.relExpForUsersToShowStats[i]['id']);
+                exps_id.push($scope.relExpForUsersToShowStats[i].id);
             }
 
             $http({
