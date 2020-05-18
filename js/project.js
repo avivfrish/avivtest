@@ -2594,7 +2594,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             if(expNames.length === 1){
                 let all_users = [];
-                let all_exps = [];
+                let exps_to_compare = [];
 
                 $http({
                     method: 'POST',
@@ -2609,8 +2609,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }).then(function (data) {
                     if (data.data !== '1') {
                         let count_other_u_same_exp = data.data;
-                        console.log("count_other_u_same_exp", count_other_u_same_exp);
-
                         if($scope.groupsToShowStats.length === 1){
                             if($scope.usersToShowStats.length === 1){
                                 let user_name = '';
@@ -2619,9 +2617,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + column_names[0];
+                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + expNames[0];
                             } else {
-                                column_names[0] = 'Selected Users,\nExp Name:\n' + column_names[0];
+                                column_names[0] = 'Selected Users,\nExp Name:\n' + expNames[0];
                             }
                         } else {
                             if($scope.usersToShowStats.length === 1){
@@ -2643,10 +2641,19 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         }
 
-                        for (let index in $scope.allTestExpNames){
-                            if(index >= 2){
-                                all_exps.push({"id" : $scope.allTestExpNames[index].id,
-                                    "max_num_pairs" : $scope.allTestExpNames[index].max_num_pairs});
+                        if(count_other_u_same_exp == 0) {
+                            for (let index in $scope.allTestExpNames){
+                                if(index >= 2){
+                                    exps_to_compare.push({"id" : $scope.allTestExpNames[index].id,
+                                        "max_num_pairs" : $scope.allTestExpNames[index].max_num_pairs});
+                                }
+                            }
+                        } else {
+                            for (let index in $scope.relExpForUsersToShowStats){
+                                if(index >= 2){
+                                    exps_to_compare.push({"id" : $scope.relExpForUsersToShowStats[index].id,
+                                        "max_num_pairs" : $scope.relExpForUsersToShowStats[index].max_num_pairs});
+                                }
                             }
                         }
 
@@ -2669,7 +2676,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             avg_cal = avg_cal / num_of_exp;
                             avg_res = avg_res / num_of_exp;
 
-                            column_names.push('All Users, All Exp');
+                            if(count_other_u_same_exp == 0){
+                                column_names.push('All Users, All Exp');
+                            } else {
+                                column_names.push('All Users,\n Exp Name: ' + expNames[0]);
+                            }
                             precision_by_name.push(Math.round(avg_precision * 100) / 100);
                             recall_by_name.push(Math.round(avg_recall * 100) / 100);
                             cal_by_name.push(Math.round(avg_cal * 100) / 100);
@@ -2765,7 +2776,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                             callback(true);
 
-                        }, all_users, all_exps);
+                        }, all_users, exps_to_compare);
 
                     } else {
                         callback(false);
