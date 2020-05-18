@@ -17,7 +17,7 @@ foreach ($usersToShowStats as $user){
 
 $sql="select distinct experiments.id as id, max_num_pairs
 from exp_results, experiments
-where experiments.id = exp_results.exp_id and ( ".$whereClause." )";
+where experiments.name != 'Test' and experiments.id = exp_results.exp_id and ( ".$whereClause." )";
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
