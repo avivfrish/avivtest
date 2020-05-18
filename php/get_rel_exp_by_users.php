@@ -5,9 +5,9 @@ $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Databa
 $serverName = "tcp:avivtest.database.windows.net,1433";
 $conn = sqlsrv_connect($serverName, $connectionInfo);
 
-$whereClause = "where ";
+$whereClause = "";
 foreach ($usersToShowStats as $user){
-    if($whereClause !== "where "){
+    if($whereClause !== ""){
         $whereClause = $whereClause . "or user_id = " . $user . " ";
 
     } else{
