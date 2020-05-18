@@ -1486,7 +1486,17 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                                     label: function (tooltipItem, data) {
                                                         var xLabel = data.datasets[tooltipItem.datasetIndex].label;
                                                         var yLabel = tooltipItem.yLabel;
-                                                        return xLabel + ': ' + yLabel + '%';
+                                                        if(xLabel == 'User Confidence Level and Correct Answers'){
+                                                            var image = point_styles[tooltipItem['index']];
+                                                            if (image == checkmark_icon){
+                                                                return 'Correct Answer with Confidence Level of: ' + yLabel + '%';
+                                                            }
+                                                            else {
+                                                                return 'Incorrect Answer with Confidence Level of: ' + yLabel + '%';
+                                                            }
+                                                        } else {
+                                                            return xLabel + ': ' + yLabel + '%';
+                                                        }
                                                     }
                                                 }
                                             },
@@ -2042,8 +2052,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 label: function (tooltipItem, data) {
                                     var yLabel = avgCorrAnsArr[tooltipItem['index']];
                                     if($scope.usersToShowStats.length === 1){
-                                        var pointColor = data['datasets'][0]['backgroundColor'][tooltipItem['index']];
-                                        if(pointColor == green){
+                                        if(yLabel == 100){
                                             return 'Correct Answer';
                                         }else {
                                             return 'Incorrect Answer';
