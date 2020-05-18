@@ -1343,8 +1343,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     all_users.push($scope.allUserNames[index].id);
                 }
             }
-            for (let i = 0; i < $scope.relExpForUsersToShowStats; i++){
-                exps_id.push($scope.relExpForUsersToShowStats[i].id);
+
+            for (let index in $scope.relExpForUsersToShowStats) {
+                exps_id.push($scope.relExpForUsersToShowStats[index].id);
             }
 
             console.log('exps_id', exps_id);
