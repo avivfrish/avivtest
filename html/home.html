@@ -13,7 +13,7 @@ Matching is a crucial element of integrating structured and
 semi-structured data.<br>
 For instance, when multiple organizations are merged and has to transfer the data
 between systems or when new system is introduced and the data has to migrate.
-Matching schemata is the first step in this process.
+Matching schema is the first step in this process.
 The matching aimed at finding correspondences between a target and candidate schema. <br>
 Human-in-the-loop data integration, and specifically in
 matching, has been recently challenged by the big data era.
@@ -24,8 +24,8 @@ Recently, the traditional paradigm of “humans do it better"
 was challenged with a recent work showing that human judgment
 is biased, and thus affects human matching abilities. <br>
 Acknowledging cognitive awareness in human matching, InCognitoMatch <b style="font-size: x-large;">In</b>troducing
-<b style="font-size: x-large;">Cognit</b>ive <b style="font-size: x-large;">B</b>iases
-to Crowdsourced <b style="font-size: x-large;">Match</b>ing is a handy tool to validate, annotate, and correct correspondences
+<b style="font-size: x-large;">Cognit</b>ive Biases to Crowdsourced
+<b style="font-size: x-large;">Match</b>ing is a handy tool to validate, annotate, and correct correspondences
 using the crowd whilst accounting for human
 matching biases
  <br><br>
@@ -42,41 +42,46 @@ term names and types, instance examples, schemata hierarchy,
 algorithm matching result and the majority decision of the crowd. <br>
 
 Your task is to provide feedback, stating whether a pair is a match
-accompanied by a confidence level in the decision on a [0,100] scale. <br>
-You will not be able to choose confidence level of 50.
-You will have to achieve as many matching questions as possible within a
+accompanied by a confidence level in the decision on a [0,100] scale.
+You will not be able to choose confidence level of 50. <br>
+During the task, you will have to achieve as many matching questions as possible within a
 limited time frame.<br><br>
 
 <h4 style="font-family: 'Courier New', Courier, monospace">
  Example
 </h4>
 
-<div>
- <img class="center" src="/images/questionScreen.PNG" width="68%" height="60%" alt="Task Screen Example">
+
+<div class="row" style="height: 100%">
+ <div class="col-sm-12" style="height: 100%">
+  <div class="col-sm-4" style="height: 100%">
+   The figure above presents an example for task screen that you will encounter.
+   This demonstration shows a request regarding a pair of <em>quantity</em> and <em>qty</em>.<br>
+   The top right part contains indication about the time remains for the task.<br>
+   Next, each side is devoted to present term details.
+   Each term name appears clearly on top and marked in red in the center of the screen.<br>
+   Following the name, the data types and instance examples are introduced.
+   As shown, the types of quantity and
+   qty is Decimal and int respectively. An instance of
+   quantity is 4580.55 and uom instance is 1.<br>
+   The center part of the screen displays schemata hierarchy.
+   The color legend is as follows:<br>
+   <b style="color: green">Green</b> - Parents of the term.<br>
+   <b style="color: red">Red</b> - The Term.<br>
+   <b style="color: blue">Blue</b> - Siblings of the term.
+   <br>
+   The direct parent of quantity is Item and a sibling term is, for
+   example unitOfMeasure.<br>
+   As demonstrated in the later part,
+   the algorithm matching result is 29% and the majority decision of the crowd is 72.3%. <br>
+   When achieving a matching decision, this information will be submitted via the bottom part.<br><br>
+  </div>
+  <div class="col-sm-8" style="height: 100%">
+   <img src="/images/questionScreen.PNG" width="68%" height="60%" alt="Task Screen Example"
+        style="display: block; margin: 0 auto;">
+  </div>
+ </div>
 </div>
-
-<br>
-The figure above presents an example for task screen that you will encounter.
-we see a request regarding a pair of <em>quantity</em> and <em>qty</em>.<br>
-The top right part contains indication about the time remains for the task.<br>
-Next, each side is devoted to present term details.
-Each term name appears clearly on top and marked in red in the center of the screen.<br>
-Following the name, the data types and instance examples are introduced.
-As shown, the types of quantity and
-qty is Decimal and int respectively. An instance of
-quantity is 4580.55 and uom instance is 1.<br>
-The center part of the screen displays schemata hierarchy.
-The color legend is as follows:<br>
-<b style="color: green">Green</b> - Parents of the term.<br>
-<b style="color: red">Red</b> - The Term.<br>
-<b style="color: blue">Blue</b> - Siblings of the term.
-<br>
-The direct parent of quantity is Item and a sibling term is, for
-example unitOfMeasure.<br>
-As demonstrated in the later part,
-the algorithm matching result is 29% and the majority decision of the crowd is 72.3. <br>
-When achieving a matching decision, this information will be submitted via the bottom part.<br><br>
-
 
 <h4 style="font-family: 'Courier New', Courier, monospace">
  Task Settings
