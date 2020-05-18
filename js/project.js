@@ -497,6 +497,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             {
                 $("#user_comments_form").hide();
                 $("#user_comments_recieved").show();
+                document.getElementById("user_comments").value = "";
             } else {
                 console.log(data.data);
             }
