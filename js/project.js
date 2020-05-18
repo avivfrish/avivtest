@@ -2595,6 +2595,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             if(expNames.length === 1){
                 let all_users = [];
                 let exps_to_compare = [];
+                let single_exp_name = expNames[0];
 
                 $http({
                     method: 'POST',
@@ -2617,9 +2618,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + expNames[0];
+                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + single_exp_name;
                             } else {
-                                column_names[0] = 'Selected Users,\nExp Name:\n' + expNames[0];
+                                column_names[0] = 'Selected Users,\nExp Name:\n' + single_exp_name;
                             }
                         } else {
                             if($scope.usersToShowStats.length === 1){
@@ -2677,7 +2678,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             if(count_other_u_same_exp == 0){
                                 column_names.push('All Users, All Exp');
                             } else {
-                                column_names.push('All Users,\n Exp Name: ' + expNames[0]);
+                                column_names.push('All Users,\n Exp Name: ' + single_exp_name);
                             }
                             precision_by_name.push(Math.round(avg_precision * 100) / 100);
                             recall_by_name.push(Math.round(avg_recall * 100) / 100);
