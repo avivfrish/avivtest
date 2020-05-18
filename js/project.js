@@ -2040,10 +2040,25 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
-                                    return 'Avg. Correct Answers: ' + avgCorrAnsArr[tooltipItem['index']] + ' %';
+                                    var yLabel = avgCorrAnsArr[tooltipItem['index']];
+                                    if($scope.usersToShowStats.length === 1){
+                                        var pointColor = data['datasets'][0]['backgroundColor'][tooltipItem['index']];
+                                        if(pointColor == green){
+                                            return 'Correct Answer';
+                                        }else {
+                                            return 'Incorrect Answer';
+                                        }
+                                    } else {
+                                        return 'Avg. Correct Answers: ' + yLabel + ' %';
+                                    }
                                 },
                                 afterLabel: function (tooltipItem, data) {
-                                    return 'Avg. Answer Time: ' + data['datasets'][0]['data'][tooltipItem['index']] + ' seconds';
+                                    var yLabel = data['datasets'][0]['data'][tooltipItem['index']];
+                                    if($scope.usersToShowStats.length === 1){
+                                        return 'Answer time: ' + yLabel + ' seconds';
+                                    } else {
+                                        return 'Avg. Answer Time: ' + yLabel + ' seconds';
+                                    }
                                 }
                             }
                         },
