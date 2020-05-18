@@ -2650,10 +2650,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         } else {
                             for (let index in $scope.relExpForUsersToShowStats){
-                                if(index >= 2){
-                                    exps_to_compare.push({"id" : $scope.relExpForUsersToShowStats[index].id,
-                                        "max_num_pairs" : $scope.relExpForUsersToShowStats[index].max_num_pairs});
-                                }
+                                exps_to_compare.push({"id" : $scope.relExpForUsersToShowStats[index].id,
+                                    "max_num_pairs" : $scope.relExpForUsersToShowStats[index].max_num_pairs});
                             }
                         }
 
