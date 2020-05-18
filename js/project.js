@@ -83,7 +83,7 @@ function SyncScroll(table_id) {
     }
 };
 
-app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
+app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout, $location, $mdToast) {
 
     $scope.init_avivTest = function () {
         // this function called when loading the site. init all params.
@@ -145,6 +145,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $("#loading").hide();
         $("#instruction_after").hide();
         $("#statistics").hide();
+        $('#notification_toast').hide();
         window.scrollTo(0,0);
 
         if($scope.timeElapsed !== ""){
@@ -2932,6 +2933,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     };
 
     $scope.show_notification_admin = function (callback) {
+        $('#notification_toast').show();
         $('#notification_toast .toast').toast('show');
     };
 
