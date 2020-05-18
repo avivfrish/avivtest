@@ -83,6 +83,11 @@ function SyncScroll(table_id) {
     }
 };
 
+function show_notification_admin() {
+    $('#notification_toast').show();
+    $('#notification_toast .toast').toast('show');
+};
+
 app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
 
     $scope.init_avivTest = function () {
@@ -2932,10 +2937,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         });
     };
 
-    $scope.show_notification_admin = function (callback) {
-        $('#notification_toast').show();
-        $('#notification_toast .toast').toast('show');
-    };
+
 
     /*$scope.capture_screen = function()
     {
