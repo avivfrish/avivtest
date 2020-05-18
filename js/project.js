@@ -301,9 +301,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                 $scope.get_rel_exp_by_users(function(finish_rel_exp) {
 
-                    console.log($scope.groupsToShowStats);
-                    console.log($scope.relExpForUsersToShowStats);
-
                     var no_rel_exp = true;
                     for (let index_1 in $scope.groupsToShowStats){
                         for (let index_2 in $scope.relExpForUsersToShowStats){
@@ -1346,227 +1343,207 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     all_users.push($scope.allUserNames[index].id);
                 }
             }
+            for (let i = 0; i < $scope.relExpForUsersToShowStats; i++){
+                exps_id.push($scope.relExpForUsersToShowStats[i]['id']);
+            }
 
             $http({
                 method: 'POST',
-                url: 'php/get_user_exp_for_stats.php',
+                url: 'php/get_agg_confidence_and_answer_values.php',
                 data: $.param({
-                    user_id : $scope.usersToShowStats[0]
+                    usersToShowStats : all_users,
+                    groupsToShowStats : $scope.relExpForUsersToShowStats
                 }),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             }).then(function (data) {
-                if (data.data !== '1') {
-                    let allTestExpNames = [];
-                    for (let i = 0; i < data.data.length; i++){
-                        allTestExpNames.push({"exp_name" : data.data[i]['exp_name'],
-                            "id" : data.data[i]['id'], "max_num_pairs" : data.data[i]['max_num_pairs']});
-                        exps_id.push(data.data[i]['id']);
-                    }
+                if (data.data.length !== 0) {
+                    let yDataConf = [];
+                    let yDataCorrAns = [];
 
+                    let j = 1;
+                    for (let item in data.data){
+
+                        const avgConf = Math.round((data.data)[item]['avgConf'] * 100) / 100;
+                        const avgCorrAns = Math.round((data.data)[item]['avgCorrAns'] * 100) / 100;
+
+                        xLabels.push(j);
+                        yDataConf.push(avgConf);
+                        yDataCorrAns.push(avgCorrAns);
+
+                        j++;
+                    }
                     $http({
                         method: 'POST',
-                        url: 'php/get_agg_confidence_and_answer_values.php',
+                        url: 'php/get_confidence_and_answer_values.php',
                         data: $.param({
-                            usersToShowStats : all_users,
-                            groupsToShowStats : allTestExpNames
+                            curr_user: $scope.usersToShowStats[0],
+                            curr_exp_id: exps_id,
+                            multi_exp: "true"
                         }),
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         }
                     }).then(function (data) {
+
                         if (data.data.length !== 0) {
-                            let yDataConf = [];
-                            let yDataCorrAns = [];
+                            let yData_user = [];
+                            let point_styles = [];
+
+                            var checkmark_icon = new Image();
+                            checkmark_icon.src = '/images/checkmark_icon.png';
+                            checkmark_icon.height = "20";
+                            checkmark_icon.width = "20";
+
+                            var x_icon = new Image();
+                            x_icon.src = '/images/x_icon.png';
+                            x_icon.height = "20";
+                            x_icon.width = "20";
 
                             let j = 1;
                             for (let item in data.data){
+                                const user_conf = (data.data)[item]['user_conf'];
+                                const isCorrectAnswer = (data.data)[item]['isCorrectAnswer'];
 
-                                const avgConf = Math.round((data.data)[item]['avgConf'] * 100) / 100;
-                                const avgCorrAns = Math.round((data.data)[item]['avgCorrAns'] * 100) / 100;
+                                yData_user.push(user_conf);
 
-                                xLabels.push(j);
-                                yDataConf.push(avgConf);
-                                yDataCorrAns.push(avgCorrAns);
+                                if(isCorrectAnswer == 1){
+                                    point_styles.push(checkmark_icon);
+                                }else{
+                                    point_styles.push(x_icon);
+                                }
 
                                 j++;
                             }
-                            $http({
-                                method: 'POST',
-                                url: 'php/get_confidence_and_answer_values.php',
-                                data: $.param({
-                                    curr_user: $scope.usersToShowStats[0],
-                                    curr_exp_id: exps_id,
-                                    multi_exp: "true"
-                                }),
-                                headers: {
-                                    'Content-Type': 'application/x-www-form-urlencoded'
-                                }
-                            }).then(function (data) {
 
-                                if (data.data.length !== 0) {
-                                    let yData_user = [];
-                                    let point_styles = [];
+                            datasets_val = [{
+                                label: "Confidence Avg. Level in User Exp",
+                                data: yDataConf,
+                                borderColor: "#ff8405",
+                                backgroundColor: "#ff8405",
+                                borderWidth: 0.7,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                pointBackgroundColor: "#ff8405",
+                                fill: false,
+                            }, {
+                                label: "Correct Number Of Answers Avg. Level in User Exp",
+                                data: yDataCorrAns,
+                                borderColor: "#000dad",
+                                backgroundColor: "#000dad",
+                                borderWidth: 0.7,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                pointBackgroundColor: "#000dad",
+                                fill: false,
+                            }, {
+                                label: "User Confidence Level and Correct Answers",
+                                data: yData_user,
+                                borderColor: "#000000",
+                                backgroundColor: "#000000",
+                                borderWidth: 0.7,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                pointStyle: point_styles,
+                                //pointBackgroundColor: colorOfPoints,
+                                fill: false,
+                            }];
 
-                                    var checkmark_icon = new Image();
-                                    checkmark_icon.src = '/images/checkmark_icon.png';
-                                    checkmark_icon.height = "20";
-                                    checkmark_icon.width = "20";
+                            /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
+                yDataCorrAns = [0.25,0.64,0.7,0.1435526,0.51,0.184345,0.6,0.48,0.89,0.4,0.333,0.54,0.868,0.4465,0.76,0.57,0.66,0.39,0.6,0.3];
 
-                                    var x_icon = new Image();
-                                    x_icon.src = '/images/x_icon.png';
-                                    x_icon.height = "20";
-                                    x_icon.width = "20";
+                data.data = [{'avgTime': 17, 'avgCorrAns': 0.25},{'avgTime': 9, 'avgCorrAns': 0.64},
+                    {'avgTime': 8, 'avgCorrAns': 0.7},{'avgTime': 19, 'avgCorrAns': 0.1435526},
+                    {'avgTime': 11, 'avgCorrAns': 0.51},{'avgTime': 18, 'avgCorrAns': 0.184345},
+                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 14, 'avgCorrAns': 0.48},
+                    {'avgTime': 5, 'avgCorrAns': 0.89},{'avgTime': 13, 'avgCorrAns': 0.4},
+                    {'avgTime': 16, 'avgCorrAns': 0.333},{'avgTime': 9, 'avgCorrAns': 0.54},
+                    {'avgTime': 4, 'avgCorrAns': 0.868},{'avgTime': 14, 'avgCorrAns': 0.4465},
+                    {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
+                    {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
+                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];*/
+                            const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
+                            if ($scope.confidenceLineGraphAggregate){
+                                $scope.confidenceLineGraphAggregate.destroy();
+                            }
 
-                                    let j = 1;
-                                    for (let item in data.data){
-                                        const user_conf = (data.data)[item]['user_conf'];
-                                        const isCorrectAnswer = (data.data)[item]['isCorrectAnswer'];
+                            Chart.defaults.global.defaultFontColor = 'black';
+                            Chart.defaults.global.defaultFontFamily = "Calibri";
+                            Chart.defaults.global.defaultFontSize = 14;
 
-                                        yData_user.push(user_conf);
-
-                                        if(isCorrectAnswer == 1){
-                                            point_styles.push(checkmark_icon);
-                                        }else{
-                                            point_styles.push(x_icon);
-                                        }
-
-                                        j++;
-                                    }
-
-                                    datasets_val = [{
-                                        label: "Confidence Avg. Level in User Exp",
-                                        data: yDataConf,
-                                        borderColor: "#ff8405",
-                                        backgroundColor: "#ff8405",
-                                        borderWidth: 0.7,
-                                        pointRadius: 5,
-                                        pointHoverRadius: 7,
-                                        pointBackgroundColor: "#ff8405",
-                                        fill: false,
-                                    }, {
-                                        label: "Correct Number Of Answers Avg. Level in User Exp",
-                                        data: yDataCorrAns,
-                                        borderColor: "#000dad",
-                                        backgroundColor: "#000dad",
-                                        borderWidth: 0.7,
-                                        pointRadius: 5,
-                                        pointHoverRadius: 7,
-                                        pointBackgroundColor: "#000dad",
-                                        fill: false,
-                                    }, {
-                                        label: "User Confidence Level and Correct Answers",
-                                        data: yData_user,
-                                        borderColor: "#000000",
-                                        backgroundColor: "#000000",
-                                        borderWidth: 0.7,
-                                        pointRadius: 5,
-                                        pointHoverRadius: 7,
-                                        pointStyle: point_styles,
-                                        //pointBackgroundColor: colorOfPoints,
-                                        fill: false,
-                                    }];
-
-                                    /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
-                        yDataCorrAns = [0.25,0.64,0.7,0.1435526,0.51,0.184345,0.6,0.48,0.89,0.4,0.333,0.54,0.868,0.4465,0.76,0.57,0.66,0.39,0.6,0.3];
-
-                        data.data = [{'avgTime': 17, 'avgCorrAns': 0.25},{'avgTime': 9, 'avgCorrAns': 0.64},
-                            {'avgTime': 8, 'avgCorrAns': 0.7},{'avgTime': 19, 'avgCorrAns': 0.1435526},
-                            {'avgTime': 11, 'avgCorrAns': 0.51},{'avgTime': 18, 'avgCorrAns': 0.184345},
-                            {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 14, 'avgCorrAns': 0.48},
-                            {'avgTime': 5, 'avgCorrAns': 0.89},{'avgTime': 13, 'avgCorrAns': 0.4},
-                            {'avgTime': 16, 'avgCorrAns': 0.333},{'avgTime': 9, 'avgCorrAns': 0.54},
-                            {'avgTime': 4, 'avgCorrAns': 0.868},{'avgTime': 14, 'avgCorrAns': 0.4465},
-                            {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
-                            {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
-                            {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];*/
-                                    const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
-                                    if ($scope.confidenceLineGraphAggregate){
-                                        $scope.confidenceLineGraphAggregate.destroy();
-                                    }
-
-                                    Chart.defaults.global.defaultFontColor = 'black';
-                                    Chart.defaults.global.defaultFontFamily = "Calibri";
-                                    Chart.defaults.global.defaultFontSize = 14;
-
-                                    $scope.confidenceLineGraphAggregate = new Chart(ctx, {
-                                        type: 'line',
-                                        data: {
-                                            labels: xLabels,
-                                            datasets: datasets_val
-                                        },
-                                        options: {
-                                            tooltips: {
-                                                mode: 'index',
-                                                callbacks: {
-                                                    title: function (tooltipItem, data) {
-                                                        return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
-                                                    },
-                                                    label: function (tooltipItem, data) {
-                                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
-                                                        var yLabel = tooltipItem.yLabel;
-                                                        if(xLabel == 'User Confidence Level and Correct Answers'){
-                                                            var image = point_styles[tooltipItem['index']];
-                                                            if (image == checkmark_icon){
-                                                                return 'User answers correct with Confidence Level of: ' + yLabel + '%';
-                                                            }
-                                                            else {
-                                                                return 'User answers incorrect with Confidence Level of: ' + yLabel + '%';
-                                                            }
-                                                        } else {
-                                                            return xLabel + ': ' + yLabel + '%';
-                                                        }
+                            $scope.confidenceLineGraphAggregate = new Chart(ctx, {
+                                type: 'line',
+                                data: {
+                                    labels: xLabels,
+                                    datasets: datasets_val
+                                },
+                                options: {
+                                    tooltips: {
+                                        mode: 'index',
+                                        callbacks: {
+                                            title: function (tooltipItem, data) {
+                                                return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
+                                            },
+                                            label: function (tooltipItem, data) {
+                                                var xLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                                var yLabel = tooltipItem.yLabel;
+                                                if(xLabel == 'User Confidence Level and Correct Answers'){
+                                                    var image = point_styles[tooltipItem['index']];
+                                                    if (image == checkmark_icon){
+                                                        return 'User answers correct with Confidence Level of: ' + yLabel + '%';
                                                     }
+                                                    else {
+                                                        return 'User answers incorrect with Confidence Level of: ' + yLabel + '%';
+                                                    }
+                                                } else {
+                                                    return xLabel + ': ' + yLabel + '%';
                                                 }
-                                            },
-                                            scales: {
-                                                yAxes: [{
-                                                    ticks: {
-                                                        min: 0,
-                                                    },
-                                                    scaleLabel: {
-                                                        display: true,
-                                                        labelString: '%'
-                                                    }
-                                                }],
-                                                xAxes: [{
-                                                    scaleLabel: {
-                                                        display: true,
-                                                        labelString: 'Correspondence Order'
-                                                    }
-                                                }],
-                                            },
-                                            legend: {
-                                                display: true,
-                                                labels: {
-                                                    usePointStyle: true,
-                                                }
-                                            },
-                                            title: {
-                                                display: true,
-                                                text: 'Confidence Level & Answer as function of Correspondence Order',
-                                                fontSize: 18
                                             }
                                         }
-                                    });
-                                    document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
-                                    callback(true);
-
-                                } else {
-                                    callback(false);
+                                    },
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                min: 0,
+                                            },
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: '%'
+                                            }
+                                        }],
+                                        xAxes: [{
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Correspondence Order'
+                                            }
+                                        }],
+                                    },
+                                    legend: {
+                                        display: true,
+                                        labels: {
+                                            usePointStyle: true,
+                                        }
+                                    },
+                                    title: {
+                                        display: true,
+                                        text: 'Confidence Level & Answer as function of Correspondence Order',
+                                        fontSize: 18
+                                    }
                                 }
                             });
+                            document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
+                            callback(true);
+
                         } else {
                             callback(false);
                         }
                     });
-                    callback(true);
                 } else {
                     callback(false);
-
                 }
             });
+            callback(true);
 
         } else {
             $http({
@@ -1685,7 +1662,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }
             });
         }
-
 
     };
 
@@ -2618,163 +2594,181 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 let all_users = [];
                 let all_exps = [];
 
-                if($scope.groupsToShowStats.length === 1){
-                    if($scope.usersToShowStats.length === 1){
-                        let user_name = '';
-                        for (let index in $scope.allUserNames){
-                            if($scope.allUserNames[index].id === $scope.usersToShowStats[0]){
-                                user_name = $scope.allUserNames[index].fullName;
-                            }
-                        }
-                        column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + column_names[0];
-                    } else {
-                        column_names[0] = 'Selected Users,\nExp Name:\n' + column_names[0];
+                $http({
+                    method: 'POST',
+                    url: 'php/check_comparison_for_evaluation_measures.php',
+                    data: $.param({
+                        usersToShowStats : $scope.usersToShowStats,
+                        exp_id : $scope.relExpForUsersToShowStats[0].id
+                    }),
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     }
-                } else {
-                    if($scope.usersToShowStats.length === 1){
-                        let user_name = '';
-                        for (let index in $scope.allUserNames){
-                            if($scope.allUserNames[index].id === $scope.usersToShowStats[0]){
-                                user_name = $scope.allUserNames[index].fullName;
-                            }
-                        }
-                        column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + column_names[0];
-                    } else {
-                        column_names[0] = 'Selected Users,\nExp Name:\n' + column_names[0];
-                    }
-                }
+                }).then(function (data) {
+                    if (data.data !== '1') {
+                        let count_other_u_same_exp = data.data;
+                        console.log("count_other_u_same_exp", count_other_u_same_exp);
 
-                for (let index in $scope.allUserNames){
-                    if(index >= 2){
-                        all_users.push($scope.allUserNames[index].id);
-                    }
-                }
-
-                for (let index in $scope.allTestExpNames){
-                    if(index >= 2){
-                        all_exps.push({"id" : $scope.allTestExpNames[index].id,
-                            "max_num_pairs" : $scope.allTestExpNames[index].max_num_pairs});
-                    }
-                }
-
-                $scope.computeMeasuresByOption(function(all_expNames, all_precision, all_recall, all_cal, all_res){
-
-                    let avg_precision = 0;
-                    let avg_recall = 0;
-                    let avg_cal = 0;
-                    let avg_res = 0;
-                    let num_of_exp = all_expNames.length;
-
-                    for(let i = 0; i < all_expNames.length; i++){
-                        avg_precision += all_precision[i]
-                        avg_recall += all_recall[i]
-                        avg_cal += all_cal[i]
-                        avg_res += all_res[i]
-                    }
-                    avg_precision = avg_precision / num_of_exp;
-                    avg_recall = avg_recall / num_of_exp;
-                    avg_cal = avg_cal / num_of_exp;
-                    avg_res = avg_res / num_of_exp;
-
-                    column_names.push('All Users, All Exp');
-                    precision_by_name.push(Math.round(avg_precision * 100) / 100);
-                    recall_by_name.push(Math.round(avg_recall * 100) / 100);
-                    cal_by_name.push(Math.round(avg_cal * 100) / 100);
-                    res_by_name.push(Math.round(avg_res * 100) / 100);
-
-                    document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = "";
-                    var ctx = document.getElementById("evaluationMeasuresGraphAggregate").getContext("2d");
-
-                    if ($scope.evaluationMeasuresGraphAggregate){
-                        $scope.evaluationMeasuresGraphAggregate.destroy();
-                    }
-
-                    Chart.defaults.global.defaultFontColor = 'black';
-                    Chart.defaults.global.defaultFontFamily = "Calibri";
-                    Chart.defaults.global.defaultFontSize = 14;
-
-                    $scope.evaluationMeasuresGraphAggregate = new Chart(ctx, {
-                        type: 'bar',
-                        data: {
-                            labels: column_names,
-                            datasets: [
-                                {
-                                    label: "Precision",
-                                    backgroundColor: "blue",
-                                    data: precision_by_name
-                                },
-                                {
-                                    label: "Recall",
-                                    backgroundColor: "green",
-                                    data: recall_by_name
-                                },
-                                {
-                                    label: "Calibration",
-                                    backgroundColor: "orange",
-                                    data: cal_by_name
-                                },
-                                {
-                                    label: "Resolution",
-                                    backgroundColor: "red",
-                                    data: res_by_name
-                                }]
-                        },
-                        options: {
-                            tooltips: {
-                                callbacks: {
-                                    label: function (tooltipItem, data) {
-                                        var xLabel = data.datasets[tooltipItem.datasetIndex].label;
-                                        var yLabel = tooltipItem.yLabel;
-                                        return xLabel + ': ' + yLabel + '%';
+                        if($scope.groupsToShowStats.length === 1){
+                            if($scope.usersToShowStats.length === 1){
+                                let user_name = '';
+                                for (let index in $scope.allUserNames){
+                                    if($scope.allUserNames[index].id === $scope.usersToShowStats[0]){
+                                        user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                            },
-                            barValueSpacing: 20,
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero: true
+                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + column_names[0];
+                            } else {
+                                column_names[0] = 'Selected Users,\nExp Name:\n' + column_names[0];
+                            }
+                        } else {
+                            if($scope.usersToShowStats.length === 1){
+                                let user_name = '';
+                                for (let index in $scope.allUserNames){
+                                    if($scope.allUserNames[index].id === $scope.usersToShowStats[0]){
+                                        user_name = $scope.allUserNames[index].fullName;
+                                    }
+                                }
+                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + column_names[0];
+                            } else {
+                                column_names[0] = 'Selected Users,\nExp Name:\n' + column_names[0];
+                            }
+                        }
+
+                        for (let index in $scope.allUserNames){
+                            if(index >= 2){
+                                all_users.push($scope.allUserNames[index].id);
+                            }
+                        }
+
+                        for (let index in $scope.allTestExpNames){
+                            if(index >= 2){
+                                all_exps.push({"id" : $scope.allTestExpNames[index].id,
+                                    "max_num_pairs" : $scope.allTestExpNames[index].max_num_pairs});
+                            }
+                        }
+
+                        $scope.computeMeasuresByOption(function(all_expNames, all_precision, all_recall, all_cal, all_res){
+
+                            let avg_precision = 0;
+                            let avg_recall = 0;
+                            let avg_cal = 0;
+                            let avg_res = 0;
+                            let num_of_exp = all_expNames.length;
+
+                            for(let i = 0; i < all_expNames.length; i++){
+                                avg_precision += all_precision[i]
+                                avg_recall += all_recall[i]
+                                avg_cal += all_cal[i]
+                                avg_res += all_res[i]
+                            }
+                            avg_precision = avg_precision / num_of_exp;
+                            avg_recall = avg_recall / num_of_exp;
+                            avg_cal = avg_cal / num_of_exp;
+                            avg_res = avg_res / num_of_exp;
+
+                            column_names.push('All Users, All Exp');
+                            precision_by_name.push(Math.round(avg_precision * 100) / 100);
+                            recall_by_name.push(Math.round(avg_recall * 100) / 100);
+                            cal_by_name.push(Math.round(avg_cal * 100) / 100);
+                            res_by_name.push(Math.round(avg_res * 100) / 100);
+
+                            document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = "";
+                            var ctx = document.getElementById("evaluationMeasuresGraphAggregate").getContext("2d");
+
+                            if ($scope.evaluationMeasuresGraphAggregate){
+                                $scope.evaluationMeasuresGraphAggregate.destroy();
+                            }
+
+                            Chart.defaults.global.defaultFontColor = 'black';
+                            Chart.defaults.global.defaultFontFamily = "Calibri";
+                            Chart.defaults.global.defaultFontSize = 14;
+
+                            $scope.evaluationMeasuresGraphAggregate = new Chart(ctx, {
+                                type: 'bar',
+                                data: {
+                                    labels: column_names,
+                                    datasets: [
+                                        {
+                                            label: "Precision",
+                                            backgroundColor: "blue",
+                                            data: precision_by_name
+                                        },
+                                        {
+                                            label: "Recall",
+                                            backgroundColor: "green",
+                                            data: recall_by_name
+                                        },
+                                        {
+                                            label: "Calibration",
+                                            backgroundColor: "orange",
+                                            data: cal_by_name
+                                        },
+                                        {
+                                            label: "Resolution",
+                                            backgroundColor: "red",
+                                            data: res_by_name
+                                        }]
+                                },
+                                options: {
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function (tooltipItem, data) {
+                                                var xLabel = data.datasets[tooltipItem.datasetIndex].label;
+                                                var yLabel = tooltipItem.yLabel;
+                                                return xLabel + ': ' + yLabel + '%';
+                                            }
+                                        }
                                     },
-                                    scaleLabel: {
+                                    barValueSpacing: 20,
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero: true
+                                            },
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: '%'
+                                            }
+                                        }],
+                                        xAxes: [{
+                                            scaleLabel: {
+                                                display: true,
+                                                labelString: 'Group Names'
+                                            }
+                                        }],
+                                    },
+                                    legend: {
+                                        display: true
+                                    },
+                                    title: {
                                         display: true,
-                                        labelString: '%'
+                                        text: 'Evaluation Measures',
+                                        fontSize: 18
                                     }
-                                }],
-                                xAxes: [{
-                                    scaleLabel: {
-                                        display: true,
-                                        labelString: 'Group Names'
+                                },
+                                plugins: [{
+                                    beforeInit: function (chart) {
+                                        chart.data.labels.forEach(function (e, i, a) {
+                                            if (/\n/.test(e)) {
+                                                a[i] = e.split(/\n/)
+                                            }
+                                        })
                                     }
-                                }],
-                            },
-                            legend: {
-                                display: true
-                            },
-                            title: {
-                                display: true,
-                                text: 'Evaluation Measures',
-                                fontSize: 18
-                            }
-                        },
-                        plugins: [{
-                            beforeInit: function (chart) {
-                                chart.data.labels.forEach(function (e, i, a) {
-                                    if (/\n/.test(e)) {
-                                        a[i] = e.split(/\n/)
-                                    }
-                                })
-                            }
-                        }]
+                                }]
 
-                    });
+                            });
 
-                    document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = $scope.evaluationMeasuresGraphAggregate;
+                            document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = $scope.evaluationMeasuresGraphAggregate;
 
-                    callback(true);
+                            callback(true);
 
-                }, all_users, all_exps);
+                        }, all_users, all_exps);
 
-
+                    } else {
+                        callback(false);
+                    }
+                });
             } else{
                 document.getElementById("evaluationMeasuresGraphAggregate").innerHTML = "";
                 var ctx = document.getElementById("evaluationMeasuresGraphAggregate").getContext("2d");
