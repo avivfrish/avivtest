@@ -83,7 +83,7 @@ function SyncScroll(table_id) {
     }
 };
 
-app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout, $location, $mdToast) {
+app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout, $mdToast) {
 
     $scope.init_avivTest = function () {
         // this function called when loading the site. init all params.
