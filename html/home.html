@@ -23,9 +23,9 @@ much harder. <br>
 Recently, the traditional paradigm of “humans do it better"
 was challenged with a recent work showing that human judgment
 is biased, and thus affects human matching abilities. <br><br>
-Acknowledging cognitive awareness in human matching, InCognitoMatch <b style="font-size: x-large;">I</b>ntroducing
-<b style="font-size: x-large;">C</b>ognitive <b style="font-size: x-large;">B</b>iases
-to <b style="font-size: x-large;">C</b>rowdsourced <b style="font-size: x-large;">M</b>atching is a handy tool to validate, annotate, and correct correspondences
+Acknowledging cognitive awareness in human matching, InCognitoMatch <b style="font-size: x-large;">In</b>troducing
+<b style="font-size: x-large;">Cognit</b>ive <b style="font-size: x-large;">B</b>iases
+to Crowdsourced <b style="font-size: x-large;">Match</b>ing is a handy tool to validate, annotate, and correct correspondences
 using the crowd whilst accounting for human
 matching biases
  <br><br>
@@ -42,63 +42,63 @@ term names and types, instance examples, schemata hierarchy,
 algorithm matching result and the majority decision of the crowd. <br>
 
 Your task is to provide feedback, stating whether a pair is a match
-accompanied by a confidence level in the decision on a [0,100] scale
+accompanied by a confidence level in the decision on a [0,100] scale. <br>
+You will not be able to choose confidence level of 50.
 You will have to achieve as many matching questions as possible within a
 limited time frame.<br>
 
-<!--(appearing on the screen’s top right part).
- In Figure 2, we see a request regarding a pair of
- unitOfMeasure and uom. Both terms share the same type
- (string) and the system’s suggestion is 0.4. An instance of
- unitOfMeasure is ‘kg’ and uom instance is ‘g’. The direct
- parent of unitOfMeasure is Item and a sibling term is, for
- example unitPrice. When achieving a matching decision, a
- user may browse this information, while InCognitoMatch
- records her mouse movements in the background.
+<h5 style="font-family: 'Courier New', Courier, monospace">
+ Example
+</h5>
 
-There are three parts to the task:
-<br>
-(1) User information.
-<br>
-(2) Logical riddles.
-<br>
-(3) Training phase.
-<br>
-(4) Actual task.
+<img class="center" src="/images/questionScreen.PNG" width="70%" height="38.135%" alt="Task Screen Example">
 
-In the second stage, you will encountered some logical riddles.
-You will have 3 minutes at most to answer all,
-Try answer on as much as you can.
-
-The third and fourth part contains the matching task, where the training
-phase is short part aimed at introducing you the system.
-While the third part lasts unlimited time, the fourth part is constrained
-to 3 minutes.
+The figure above presents an example for task screen that you will encounter.
+we see a request regarding a pair of <em>quantity</em> and <em>qty</em>.<br>
+The top right part contains indication about the time remains for the task.<br>
+Next, each side is devoted to present term details.
+Each term name appears clearly on top and marked in red in the center of the screen.<br>
+Following the name, the data types and instance examples are introduced.
+As shown, the types of quantity and
+qty is Decimal and int respectively. An instance of
+quantity is 4580.55 and uom instance is 1.<br>
+The center part of the screen displays schemata hierarchy.
+The color legend is as follows:<br>
+<b style="color: green">Green</b> - Parents of the term.<br>
+<b style="color: red">Red</b> - The Term.<br>
+<b style="color: blue">Blue</b> - Siblings of the term.
+<br>
+The direct parent of quantity is Item and a sibling term is, for
+example unitOfMeasure.<br>
+As demonstrated in the later part,
+the algorithm matching result is 29% and the majority decision of the crowd is 72.3. <br>
+When achieving a matching decision, this information will be submitted via the bottom part.<br>
 
 
-Regarding each pair, the following information will be provided for each term:
-name, type, hierarchy, instances (if exist), system suggestion, and
-majority decision.
-<br>
-<img alt="user_task_screen" src="/images/questionScreen.PNG" style="height: 75%; width: 90%">
-<br>
-The figure above shows an example to screen exp that you will see.
-<br>
-The color legend in the hierarchy:
-<br>
-<b style="color: green">Green</b> - Parent of the term in the hierarchy.
-<br>
-<b style="color: red">Red</b> - The Term.
-<br>
-<b style="color: blue">Blue</b> - Sibling of the term in the hierarchy.
-<br><br>-->
+<h5 style="font-family: 'Courier New', Courier, monospace">
+ Task Settings
+</h5>
+
+Two types of tasks are offered for you- a short demonstration ("DEMO") or full task ("TASK").<br>
+The demo will last about 5 minutes where the full task will last up to 20 minutes.<br>
+
+Both starts with providing personal information (e.g., nickname) and performing an intelligence test.<br>
+The intelligence test is restricted to 2 minutes. Try answer as many riddles as you can.<br>
+Subsequently, a subset of matching correspondences will be introduced.
+The matching screen structure is identical to the description above.
+The demo task has only one part of matching where the full version has
+additional part of training (stands as the first part with unlimited time).<br>
+At the end, your session will be finalized with a worker dashboard contains statistics about your performance.<br>
+
+By proceeding to the task, you approve that your personal information and your task results
+will be stored in the system. This data will be used for academic research only.<br><br>
 
 Click on the button DEMO if you would like to have short demonstration. <br>
-Otherwise, Click on the button ACTUAL TASK.<br>
+Otherwise, click on the button TASK.<br>
 
  <div style="text-align: center; margin-top: 3.5%;">
   <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages();show_exp('demo')">DEMO</button>
-  <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages();show_exp('actual_task')">ACTUAL TASK</button>
+  <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages();show_exp('actual_task')">TASK</button>
  </div>
  <br><br>
 

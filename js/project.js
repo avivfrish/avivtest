@@ -72,6 +72,7 @@ app.service('fileUpload', ['$http', function ($http) {
 
 // myApp.controller('myCtrl', ['$scope', 'fileUpload', function($scope, fileUpload){
 
+/*
 function SyncScroll(table_id) {
     var table_idA = document.getElementById("HierarchyTable_contentA");
     var table_idB = document.getElementById("HierarchyTable_contentB");
@@ -81,7 +82,7 @@ function SyncScroll(table_id) {
     else {
         table_idA.scrollTop = table_idB.scrollTop;
     }
-};
+};*/
 
 
 
@@ -189,7 +190,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $(str2).hide();
         window.scrollTo(0,0);
 
-        const countDownDate = new Date().getTime() + 3 * 60000;
+        const countDownDate = new Date().getTime() + 2 * 60000;
         $scope.timeElapsed = setInterval(function() {
             var now = new Date().getTime();
             var distance = countDownDate - now;
@@ -2932,11 +2933,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(false);
             }
         });
-    };
-
-    $scope.show_notification_admin = function () {
-        $('#notification_toast').show();
-        $('#notification_toast .toast').toast('show');
     };
 
     /*$scope.capture_screen = function()
