@@ -1443,7 +1443,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 fill: false,
                             }, {
                                 label: "User Confidence Level and Correct Answers",
-                                data: [63, 70, 85, 55, 75, 90],//yData_user,
+                                data: [63, 70, 85, 55, 75, 91],//yData_user,
                                 borderColor: "#000000",
                                 backgroundColor: "#000000",
                                 borderWidth: 0.7,
@@ -1818,7 +1818,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     data: {
                         labels: xLabels,
                         datasets: [{
-                            data: [63, 70, 85, 55, 75, 90], //yData,
+                            data: [63, 70, 85, 55, 75, 91], //yData,
                             borderColor: "#000000",
                             pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, x_icon], //point_styles,
                             borderWidth: 0.7,
