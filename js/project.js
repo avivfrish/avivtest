@@ -1639,7 +1639,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: [82.972, 61.527, 52.26, 86.367, 85.92, 54.12], //yDataConf,
+                        data: [82.972, 55.527, 68.26, 75.367, 85.92, 78.12], //yDataConf,
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -1649,7 +1649,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         fill: false,
                     }, {
                         label: "Avg. Correct Answers",
-                        data: [76.925, 58.546, 34.56, 69.111, 84.222, 22.676], //yDataCorrAns,
+                        data: [68.925, 53.546, 34.56, 69.111, 84.222, 15.676], //yDataCorrAns,
                         borderColor: "#000dad",
                         backgroundColor: "#000dad",
                         borderWidth: 0.7,
@@ -2046,9 +2046,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         {'avgTime': 20, 'avgCorrAns': 0},{'avgTime': 15, 'avgCorrAns': 1},
                         {'avgTime': 6, 'avgCorrAns': 4},{'avgTime': 32, 'avgCorrAns': 0}];
                 } else {
-                    data.data = [{'avgTime': 8.214, 'avgCorrAns': 0.76},{'avgTime': 22.23, 'avgCorrAns': 0.58},
+                    data.data = [{'avgTime': 8.214, 'avgCorrAns': 0.68},{'avgTime': 22.23, 'avgCorrAns': 0.53},
                         {'avgTime': 27.124, 'avgCorrAns': 0.34},{'avgTime': 16.87, 'avgCorrAns': 0.69},
-                        {'avgTime': 10.627, 'avgCorrAns': 0.84},{'avgTime': 40.3525, 'avgCorrAns': 0.22}];
+                        {'avgTime': 10.627, 'avgCorrAns': 0.84},{'avgTime': 40.3525, 'avgCorrAns': 0.15}];
                 }
 
                 let xLabels = [];
