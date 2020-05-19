@@ -934,8 +934,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     "\t\t\t\t\t\t   aria-expanded=\"false\">More</a>\n" +
                     "\t\t\t\t\t\t<div class=\"dropdown-menu  dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\" id=\"navbar_admin\">\n" +
                     "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  data-toggle=\"modal\" data-target=\"#new_admin\">New Admin</a>\n" +
-                    "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  data-toggle=\"modal\" data-target=\"#add_exp_modal\">Add Experiment</a>\n" +
-                    "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  data-toggle=\"modal\" data-target=\"#update_exp_modal\" ng-click=\"get_exp_for_update()\">Update Experiment</a>\n" +
+                    "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  data-toggle=\"modal\" data-target=\"#add_exp_modal\">Add Task</a>\n" +
+                    "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  data-toggle=\"modal\" data-target=\"#update_exp_modal\" ng-click=\"get_exp_for_update()\">Update Task</a>\n" +
                     "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  ng-click=\"hide_pages(); show_statistics(false)\">Show Statistics</a>\n" +
                     "\t\t\t\t\t\t\t<a class=\"dropdown-item\" href=\"#\"  ng-click=\"admin_logout()\">Logout</a>\n" +
                     "\t\t\t\t\t\t</div>")($scope));
@@ -1419,23 +1419,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                 j++;
                             }
-                            /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
-                yDataCorrAns = [0.25,0.64,0.7,0.1435526,0.51,0.184345,0.6,0.48,0.89,0.4,0.333,0.54,0.868,0.4465,0.76,0.57,0.66,0.39,0.6,0.3];
 
-                data.data = [{'avgTime': 17, 'avgCorrAns': 0.25},{'avgTime': 9, 'avgCorrAns': 0.64},
-                    {'avgTime': 8, 'avgCorrAns': 0.7},{'avgTime': 19, 'avgCorrAns': 0.1435526},
-                    {'avgTime': 11, 'avgCorrAns': 0.51},{'avgTime': 18, 'avgCorrAns': 0.184345},
-                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 14, 'avgCorrAns': 0.48},
-                    {'avgTime': 5, 'avgCorrAns': 0.89},{'avgTime': 13, 'avgCorrAns': 0.4},
-                    {'avgTime': 16, 'avgCorrAns': 0.333},{'avgTime': 9, 'avgCorrAns': 0.54},
-                    {'avgTime': 4, 'avgCorrAns': 0.868},{'avgTime': 14, 'avgCorrAns': 0.4465},
-                    {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
-                    {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
-                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];*/
-
+                            [82.95, 55.58, 74.26, 65.36, 90.92, 42.12], //yDataConf, [68.92, 48.5, 34.56, 69.25, 86.8, 15.67], //yDataCorrAns,
                             datasets_val = [{
                                 label: "Avg. Confidence In User Exp",
-                                data: [88, 65, 53, 75, 96, 83], //yDataConf,
+                                data: [88.42, 65.92, 69.5, 75, 96.36, 52.7], //yDataConf,
                                 borderColor: "#ff8405",
                                 backgroundColor: "#ff8405",
                                 borderWidth: 0.7,
@@ -1445,7 +1433,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 fill: false,
                             }, {
                                 label: "Avg. Correct Answers In User Exp",
-                                data: [76, 58, 34, 69, 84, 45], //yDataCorrAns,
+                                data: [76.86, 58.5, 34.3, 64.1, 84.42, 25.29], //yDataCorrAns,
                                 borderColor: "#000dad",
                                 backgroundColor: "#000dad",
                                 borderWidth: 0.7,
@@ -1487,7 +1475,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         mode: 'index',
                                         callbacks: {
                                             title: function (tooltipItem, data) {
-                                                return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
+                                                return 'Pair Order ' + data['labels'][tooltipItem[0]['index']];
                                             },
                                             label: function (tooltipItem, data) {
                                                 var xLabel = data.datasets[tooltipItem.datasetIndex].label;
@@ -1519,7 +1507,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         xAxes: [{
                                             scaleLabel: {
                                                 display: true,
-                                                labelString: 'Correspondence Order'
+                                                labelString: 'Pair Order'
                                             }
                                         }],
                                     },
@@ -1589,7 +1577,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                     title: {
                                         display: true,
-                                        text: 'Confidence Level & Answer as function of Correspondence Order',
+                                        text: 'Confidence Level & Correct Answers as function of Pair Order',
                                         fontSize: 18
                                     }
                                 }
@@ -1639,7 +1627,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: [82.95, 55.58, 68.26, 75.36, 82.92, 42.12], //yDataConf,
+                        data: [82.95, 55.58, 74.26, 65.36, 90.92, 42.12], //yDataConf
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -1679,7 +1667,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 mode: 'index',
                                 callbacks: {
                                     title: function (tooltipItem, data) {
-                                        return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
+                                        return 'Pair Order ' + data['labels'][tooltipItem[0]['index']];
                                     },
                                     label: function (tooltipItem, data) {
                                         var xLabel = data.datasets[tooltipItem.datasetIndex].label;
@@ -1701,7 +1689,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 xAxes: [{
                                     scaleLabel: {
                                         display: true,
-                                        labelString: 'Correspondence Order'
+                                        labelString: 'Pair Order'
                                     }
                                 }],
                             },
@@ -1748,7 +1736,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                             title: {
                                 display: true,
-                                text: 'Confidence Level & Answer as function of Correspondence Order',
+                                text: 'Confidence Level & Correct Answers as function of Pair Order',
                                 fontSize: 18
                             }
                         }
@@ -1757,7 +1745,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     document.getElementById("confidenceLineGraphAggregate-legends").innerHTML = ($scope.confidenceLineGraphAggregate).generateLegend();
                     callback(true);
                 } else {
-                    console.log('Get line graph data - confidence levels failed');
                     callback(false);
                 }
             });
@@ -1850,7 +1837,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     tooltip.displayColors = false;
                                 },
                                 title: function (tooltipItem, data) {
-                                    return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
+                                    return 'Pair Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
                                     var image = data['datasets'][0]['pointStyle'][tooltipItem['index']];
@@ -1881,7 +1868,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             xAxes: [{
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Correspondence Order'
+                                    labelString: 'Pair Order'
                                 }
                             }],
                         },
@@ -1890,7 +1877,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Confidence Level as function of Correspondence Order',
+                            text: 'Confidence Level as function of Pair Order',
                             fontSize: 18
                         }
                     },
@@ -1972,7 +1959,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             displayColors: false,
                             callbacks: {
                                 title: function (tooltipItem, data) {
-                                    return 'Correspondence Order' + data['labels'][tooltipItem[0]['index']];
+                                    return 'Pair Order' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
                                     var pointColor = data['datasets'][0]['backgroundColor'][tooltipItem['index']];
@@ -1990,7 +1977,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Answer Time as function of Correspondence Order',
+                            text: 'Answer Time as function of Pair Order',
                             fontSize: 18
                         },
                         scales: {
@@ -2006,7 +1993,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             xAxes: [{
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Correspondence Order'
+                                    labelString: 'Pair Order'
                                 }
                             }],
                         }
@@ -2140,7 +2127,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         tooltips: {
                             callbacks: {
                                 title: function (tooltipItem, data) {
-                                    return 'Correspondence Order ' + data['labels'][tooltipItem[0]['index']];
+                                    return 'Pair Order ' + data['labels'][tooltipItem[0]['index']];
                                 },
                                 label: function (tooltipItem, data) {
                                     var yLabel = avgCorrAnsArr[tooltipItem['index']];
@@ -2169,7 +2156,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Time Range as function of Correspondence Order',
+                            text: 'Answer Time as function of Pair Order',
                             fontSize: 18
                         },
                         scales: {
@@ -2185,7 +2172,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             xAxes: [{
                                 scaleLabel: {
                                     display: true,
-                                    labelString: 'Correspondence Order'
+                                    labelString: 'Pair Order'
                                 }
                             }],
                         }
@@ -2196,7 +2183,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(true);
 
             } else {
-                console.log('Get bar graph data - time range failed');
                 callback(false);
             }
         });
@@ -2270,7 +2256,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
 
             title: {
-                text: 'Mouse Location During The Experiement',
+                text: 'Mouse Location During The Task',
                 style: {
                     fontSize: 18,
                     fontWeight: 'bold'
@@ -2715,9 +2701,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + single_exp_name;
+                                column_names[0] = 'User Name:\n' + user_name + '\nTask Name:\n' + single_exp_name;
                             } else {
-                                column_names[0] = 'Selected Users,\nExp Name:\n' + single_exp_name;
+                                column_names[0] = 'Selected Users,\nTask Name:\n' + single_exp_name;
                             }
                         } else {
                             if($scope.usersToShowStats.length === 1){
@@ -2727,9 +2713,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + single_exp_name;
+                                column_names[0] = 'User Name:\n' + user_name + '\nTask Name:\n' + single_exp_name;
                             } else {
-                                column_names[0] = 'Selected Users,\nExp Name:\n' + single_exp_name;
+                                column_names[0] = 'Selected Users,\nTask Name:\n' + single_exp_name;
                             }
                         }
 
@@ -2776,9 +2762,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             avg_res = avg_res / num_of_exp;
 
                             if(count_other_u_same_exp == 0){
-                                column_names.push('All Users,\nAll Exp');
+                                column_names.push('All Users,\nAll Tasks');
                             } else {
-                                column_names.push('All Users,\n Exp Name:\n' + single_exp_name);
+                                column_names.push('All Users,\n Task Name:\n' + single_exp_name);
                             }
                             precision_by_name.push(Math.round(avg_precision * 100) / 100);
                             recall_by_name.push(Math.round(avg_recall * 100) / 100);
@@ -2902,7 +2888,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             {
                                 label: "Precision",
                                 backgroundColor: "blue",
-                                data: [0.75, 0.4]//precision_by_name
+                                data: [0.78, 0.4]//precision_by_name
                             },
                             {
                                 label: "Recall",
