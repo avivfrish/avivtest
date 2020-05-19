@@ -1744,28 +1744,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 return text.join('');
                             },
 
-                            legendCallback: function(chart) {
-                                var text = [];
-                                text.push('<ul class="' + chart.id + '-legend">');
-                                for (var i = 0; i < chart.data.datasets.length; i++) {
-                                    var line_color = chart.data.datasets[i].backgroundColor;
-                                    text.push('<li style="display: inline-block; list-style-type: none;">' +
-                                        '<span class="conf_legend" style="color:' + line_color +' ">' +
-                                        '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
-                                        ' color: ' + line_color + ';"></i></span>');
-                                    //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-
-                                    if (chart.data.datasets[i].label) {
-                                        text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
-                                            + chart.data.datasets[i].label + '</span>');
-                                    }
-
-                                    text.push('</li><div style="clear: both"></div>');
-                                }
-                                text.push('</ul>');
-                                return text.join('');
-                            },
-
                             title: {
                                 display: true,
                                 text: 'Confidence Level & Answer as function of Correspondence Order',
@@ -2188,7 +2166,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         },
                         legend: {
-                            display: true
+                            display: false
                         },
                         title: {
                             display: true,
