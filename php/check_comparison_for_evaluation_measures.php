@@ -9,7 +9,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 $whereClause = "";
 foreach ($usersToShowStats as $user){
     if($whereClause !== ""){
-        $whereClause = $whereClause . "and user_id != " . $user . " ";
+        $whereClause = $whereClause . "or user_id != " . $user . " ";
 
     } else{
         $whereClause = $whereClause . "user_id != " . $user . " ";
@@ -18,7 +18,7 @@ foreach ($usersToShowStats as $user){
 
 $sql="select count(distinct user_id) as count_r
 from exp_results
-where ". $whereClause ."and exp_id = ".$exp_id;
+where (". $whereClause .") and exp_id = ".$exp_id;
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
