@@ -1421,7 +1421,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
 
                             datasets_val = [{
-                                label: "Confidence Avg. Level in User Exp",
+                                label: "Avg. Confidence In User Exp",
                                 data: yDataConf,
                                 borderColor: "#ff8405",
                                 backgroundColor: "#ff8405",
@@ -1431,7 +1431,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 pointBackgroundColor: "#ff8405",
                                 fill: false,
                             }, {
-                                label: "Correct Number Of Answers Avg. Level in User Exp",
+                                label: "Avg. Correct Answers In User Exp",
                                 data: yDataCorrAns,
                                 borderColor: "#000dad",
                                 backgroundColor: "#000dad",
@@ -1533,6 +1533,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     legend: false,
                                     legendCallback: function(chart) {
                                         var text = [];
+                                        var countLiInLine = 0;
                                         text.push('<ul class="' + chart.id + '-legend">');
                                         for (var i = 0; i < chart.data.datasets.length; i++) {
                                             var line_color = chart.data.datasets[i].backgroundColor;
@@ -1540,37 +1541,45 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                             if(line_color == "#000000"){
 
-                                                text.push('<li style="list-style-type: none;">' +
-                                                    '<span class="conf_legend" style="color:' + line_color +' "></span>');
+                                                text.push('<li style="display: inline-block; list-style-type: none;">' +
+                                                    '<span class="conf_legend" style="padding-top: 10px; color:' + line_color +' "></span>');
                                                 text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                                     + 'User Confidence' + '</span>');
                                                 text.push('</li><div style="clear: both"></div>');
 
-                                                text.push('<li style="list-style-type: none;">' +
-                                                    '<span class="conf_legend" style="color:' + line_color +' ">' +
+                                                text.push('<li style="display: inline-block; list-style-type: none;">' +
+                                                    '<span class="conf_legend" style="padding-top: 0px; color:' + line_color +' ">' +
                                                     '<img src="/images/checkmark_icon.png" width="20" height="20" alt="">' + '</span>');
                                                 text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                                     + 'Correct Answer' + '</span>');
 
-                                                text.push('<span class="conf_legend" style="margin-left: 15px; color:' + line_color +' ">' +
+                                                text.push('<span class="conf_legend" style="padding-top: 1px; margin-left: 15px; color:' + line_color +' ">' +
                                                     '<img src="/images/x_icon.png" width="20" height="20" alt="">' + '</span>' +
                                                     '<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                                     + 'Incorrect Answer' + '</span>');
 
                                                 text.push('</li><div style="clear: both"></div>');
                                             } else {
-                                                text.push('<li style="list-style-type: none;">' +
-                                                    '<span class="conf_legend" style="color:' + line_color +' ">' +
-                                                    '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
-                                                    ' color: ' + line_color + ';"></i></span>');
-                                                //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+                                                if(countLiInLine == 0 ){
+                                                    text.push('<li style="display: inline-block; list-style-type: none;">' +
+                                                        '<span class="conf_legend" style="color:' + line_color +' ">' +
+                                                        '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
+                                                        ' color: ' + line_color + ';"></i></span>');
 
-                                                if (chart.data.datasets[i].label) {
                                                     text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                                         + chart.data.datasets[i].label + '</span>');
-                                                }
 
-                                                text.push('</li><div style="clear: both"></div>');
+                                                    countLiInLine = countLiInLine + 1;
+                                                } else {
+                                                    text.push('<span class="conf_legend" style="margin-left: 15px; color:' + line_color +' ">' +
+                                                        '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
+                                                        ' color: ' + line_color + ';"></i></span>');
+
+                                                    text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                                        + chart.data.datasets[i].label + '</span>');
+
+                                                    text.push('</li><div style="clear: both"></div>');
+                                                }
                                             }
                                         }
                                         text.push('</ul>');
@@ -1708,7 +1717,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 text.push('<ul class="' + chart.id + '-legend">');
                                 for (var i = 0; i < chart.data.datasets.length; i++) {
                                     var line_color = chart.data.datasets[i].backgroundColor;
-                                    text.push('<li style="list-style-type: none;">' +
+                                    text.push('<li style="display: inline-block; list-style-type: none;">' +
                                         '<span class="conf_legend" style="color:' + line_color +' ">' +
                                         '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
                                         ' color: ' + line_color + ';"></i></span>');
