@@ -4,48 +4,46 @@
  WELCOME TO INCOGNITOMATCH
 </h1>
 
-The following information will provide a short overview and instruction necessary for applying the task.<br><br>
+The following information provides a short overview and instructions necessary for participating in the task.<br><br>
 
 <h3 style="font-family: 'Courier New', Courier, monospace">
  Overview
 </h3>
 Matching is a crucial element of integrating structured and
-semi-structured data.<br>
-For instance, when multiple organizations are merged and has to transfer the data
-between systems or when new system is introduced and the data has to migrate.
-Matching schema is the first step in this process.
-The matching aimed at finding correspondences between a target and candidate schema. <br>
-Human-in-the-loop data integration, and specifically in
-matching, has been recently challenged by the big data era.
-With richer data source variety, bigger volumes, and faster
-velocity, accessing and making use of humans input has become
-much harder. <br>
-Recently, the traditional paradigm of “humans do it better"
-was challenged with a recent work showing that human judgment
-is biased, and thus affects human matching abilities. <br>
-Acknowledging cognitive awareness in human matching, InCognitoMatch <b style="font-size: x-large;">In</b>troducing
-<b style="font-size: x-large;">Cognit</b>ive Biases to Crowdsourced
-<b style="font-size: x-large;">Match</b>ing is a handy tool to validate, annotate, and correct correspondences
-using the crowd whilst accounting for human
-matching biases
- <br><br>
+semi-structured data. For instance, when multiple organizations are merged,
+ both parties have to share information to be fused together into a new integrated system.
+
+Matching schemata is the first step in this process.
+Schema matching aims to find correspondences between concepts
+describing the meaning of data sources.
+Human-in-the-loop data integration, and specifically in matching,
+has been recently challenged by the big data era.
+With richer data source variety, bigger volumes,
+and faster velocity, accessing and making use of humans’ input
+has become much harder.<br>
+
+Acknowledging cognitive awareness in human matching, InCognitoMatch (<b>In</b>troducing
+<b>Cogni</b>tive Biases <b>to</b> Crowdsourced
+<b>Match</b>ing) is a handy tool to validate, annotate, and correct correspondences
+using the crowd.
+<br><br>
 
 <h3 style="font-family: 'Courier New', Courier, monospace">
  The Task
 </h3>
-In the main part of the session, several pairs will be introduced.
-Each pair consists a term from the candidate schema
-and a term from target schema. <br>
-Regarding each pair, supplementary properties regarding
-the matching problem will be introduced including
-term names and types, instance examples, schemata hierarchy,
-algorithm matching result and the majority decision of the crowd. <br>
+ The task begins with providing personal information (e.g., nickname) and a (short) intelligence test.
+ The intelligence test is restricted to 2 minutes. Try answering as many riddles as you can.<br>
+ Subsequently, a subset of matching correspondences will be introduced, beginning with a short period of training  (with unlimited time).
+ At the end, you will be able to analyze your performance using a dedicated dashboard.<br><br>
 
-Your task is to provide feedback, stating whether a pair is a match
-accompanied by a confidence level in the decision on a [0,100] scale.
-Please note that you will not be able to choose confidence level of 50. <br>
-During the task, you will have to achieve as many matching questions as possible within a
-limited time frame.<br><br>
+ In the main part of the session, several element pairs will be introduced.
+ Each pair consists of two <b>terms</b>, one from a candidate schema and one from target schema.
+ To accompany each pair, additional properties will be introduced including term names and types,
+ instance examples, schemata hierarchy, algorithmic matching result and a majority decision of the other participants.<br><br>
+
+ Your task is to provide feedback, stating whether a pair is a <b>match</b> (the two terms correspond) or <b>no match</b>
+ accompanied by a confidence level in the decision on a [0,100] scale. Please note that you will not be able to choose confidence level of 50.
+ During the task, you will have a limited time frame to answer the matching questions.<br><br>
 
 <h4 style="font-family: 'Courier New', Courier, monospace">
  Example
@@ -57,48 +55,44 @@ limited time frame.<br><br>
 </div>
 
 <br>
-The figure above presents an example for task screen that you will encounter.
-This demonstration shows a request regarding a pair of <em>quantity</em> and <em>qty</em>.<br>
-The top right part contains indication about the time remains for the task.<br>
-Next, each side is devoted to present term details.
-Each term name appears clearly on top and marked in red in the center of the screen.<br>
-Following the name, the data types and instance examples are introduced.
-As shown, the types of quantity and
-qty is Decimal and int respectively. An instance of
-quantity is 4580.55 and uom instance is 1.<br>
-The center part of the screen displays schemata hierarchy.
+ The figure above illustrates the matching task using a matching
+ question regarding the pair <em>quantity</em> and <em>qty</em>.<br><br>
+
+The top right part provides an indication of the time remaining for the whole task.<br>
+
+ The two sides of screen show information about the two terms.
+ Each term name appears clearly on top and marked in red in the center of the screen.<br>
+ Following the name, the data types and instance examples are introduced.
+ In this example, the types of <em>quantity</em> and <em>qty</em> are “Decimal” and “int”, respectively.
+ An example instance of <em>quantity</em> is 4580.55 and <em>qty</em> instance is 35<br>
+
+The center part of the screen displays the schemata hierarchy.
 The color legend is as follows:<br>
 <b style="color: green">Green</b> - Parents of the term.<br>
-<b style="color: red">Red</b> - The Term.<br>
+<b style="color: red">Red</b> - The term.<br>
 <b style="color: blue">Blue</b> - Siblings of the term.
 <br>
-The direct parent of quantity is Item and a sibling term is, for
-example unitOfMeasure.<br>
-As demonstrated in the later part,
-the algorithm matching result is 29% and the majority decision of the crowd is 72.3%. <br>
-When achieving a matching decision, this information will be submitted via the bottom part.<br><br>
+The direct parent of <em>quantity</em> is <em>Item</em> and a sibling term is, for
+example, <em>unitOfMeasure</em>.<br>
+As demonstrated below,
+the algorithm matching result is 29% and the majority decision of the crowd is 72.3%,
+ both indicating a match decision.<br>
+ Finally, the decision should be made (match\no match), the respective confidence should be selected
+ and then press on the “submit” button.<br><br>
 
 
 <h4 style="font-family: 'Courier New', Courier, monospace">
  Task Settings
 </h4>
 
-Two types of tasks are offered for you- a short demonstration ("DEMO") or full task ("TASK").<br>
-The demo will last about 5 minutes where the full task will last up to 20 minutes.<br>
+At this point there are two types of tasks - a short demonstration ("DEMO") or full task ("TASK").<br>
+The demo takes about 5 minutes where the full task may last up to 20 minutes.<br><br>
 
-Both starts with providing personal information (e.g., nickname) and performing an intelligence test.<br>
-The intelligence test is restricted to 2 minutes. Try answer as many riddles as you can.<br>
-Subsequently, a subset of matching correspondences will be introduced.
-The matching screen structure is identical to the description above.
-The demo task has only one part of matching where the full version has
-additional part of training (stands as the first part with unlimited time).<br>
-At the end, your session will be finalized with a worker dashboard contains statistics about your performance.<br><br>
+By proceeding to the task, you approve having your personal information and task results stored in the system.
+This data will be used for academic research only.<br><br>
 
-By proceeding to the task, you approve that your personal information and your task results
-will be stored in the system. This data will be used for academic research only.<br><br>
-
-Click on the button DEMO if you would like to have short demonstration. <br>
-Otherwise, click on the button TASK.<br>
+ Click on the button DEMO if you would like to participate in a short demonstration. <br>
+Otherwise, click on the TASK button.<br>
 
  <div style="text-align: center; margin-top: 3.5%;">
   <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages(); show_exp('demo')">DEMO</button>
