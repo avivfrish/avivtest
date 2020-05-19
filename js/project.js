@@ -2677,9 +2677,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             avg_res = avg_res / num_of_exp;
 
                             if(count_other_u_same_exp == 0){
-                                column_names.push('All Users, All Exp');
+                                column_names.push('All Users,\nAll Exp');
                             } else {
-                                column_names.push('All Users,\n Exp Name: ' + single_exp_name);
+                                column_names.push('All Users,\n Exp Name:\n' + single_exp_name);
                             }
                             precision_by_name.push(Math.round(avg_precision * 100) / 100);
                             recall_by_name.push(Math.round(avg_recall * 100) / 100);
