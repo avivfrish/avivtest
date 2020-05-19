@@ -1652,9 +1652,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 }
                             },*/
 
-                            legend: {
-                                display: false
-                            },
+                            legend: false,
                             legendCallback: function(chart) {
                                 var text = [];
                                 text.push('<ul class="' + chart.id + '-legend">');
@@ -1679,7 +1677,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         }
                     });
                     document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
-                    document.getElementById("confidenceLineGraphAggregate").innerHTML = ($scope.confidenceLineGraphAggregate).generateLegend();
+                    document.getElementById("confidenceLineGraphAggregate-legends").innerHTML = ($scope.confidenceLineGraphAggregate).generateLegend();
                     callback(true);
                 } else {
                     console.log('Get line graph data - confidence levels failed');
