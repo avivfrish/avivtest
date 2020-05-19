@@ -2599,6 +2599,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 let exps_to_compare = [];
                 let single_exp_name = expNames[0];
 
+                console.log("$scope.rel_exp_ids_checked[0]", $scope.rel_exp_ids_checked[0]);
                 $http({
                     method: 'POST',
                     url: 'php/check_comparison_for_evaluation_measures.php',
