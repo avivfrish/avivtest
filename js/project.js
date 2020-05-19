@@ -1653,7 +1653,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             },*/
 
                             legend: {
-                                display: false
+                                display: true
                             },
                             legendCallback: function(chart) {
                                 var text = [];
