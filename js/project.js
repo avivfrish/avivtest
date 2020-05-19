@@ -1665,8 +1665,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                                     if (chart.data.datasets[i].label) {
-                                        text.push("<span style='margin-left: 15px; font-size: medium;" +
-                                            " font-family: 'Calibri';'>" + chart.data.datasets[i].label + '</span>');
+                                        text.push("&nbsp&nbsp&nbsp" + chart.data.datasets[i].label);
+                                        /*text.push("<span style='margin-left: 15px; font-size: medium;" +
+                                            " font-family: 'Calibri';'>" + chart.data.datasets[i].label + '</span>');*/
                                     }
 
                                     text.push('</div></li><div style="clear: both"></div>');
