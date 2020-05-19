@@ -1657,13 +1657,16 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 var text = [];
                                 text.push('<ul class="' + chart.id + '-legend">');
                                 for (var i = 0; i < chart.data.datasets.length; i++) {
-                                    text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+                                    text.push('<li style="list-style-type: none;">' +
+                                        '<div class="conf_legend"><i class="fas fa-circle fa-sm" style="display: inline-block;' +
+                                        '    color: red;"></i></div>');
+                                    //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                                     if (chart.data.datasets[i].label) {
                                         text.push('<span style="margin-left: 15px;">' + chart.data.datasets[i].label + '</span>');
                                     }
 
-                                    text.push('</div></li><div style="clear: both"></div>');
+                                    text.push('</li><div style="clear: both"></div>');
                                 }
                                 text.push('</ul>');
                                 return text.join('');

@@ -69,3 +69,16 @@ table.table th, table.table td {
 #closestMatch .highcharts-container .highcharts-root .highcharts-credits{
     display: none;
 }
+
+.conf_legend {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 30px;
+    color: red;
+}
+.conf_legend::before, .conf_legend::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid;
+}
