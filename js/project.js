@@ -1820,7 +1820,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         datasets: [{
                             data: [63, 70, 85, 55, 75, 91], //yData,
                             borderColor: "#000000",
-                            pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, x_icon], //point_styles,
+                            pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, checkmark_icon, x_icon], //point_styles,
                             borderWidth: 0.7,
                             pointRadius: 5,
                             pointHoverRadius: 7,
