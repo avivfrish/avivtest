@@ -1534,7 +1534,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     legendCallback: function(chart) {
                                         var text = [];
                                         var countLiInLine = 0;
-                                        text.push('<ul class="' + chart.id + '-legend">');
+                                        text.push('<ul class="' + chart.id + '-legend" style="cursor: default; text-align: center; margin-bottom: 0px;">');
                                         for (var i = 0; i < chart.data.datasets.length; i++) {
                                             var line_color = chart.data.datasets[i].backgroundColor;
                                             var label = chart.data.datasets[i].label;
@@ -1636,7 +1636,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         j++;
                     }
                     datasets_val = [{
-                        label: "Confidence Avg. Level",
+                        label: "Avg. Confidence",
                         data: yDataConf,
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
@@ -1646,7 +1646,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         pointBackgroundColor: "#ff8405",
                         fill: false,
                     }, {
-                        label: "Correct Number Of Answers Avg. Level",
+                        label: "Avg. Correct Answers",
                         data: yDataCorrAns,
                         borderColor: "#000dad",
                         backgroundColor: "#000dad",
@@ -1712,6 +1712,38 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             },*/
 
                             legend: false,
+                            legendCallback: function(chart) {
+                                var text = [];
+                                var countLiInLine = 0;
+                                text.push('<ul class="' + chart.id + '-legend" style="cursor: default; text-align: center; margin-bottom: 0px;">');
+                                for (var i = 0; i < chart.data.datasets.length; i++) {
+                                    var line_color = chart.data.datasets[i].backgroundColor;
+                                    var label = chart.data.datasets[i].label;
+                                    if(countLiInLine == 0 ){
+                                        text.push('<li style="display: inline-block; list-style-type: none;">' +
+                                            '<span class="conf_legend" style="color:' + line_color +' ">' +
+                                            '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
+                                            ' color: ' + line_color + ';"></i></span>');
+
+                                        text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                            + chart.data.datasets[i].label + '</span>');
+
+                                        countLiInLine = countLiInLine + 1;
+                                    } else {
+                                        text.push('<span class="conf_legend" style="margin-left: 15px; color:' + line_color +' ">' +
+                                            '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
+                                            ' color: ' + line_color + ';"></i></span>');
+
+                                        text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                            + chart.data.datasets[i].label + '</span>');
+
+                                        text.push('</li><div style="clear: both"></div>');
+                                    }
+                                }
+                                text.push('</ul>');
+                                return text.join('');
+                            },
+
                             legendCallback: function(chart) {
                                 var text = [];
                                 text.push('<ul class="' + chart.id + '-legend">');
@@ -2156,7 +2188,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         },
                         legend: {
-                            display: false
+                            display: true
                         },
                         title: {
                             display: true,
