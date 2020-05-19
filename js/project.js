@@ -1638,7 +1638,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     }
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: [77.972, 61.527, 42.26, 86.367, 90.92, 54.12], //yDataConf,
+                        data: [82.972, 61.527, 52.26, 86.367, 85.92, 54.12], //yDataConf,
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -1648,7 +1648,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         fill: false,
                     }, {
                         label: "Avg. Correct Answers",
-                        data: [68.925, 43.546, 32.999, 75.111, 82.222, 48.676], //yDataCorrAns,
+                        data: [78.925, 43.546, 32.999, 75.111, 82.222, 48.676], //yDataCorrAns,
                         borderColor: "#000dad",
                         backgroundColor: "#000dad",
                         borderWidth: 0.7,
@@ -2045,9 +2045,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         {'avgTime': 20, 'avgCorrAns': 0},{'avgTime': 15, 'avgCorrAns': 1},
                         {'avgTime': 6, 'avgCorrAns': 4},{'avgTime': 32, 'avgCorrAns': 0}];
                 } else {
-                    data.data = [{'avgTime': 10, 'avgCorrAns': 0.76},{'avgTime': 25, 'avgCorrAns': 0.58},
-                        {'avgTime': 20, 'avgCorrAns': 0.34},{'avgTime': 15, 'avgCorrAns': 0.69},
-                        {'avgTime': 6, 'avgCorrAns': 0.84},{'avgTime': 32, 'avgCorrAns': 0.45}];
+                    data.data = [{'avgTime': 8.214, 'avgCorrAns': 0.76},{'avgTime': 22.23, 'avgCorrAns': 0.58},
+                        {'avgTime': 27.124, 'avgCorrAns': 0.34},{'avgTime': 16.87, 'avgCorrAns': 0.69},
+                        {'avgTime': 10.627, 'avgCorrAns': 0.84},{'avgTime': 40.3525, 'avgCorrAns': 0.22}];
                 }
 
                 let xLabels = [];
