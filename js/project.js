@@ -1646,6 +1646,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             },
                             legend: {
                                 display: true,
+                                useLineStyle: true,
                                 labels: {
                                     usePointStyle: true,
                                 }
