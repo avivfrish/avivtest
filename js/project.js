@@ -1577,6 +1577,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 }
                             });
                             document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
+                            document.getElementById("confidenceLineGraphAggregate-legends").innerHTML = ($scope.confidenceLineGraphAggregate).generateLegend();
                             callback(true);
 
                         } else {
