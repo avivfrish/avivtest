@@ -1420,7 +1420,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 j++;
                             }
 
-                            [82.95, 55.58, 74.26, 65.36, 90.92, 42.12], //yDataConf, [68.92, 48.5, 34.56, 69.25, 86.8, 15.67], //yDataCorrAns,
+                            //[82.95, 55.58, 74.26, 65.36, 90.92, 42.12], //yDataConf, [68.92, 48.5, 34.56, 69.25, 86.8, 15.67], //yDataCorrAns,
                             datasets_val = [{
                                 label: "Avg. Confidence In User Exp",
                                 data: [88.42, 65.92, 69.5, 75, 96.36, 52.7], //yDataConf,
@@ -1818,9 +1818,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     data: {
                         labels: xLabels,
                         datasets: [{
-                            data: yData,
+                            data: [63, 70, 85, 55, 75, 90], //yData,
                             borderColor: "#000000",
-                            pointStyle: point_styles,
+                            pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, x_icon], //point_styles,
                             borderWidth: 0.7,
                             pointRadius: 5,
                             pointHoverRadius: 7,
@@ -1877,7 +1877,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         },
                         title: {
                             display: true,
-                            text: 'Confidence Level as function of Pair Order',
+                            text: 'Confidence Level & Correct Answers as function of Pair Order',
                             fontSize: 18
                         }
                     },
@@ -1887,7 +1887,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 callback(true);
 
             } else {
-                //console.log('Data for line graph data - confidence levels is empty');
                 callback(false);
 
             }
@@ -1933,6 +1932,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     j++;
                 }
 
+                colorOfPoints = ["#0ccd00", "#cd0800", "#cd0800", "#0ccd00","#0ccd00", "#cd0800"];
+
                 const ctx = document.getElementById("timeBarGraph").getContext("2d");
                 if ($scope.timeBarGraph){
                     $scope.timeBarGraph.destroy();
@@ -1947,7 +1948,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     data: {
                         labels: xLabels,
                         datasets: [{
-                            data: yData,
+                            data: [12, 25, 20, 15, 6, 32],//yData,
                             borderColor: "#000000",
                             backgroundColor: colorOfPoints,
                         }
