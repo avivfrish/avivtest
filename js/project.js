@@ -1522,12 +1522,55 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                             }
                                         }],
                                     },
-                                    legend: {
-                                        display: true,
-                                        labels: {
-                                            usePointStyle: true,
+                                    /*legend: {
+                                display: true,
+                                useLineStyle: true,
+                                labels: {
+                                    usePointStyle: true,
+                                }
+                            },*/
+
+                                    legend: false,
+                                    legendCallback: function(chart) {
+                                        var text = [];
+                                        text.push('<ul class="' + chart.id + '-legend">');
+                                        for (var i = 0; i < chart.data.datasets.length; i++) {
+                                            var line_color = chart.data.datasets[i].backgroundColor;
+                                            var label = chart.data.datasets[i].label;
+
+                                            if(label == 'User Confidence Level and Correct Answers'){
+                                                text.push('<li style="list-style-type: none;">' +
+                                                    '<span class="conf_legend" style="color:' + line_color +' ">' +
+                                                    checkmark_icon + '</span>');
+                                                //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+
+                                                if (chart.data.datasets[i].label) {
+                                                    text.push("&nbsp&nbsp&nbsp" + label);
+                                                    text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                                        + chart.data.datasets[i].label + '</span>');
+                                                }
+
+                                                text.push('</li><div style="clear: both"></div>');
+                                            } else {
+                                                text.push('<li style="list-style-type: none;">' +
+                                                    '<span class="conf_legend" style="color:' + line_color +' ">' +
+                                                    '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
+                                                    ' color: ' + line_color + ';"></i></span>');
+                                                //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+
+                                                if (chart.data.datasets[i].label) {
+                                                    text.push("&nbsp&nbsp&nbsp" + label);
+                                                    text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                                        + chart.data.datasets[i].label + '</span>');
+                                                }
+
+                                                text.push('</li><div style="clear: both"></div>');
+                                            }
                                         }
+                                        text.push('</ul>');
+                                        return text.join('');
                                     },
+
                                     title: {
                                         display: true,
                                         text: 'Confidence Level & Answer as function of Correspondence Order',
@@ -1659,18 +1702,18 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 for (var i = 0; i < chart.data.datasets.length; i++) {
                                     var line_color = chart.data.datasets[i].backgroundColor;
                                     text.push('<li style="list-style-type: none;">' +
-                                        '<div><span class="conf_legend" style="color:' + line_color +' ">' +
+                                        '<span class="conf_legend" style="color:' + line_color +' ">' +
                                         '<i class="fas fa-circle fa-sm" style="display: inline-block;' +
                                         ' color: ' + line_color + ';"></i></span>');
                                     //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                                     if (chart.data.datasets[i].label) {
                                         text.push("&nbsp&nbsp&nbsp" + chart.data.datasets[i].label);
-                                        /*text.push("<span style='margin-left: 15px; font-size: medium;" +
-                                            " font-family: 'Calibri';'>" + chart.data.datasets[i].label + '</span>');*/
+                                        text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                            + chart.data.datasets[i].label + '</span>');
                                     }
 
-                                    text.push('</div></li><div style="clear: both"></div>');
+                                    text.push('</li><div style="clear: both"></div>');
                                 }
                                 text.push('</ul>');
                                 return text.join('');
@@ -2882,7 +2925,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }],
                         },
                         legend: {
-                            display: true
+                            display: true,
+                            position: 'bottom'
                         },
                         title: {
                             display: true,
