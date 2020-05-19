@@ -18,7 +18,7 @@ foreach ($usersToShowStats as $user){
 
 $sql="select count(distinct user_id) as count_r
 from exp_results
-where ". $whereClause ." and exp_id = ".$exp_id;
+where ". $whereClause ."and exp_id = ".$exp_id;
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
