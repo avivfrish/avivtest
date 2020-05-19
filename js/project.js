@@ -1538,14 +1538,13 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                             var line_color = chart.data.datasets[i].backgroundColor;
                                             var label = chart.data.datasets[i].label;
 
-                                            if(label == 'User Confidence Level and Correct Answers'){
+                                            if(line_color == "#000000"){
                                                 text.push('<li style="list-style-type: none;">' +
                                                     '<span class="conf_legend" style="color:' + line_color +' ">' +
-                                                    checkmark_icon + '</span>');
+                                                    '<img src="/images/checkmark_icon.png" width="20" height="20" alt="">' + '</span>');
                                                 //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                                                 if (chart.data.datasets[i].label) {
-                                                    text.push("&nbsp&nbsp&nbsp" + label);
                                                     text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                                         + chart.data.datasets[i].label + '</span>');
                                                 }
@@ -1559,7 +1558,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                                 //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                                                 if (chart.data.datasets[i].label) {
-                                                    text.push("&nbsp&nbsp&nbsp" + label);
                                                     text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                                         + chart.data.datasets[i].label + '</span>');
                                                 }
@@ -1708,7 +1706,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     //text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 
                                     if (chart.data.datasets[i].label) {
-                                        text.push("&nbsp&nbsp&nbsp" + chart.data.datasets[i].label);
                                         text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
                                             + chart.data.datasets[i].label + '</span>');
                                     }
