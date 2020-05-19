@@ -2610,6 +2610,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }).then(function (data) {
                     if (data.data !== '1') {
                         let count_other_u_same_exp = data.data;
+                        console.log("count_other_u_same_exp", count_other_u_same_exp);
                         if($scope.groupsToShowStats.length === 1){
                             if($scope.usersToShowStats.length === 1){
                                 let user_name = '';
@@ -2618,7 +2619,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:' + single_exp_name;
+                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + single_exp_name;
                             } else {
                                 column_names[0] = 'Selected Users,\nExp Name:\n' + single_exp_name;
                             }
@@ -2630,9 +2631,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         user_name = $scope.allUserNames[index].fullName;
                                     }
                                 }
-                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + column_names[0];
+                                column_names[0] = 'User Name:\n' + user_name + '\nExp Name:\n' + single_exp_name;
                             } else {
-                                column_names[0] = 'Selected Users,\nExp Name:\n' + column_names[0];
+                                column_names[0] = 'Selected Users,\nExp Name:\n' + single_exp_name;
                             }
                         }
 
