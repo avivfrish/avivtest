@@ -1653,7 +1653,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             },*/
 
                             legend: {
-                                display: true
+                                display: false
                             },
                             legendCallback: function(chart) {
                                 var text = [];
@@ -1678,6 +1678,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         }
                     });
+                    document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate.generateLegend();
                     document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
                     callback(true);
                 } else {
