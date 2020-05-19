@@ -75,6 +75,8 @@ table.table th, table.table td {
     align-items: center;
     text-align: center;
     width: 30px;
+    float: left;
+    padding-top: 6px
 }
 .conf_legend::before, .conf_legend::after {
     content: '';

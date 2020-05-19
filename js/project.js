@@ -2784,7 +2784,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         }],
                                     },
                                     legend: {
-                                        display: true
+                                        display: true,
+                                        position: 'bottom'
                                     },
                                     title: {
                                         display: true,
