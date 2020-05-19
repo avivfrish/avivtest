@@ -9,7 +9,7 @@ $conn = sqlsrv_connect($serverName, $connectionInfo);
 $whereClause = "";
 foreach ($usersToShowStats as $user){
     if($whereClause !== ""){
-        $whereClause = $whereClause . "or user_id != " . $user . " ";
+        $whereClause = $whereClause . "and user_id != " . $user . " ";
 
     } else{
         $whereClause = $whereClause . "user_id != " . $user . " ";

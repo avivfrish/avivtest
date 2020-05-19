@@ -1644,13 +1644,33 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     }
                                 }],
                             },
-                            legend: {
+                            /*legend: {
                                 display: true,
                                 useLineStyle: true,
                                 labels: {
                                     usePointStyle: true,
                                 }
+                            },*/
+
+                            legend: {
+                                display: false
                             },
+                            legendCallback: function(chart) {
+                                var text = [];
+                                text.push('<ul class="' + chart.id + '-legend">');
+                                for (var i = 0; i < chart.data.datasets.length; i++) {
+                                    text.push('<li style="list-style-type: none;"><div class="legendValue"><span style="background-color:' + chart.data.datasets[i].backgroundColor + '">&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+
+                                    if (chart.data.datasets[i].label) {
+                                        text.push('<span style="margin-left: 15px;">' + chart.data.datasets[i].label + '</span>');
+                                    }
+
+                                    text.push('</div></li><div style="clear: both"></div>');
+                                }
+                                text.push('</ul>');
+                                return text.join('');
+                            },
+
                             title: {
                                 display: true,
                                 text: 'Confidence Level & Answer as function of Correspondence Order',
