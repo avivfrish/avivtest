@@ -1639,7 +1639,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: [82.95, 55.58, 68.26, 75.36, 82.92, 78.12], //yDataConf,
+                        data: [82.95, 55.58, 68.26, 75.36, 82.92, 42.12], //yDataConf,
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -2042,15 +2042,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             if (data.data.length !== 0) {
 
                 if ($scope.usersToShowStats.length == 1){
-                    data.data = [{'avgTime': 10, 'avgCorrAns': 1},{'avgTime': 25, 'avgCorrAns': 0},
+                    data.data = [{'avgTime': 12, 'avgCorrAns': 1},{'avgTime': 25, 'avgCorrAns': 0},
                         {'avgTime': 20, 'avgCorrAns': 0},{'avgTime': 15, 'avgCorrAns': 1},
                         {'avgTime': 6, 'avgCorrAns': 4},{'avgTime': 32, 'avgCorrAns': 0}];
                 } else {
-                    data.data = [{'avgTime': 8.214, 'avgCorrAns': 0.68},{'avgTime': 22.23, 'avgCorrAns': 0.53},
-                        {'avgTime': 27.124, 'avgCorrAns': 0.34},{'avgTime': 16.87, 'avgCorrAns': 0.69},
-                        {'avgTime': 10.627, 'avgCorrAns': 0.84},{'avgTime': 40.3525, 'avgCorrAns': 0.15}];
+                    data.data = [{'avgTime': 8.214, 'avgCorrAns': 0.6892},{'avgTime': 22.23, 'avgCorrAns': 0.485},
+                        {'avgTime': 27.124, 'avgCorrAns': 0.3456},{'avgTime': 16.87, 'avgCorrAns': 0.6925},
+                        {'avgTime': 10.627, 'avgCorrAns': 0.868},{'avgTime': 40.3525, 'avgCorrAns': 0.1567}];
                 }
-
                 let xLabels = [];
                 let yData = [];
                 let avgCorrAnsArr = [];
@@ -2805,22 +2804,22 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         {
                                             label: "Precision",
                                             backgroundColor: "blue",
-                                            data: precision_by_name
+                                            data: [0.5 ,0.78] //precision_by_name
                                         },
                                         {
                                             label: "Recall",
                                             backgroundColor: "green",
-                                            data: recall_by_name
+                                            data: [0.5 ,0.6] //recall_by_name
                                         },
                                         {
                                             label: "Calibration",
                                             backgroundColor: "orange",
-                                            data: cal_by_name
+                                            data: [0.7 ,0.15] //cal_by_name
                                         },
                                         {
                                             label: "Resolution",
                                             backgroundColor: "red",
-                                            data: res_by_name
+                                            data: [0.6 ,0.55] //res_by_name
                                         }]
                                 },
                                 options: {
@@ -2903,22 +2902,22 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             {
                                 label: "Precision",
                                 backgroundColor: "blue",
-                                data: precision_by_name
+                                data: [0.75, 0.4]//precision_by_name
                             },
                             {
                                 label: "Recall",
                                 backgroundColor: "green",
-                                data: recall_by_name
+                                data: [0.6, 0.7]//recall_by_name
                             },
                             {
                                 label: "Calibration",
                                 backgroundColor: "orange",
-                                data: cal_by_name
+                                data: [0.15, 0.35]//cal_by_name
                             },
                             {
                                 label: "Resolution",
                                 backgroundColor: "red",
-                                data: res_by_name
+                                data: [0.55,0.6]//res_by_name
                             }]
                     },
                     options: {
