@@ -1419,40 +1419,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                                 j++;
                             }
-
-                            datasets_val = [{
-                                label: "Avg. Confidence In User Exp",
-                                data: yDataConf,
-                                borderColor: "#ff8405",
-                                backgroundColor: "#ff8405",
-                                borderWidth: 0.7,
-                                pointRadius: 5,
-                                pointHoverRadius: 7,
-                                pointBackgroundColor: "#ff8405",
-                                fill: false,
-                            }, {
-                                label: "Avg. Correct Answers In User Exp",
-                                data: yDataCorrAns,
-                                borderColor: "#000dad",
-                                backgroundColor: "#000dad",
-                                borderWidth: 0.7,
-                                pointRadius: 5,
-                                pointHoverRadius: 7,
-                                pointBackgroundColor: "#000dad",
-                                fill: false,
-                            }, {
-                                label: "User Confidence Level and Correct Answers",
-                                data: yData_user,
-                                borderColor: "#000000",
-                                backgroundColor: "#000000",
-                                borderWidth: 0.7,
-                                pointRadius: 5,
-                                pointHoverRadius: 7,
-                                pointStyle: point_styles,
-                                //pointBackgroundColor: colorOfPoints,
-                                fill: false,
-                            }];
-
                             /*yDataConf = [0.8,0.7,0.9,0.6,0.65,0.85,0.78,0.68,0.58,0.81,0.73,0.6,0.58,0.68,0.74,0.78,0.8,0.9,0.6,0.65];
                 yDataCorrAns = [0.25,0.64,0.7,0.1435526,0.51,0.184345,0.6,0.48,0.89,0.4,0.333,0.54,0.868,0.4465,0.76,0.57,0.66,0.39,0.6,0.3];
 
@@ -1466,6 +1432,41 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
                     {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
                     {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];*/
+
+                            datasets_val = [{
+                                label: "Avg. Confidence In User Exp",
+                                data: [88, 65, 53, 75, 96, 83], //yDataConf,
+                                borderColor: "#ff8405",
+                                backgroundColor: "#ff8405",
+                                borderWidth: 0.7,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                pointBackgroundColor: "#ff8405",
+                                fill: false,
+                            }, {
+                                label: "Avg. Correct Answers In User Exp",
+                                data: [76, 58, 34, 69, 84, 45], //yDataCorrAns,
+                                borderColor: "#000dad",
+                                backgroundColor: "#000dad",
+                                borderWidth: 0.7,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                pointBackgroundColor: "#000dad",
+                                fill: false,
+                            }, {
+                                label: "User Confidence Level and Correct Answers",
+                                data: [63, 70, 85, 55, 75, 90],//yData_user,
+                                borderColor: "#000000",
+                                backgroundColor: "#000000",
+                                borderWidth: 0.7,
+                                pointRadius: 5,
+                                pointHoverRadius: 7,
+                                pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, checkmark_icon, x_icon],//point_styles,
+                                //pointBackgroundColor: colorOfPoints,
+                                fill: false,
+                            }];
+
+
                             const ctx = document.getElementById("confidenceLineGraphAggregate").getContext("2d");
                             if ($scope.confidenceLineGraphAggregate){
                                 $scope.confidenceLineGraphAggregate.destroy();
