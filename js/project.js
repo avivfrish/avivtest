@@ -1539,16 +1539,23 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                             var label = chart.data.datasets[i].label;
 
                                             if(line_color == "#000000"){
+
+                                                text.push('<li style="list-style-type: none;">' +
+                                                    '<span class="conf_legend" style="color:' + line_color +' "></span>');
+                                                text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
+                                                    + 'User Confidence' + '</span>');
+                                                text.push('</li><div style="clear: both"></div>');
+
                                                 text.push('<li style="list-style-type: none;">' +
                                                     '<span class="conf_legend" style="color:' + line_color +' ">' +
                                                     '<img src="/images/checkmark_icon.png" width="20" height="20" alt="">' + '</span>');
                                                 text.push('<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
-                                                    + chart.data.datasets[i].label + '</span>');
+                                                    + 'Correct Answer' + '</span>');
 
-                                                text.push('<span class="conf_legend" style="color:' + line_color +' ">' +
-                                                    '<img src="/images/x_icon.png.png" width="20" height="20" alt="">' + '</span>' +
+                                                text.push('<span class="conf_legend" style="margin-left: 15px; color:' + line_color +' ">' +
+                                                    '<img src="/images/x_icon.png" width="20" height="20" alt="">' + '</span>' +
                                                     '<span style="margin-left: 15px; float: left; font-size: 14px; font-family: \'Calibri\';">'
-                                                    + chart.data.datasets[i].label + '</span>');
+                                                    + 'Incorrect Answer' + '</span>');
 
                                                 text.push('</li><div style="clear: both"></div>');
                                             } else {
