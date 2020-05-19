@@ -1678,8 +1678,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         }
                     });
-                    document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate.generateLegend();
                     document.getElementById("confidenceLineGraphAggregate").innerHTML = $scope.confidenceLineGraphAggregate;
+                    document.getElementById("confidenceLineGraphAggregate").innerHTML = ($scope.confidenceLineGraphAggregate).generateLegend();
                     callback(true);
                 } else {
                     console.log('Get line graph data - confidence levels failed');
