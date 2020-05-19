@@ -1639,7 +1639,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: [82.972, 55.527, 68.26, 75.367, 85.92, 78.12], //yDataConf,
+                        data: [82.95, 55.58, 68.26, 75.36, 82.92, 78.12], //yDataConf,
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -1649,7 +1649,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         fill: false,
                     }, {
                         label: "Avg. Correct Answers",
-                        data: [68.925, 53.546, 34.56, 69.111, 84.222, 15.676], //yDataCorrAns,
+                        data: [68.92, 48.5, 34.56, 69.25, 86.8, 15.67], //yDataCorrAns,
                         borderColor: "#000dad",
                         backgroundColor: "#000dad",
                         borderWidth: 0.7,
