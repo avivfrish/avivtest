@@ -1638,7 +1638,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     }
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: yDataConf,
+                        data: [77.972, 61.527, 42.26, 86.367, 90.92, 54.12], //yDataConf,
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -1648,7 +1648,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         fill: false,
                     }, {
                         label: "Avg. Correct Answers",
-                        data: yDataCorrAns,
+                        data: [68.925, 43.546, 32.999, 75.111, 82.222, 48.676], //yDataCorrAns,
                         borderColor: "#000dad",
                         backgroundColor: "#000dad",
                         borderWidth: 0.7,
@@ -2040,18 +2040,16 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             if (data.data.length !== 0) {
 
-                /*data.data = [{'avgTime': 17, 'avgCorrAns': 0.25},{'avgTime': 9, 'avgCorrAns': 0.64},
-                    {'avgTime': 8, 'avgCorrAns': 0.7},{'avgTime': 19, 'avgCorrAns': 0.1435526},
-                    {'avgTime': 11, 'avgCorrAns': 0.51},{'avgTime': 18, 'avgCorrAns': 0.184345},
-                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 14, 'avgCorrAns': 0.48},
-                    {'avgTime': 5, 'avgCorrAns': 0.89},{'avgTime': 13, 'avgCorrAns': 0.4},
-                    {'avgTime': 16, 'avgCorrAns': 0.333},{'avgTime': 9, 'avgCorrAns': 0.54},
-                    {'avgTime': 4, 'avgCorrAns': 0.868},{'avgTime': 14, 'avgCorrAns': 0.4465},
-                    {'avgTime': 7, 'avgCorrAns': 0.76},{'avgTime': 10, 'avgCorrAns': 0.57},
-                    {'avgTime': 8, 'avgCorrAns': 0.66},{'avgTime': 15, 'avgCorrAns': 0.39},
-                    {'avgTime': 9, 'avgCorrAns': 0.6},{'avgTime': 16, 'avgCorrAns': 0.3}];
+                if ($scope.usersToShowStats.length == 1){
+                    data.data = [{'avgTime': 10, 'avgCorrAns': 1},{'avgTime': 25, 'avgCorrAns': 0},
+                        {'avgTime': 20, 'avgCorrAns': 0},{'avgTime': 15, 'avgCorrAns': 1},
+                        {'avgTime': 6, 'avgCorrAns': 4},{'avgTime': 32, 'avgCorrAns': 0}];
+                } else {
+                    data.data = [{'avgTime': 10, 'avgCorrAns': 0.76},{'avgTime': 25, 'avgCorrAns': 0.58},
+                        {'avgTime': 20, 'avgCorrAns': 0.34},{'avgTime': 15, 'avgCorrAns': 0.69},
+                        {'avgTime': 6, 'avgCorrAns': 0.84},{'avgTime': 32, 'avgCorrAns': 0.45}];
+                }
 
-                console.log(data.data);*/
                 let xLabels = [];
                 let yData = [];
                 let avgCorrAnsArr = [];
