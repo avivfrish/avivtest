@@ -301,12 +301,13 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                 $scope.get_rel_exp_by_users(function(finish_rel_exp) {
 
+                    $scope.rel_exp_ids_checked = [];
                     var no_rel_exp = true;
                     for (let index_1 in $scope.groupsToShowStats){
                         for (let index_2 in $scope.relExpForUsersToShowStats){
                             if($scope.groupsToShowStats[index_1].id === $scope.relExpForUsersToShowStats[index_2].id){
+                                $scope.rel_exp_ids_checked.push($scope.groupsToShowStats[index_1].id);
                                 no_rel_exp = false;
-                                break;
                             }
                         }
                     }
@@ -2602,7 +2603,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     url: 'php/check_comparison_for_evaluation_measures.php',
                     data: $.param({
                         usersToShowStats : $scope.usersToShowStats,
-                        exp_id : $scope.relExpForUsersToShowStats[0].id
+                        exp_id : $scope.rel_exp_ids_checked[0]
                     }),
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -2652,8 +2653,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             }
                         } else {
                             for (let index in $scope.relExpForUsersToShowStats){
-                                exps_to_compare.push({"id" : $scope.relExpForUsersToShowStats[index].id,
-                                    "max_num_pairs" : $scope.relExpForUsersToShowStats[index].max_num_pairs});
+                                if($scope.rel_exp_ids_checked[0] == $scope.relExpForUsersToShowStats[index].id){
+                                    exps_to_compare.push({"id" : $scope.relExpForUsersToShowStats[index].id,
+                                        "max_num_pairs" : $scope.relExpForUsersToShowStats[index].max_num_pairs});
+                                }
+
                             }
                         }
 
