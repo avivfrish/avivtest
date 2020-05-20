@@ -99,6 +99,7 @@ header.masthead {
 }
 
 header.masthead .masthead-heading {
+    padding-top: 13%;
     font-size: 3.25rem;
     font-weight: 700;
     line-height: 3.25rem;
