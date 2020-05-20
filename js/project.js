@@ -84,7 +84,11 @@ function SyncScroll(table_id) {
     }
 };*/
 
-
+$("#explore_button").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#home_content").offset().top
+    }, 2000);
+});
 
 app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
 
