@@ -1,6 +1,6 @@
 <!-- Static navbar -->
 
-<div id="nav" style="height: 10%; margin-bottom: 0.5%;">
+<div id="nav" style="position: absolute; height: 10%; margin-bottom: 0.5%;">
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar" style="height: 10%; padding: 0 0 0 0;">
 		<div class="container" style="padding-left: 0px; margin-left: 0px; height: 100%;">
 			<a class="navbar-brand" href="#" ng-click="hide_pages(); show_home()" style="height: 115%; margin-left: 1%; margin-right: 1%;">
@@ -447,57 +447,70 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<h3 style="font-family: 'Courier New', Courier, monospace">
-					The Task
-					</h3>
-					The task begins with providing personal information (e.g., nickname) and a (short) intelligence test.
-					The intelligence test is restricted to 2 minutes. Try answering as many riddles as you can.<br>
-					Subsequently, a subset of matching correspondences will be introduced.
-					At the end, you will be able to analyze your performance using a dedicated dashboard.<br><br>
+					<section class="page-section bg-primary text-white mb-0" id="task_home"
+							 style="padding-top: 1%; text-align: justify; background-color: #fff !important;">
+						<div class="container" style="font-size:18px; color: black;">
+							<div class="text-center">
+								<h2 style="font-family: Comic Sans MS, Comic Sans, cursive;">THE TASK</h2>
+							</div>
+							The following information provides a short overview and instructions necessary for participating in the task.<br><br>
 
-					In the main part of the session, several element pairs will be introduced.
-					Each pair consists of two <b>terms</b>, one from a candidate schema and one from target schema.
-					To accompany each pair, additional properties will be introduced including term names and types,
-					instance examples, schemata hierarchy, algorithmic matching result and a majority decision of the other participants.<br><br>
+							The task begins with providing personal information (e.g., nickname) and a (short) intelligence test.
+							The intelligence test is restricted to 2 minutes. Try answering as many riddles as you can.<br>
+							Subsequently, a subset of matching correspondences will be introduced.
+							At the end, you will be able to analyze your performance using a dedicated dashboard.<br><br>
 
-					Your task is to provide feedback, stating whether a pair is a <b>match</b> (the two terms correspond) or <b>no match</b>
-					accompanied by a confidence level in the decision on a [0,100] scale. Please note that you will not be able to choose confidence level of 50.
-					During the task, you will have a limited time frame to answer the matching questions.<br><br>
+							In the main part of the session, several element pairs will be introduced.
+							Each pair consists of two <b>terms</b>, one from a candidate schema and one from target schema.
+							To accompany each pair, additional properties will be introduced including term names and types,
+							instance examples, schemata hierarchy, algorithmic matching result and a majority decision of the other participants.<br><br>
 
-					<h4 style="font-family: 'Courier New', Courier, monospace">
-						Example
-					</h4>
+							Your task is to provide feedback, stating whether a pair is a <b>match</b> (the two terms correspond) or <b>no match</b>
+							accompanied by a confidence level in the decision on a [0,100] scale. Please note that you will not be able to choose confidence level of 50.
+							During the task, you will have a limited time frame to answer the matching questions.<br><br>
+						</div>
+					</section>
 
-					<div>
-						<img src="/images/questionScreen.PNG" width="650px" height="410px" alt="Task Screen Example"
-							 style="display: block; margin: 0 auto;">
-					</div>
+					<hr style="height: 2%; margin-top: 0.5%; margin-bottom: 0.5%;">
 
-					<br>
-					The figure above illustrates the matching task using a matching
-					question regarding the pair <em>quantity</em> and <em>qty</em>.<br><br>
+					<section class="page-section bg-primary text-white mb-0" id="example_home"
+							 style="padding-top: 1%; text-align: justify; background-color: #fff !important;">
+						<div class="container" style="font-size:18px; color: black;">
+							<div class="text-center">
+								<h2 style="font-family: Comic Sans MS, Comic Sans, cursive;">EXAMPLE</h2>
+							</div>
+							<div>
+								<img src="/images/questionScreen.PNG" width="650px" height="410px" alt="Task Screen Example"
+									 style="display: block; margin: 0 auto;">
+							</div>
 
-					The top right part provides an indication of the time remaining for the whole task.<br>
+							<br>
+							The figure above illustrates the matching task using a matching
+							question regarding the pair <em>contactName</em> (Term A) and <em>contactName</em> (Term B).<br><br>
 
-					The two sides of screen show information about the two terms.
-					Each term name appears clearly on top and marked in red in the center of the screen.<br>
-					Following the name, the data types and instance examples are introduced.
-					In this example, the types of <em>quantity</em> and <em>qty</em> are “Decimal” and “int”, respectively.
-					An example instance of <em>quantity</em> is 4580.55 and <em>qty</em> instance is 35<br>
+							The top right part provides an indication of the time remaining for the whole task.<br>
 
-					The center part of the screen displays the schemata hierarchy.
-					The color legend is as follows:<br>
-					<b style="color: green">Green</b> - Parents of the term.<br>
-					<b style="color: red">Red</b> - The term.<br>
-					<b style="color: blue">Blue</b> - Siblings of the term.
-					<br>
-					The direct parent of <em>quantity</em> is <em>Item</em> and a sibling term is, for
-					example, <em>unitOfMeasure</em>.<br>
-					As demonstrated below,
-					the algorithm matching result is 29% and the majority decision of the crowd is 76.92%,
-					both indicating a match decision.<br>
-					Finally, the decision should be made (match\no match), the respective confidence should be selected
-					and then press on the “submit” button.<br><br>
+							The two sides of screen show information about the two terms.
+							Each term name appears clearly on top and marked in red in the center of the screen.<br>
+							Following the name, the data types and instance examples are introduced.
+							In this example, the types of both <em>contactName</em> (Term A) and <em>contactName</em> (Term B) are “str”.
+							An example instance of <em>contactName</em> (Term A) is "Dr. Gilboa Barak" and <em>contactName</em> (Term B) instance is "Ms Einat Hadar".<br>
+
+							The center part of the screen displays the schemata hierarchy.
+							The color legend is as follows:<br>
+							<b style="color: green">Green</b> - Parents of the term.<br>
+							<b style="color: red">Red</b> - The term.<br>
+							<b style="color: blue">Blue</b> - Siblings of the term.
+							<br>
+							The direct parent of <em>contactName</em> (Term A) is <em>Contact</em> and a sibling term is, for
+							example, <em>telephone</em>.<br>
+							As demonstrated below,
+							the algorithm matching result is 100% and the majority decision of the crowd is 66.67%,
+							both indicating a match decision.<br>
+							Finally, the decision should be made (match\no match), the respective confidence should be selected
+							and then press on the “submit” button.<br><br>
+						</div>
+					</section>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-md btn-info m-1 px-3" type="button" data-dismiss="modal" aria-label="Close">
