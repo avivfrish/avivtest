@@ -99,10 +99,22 @@ header.masthead {
 }
 
 header.masthead .masthead-heading {
-    padding-top: 13%;
-    font-size: 3.25rem;
+    text-shadow: -1px 0 black, 0 5px black, 5px 0 black, 0 -1px black;
+    color: #fff;
+    padding-top: 7%;
+    font-size: 6.25rem;
     font-weight: 700;
-    line-height: 3.25rem;
+    line-height: 8.25rem;
+    border-width: 19px;
     margin-bottom: 2rem;
-    font-family: 'Cinzel';
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+#explore_button{
+    box-shadow: 0 8px 16px 0 rgba(76, 69, 69, 0.2), 0 6px 20px 0 rgba(132, 45, 45, 0.19);
+    border: 2px solid black;
+    border-radius: 17px;
+    cursor: pointer;
+    font-size: 30px;
+    font-family: Comic Sans MS, Comic Sans, cursive;
 }
