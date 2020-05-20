@@ -162,7 +162,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.scroll_down_home = function (){
         $('html, body').animate({
             scrollTop: $("#home_content").offset().top
-        }, 2000);
+        }, 500);
     };
 
     $scope.show_riddle = function () {
