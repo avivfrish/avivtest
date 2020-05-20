@@ -7,7 +7,8 @@ from exp_users
 where id in (
     select distinct user_id
     from exp_results
-    )";
+    )
+order by id desc";
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
     echo "1";
