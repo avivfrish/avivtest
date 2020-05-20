@@ -1,4 +1,4 @@
-<div id="home" class="col-sm-12" style="width: 92%; margin-top: 6%; margin-left: 4%; margin-right: 4%; text-align: justify;">
+<div id="home" class="col-sm-12">
 
  <header class="masthead">
   <div class="container">
@@ -7,107 +7,111 @@
   </div>
  </header>
 
-
+<!--
 <h1 style="text-align: center; font-family: 'Courier New', Courier, monospace">
  WELCOME TO INCOGNITOMATCH
-</h1>
+</h1>-->
 
-The following information provides a short overview and instructions necessary for participating in the task.<br><br>
+ <div id="home_content" style="width: 92%; margin-top: 6%; margin-left: 4%; margin-right: 4%; text-align: justify;">
 
-<h3 style="font-family: 'Courier New', Courier, monospace">
- Overview
-</h3>
-Matching is a crucial element of integrating structured and
-semi-structured data. For instance, when multiple organizations are merged,
- both parties have to share information to be fused together into a new integrated system.
+  The following information provides a short overview and instructions necessary for participating in the task.<br><br>
 
-Matching schemata is the first step in this process.
-Schema matching aims to find correspondences between concepts
-describing the meaning of data sources.
-Human-in-the-loop data integration, and specifically in matching,
-has been recently challenged by the big data era.
-With richer data source variety, bigger volumes,
-and faster velocity, accessing and making use of humans’ input
-has become much harder.<br>
+  <h3 style="font-family: 'Courier New', Courier, monospace">
+   Overview
+  </h3>
+  Matching is a crucial element of integrating structured and
+  semi-structured data. For instance, when multiple organizations are merged,
+  both parties have to share information to be fused together into a new integrated system.
 
-Acknowledging cognitive awareness in human matching, InCognitoMatch (<b>In</b>troducing
-<b>Cogni</b>tive Biases <b>to</b> Crowdsourced
-<b>Match</b>ing) is a handy tool to validate, annotate, and correct correspondences
-using the crowd.
-<br><br>
+  Matching schemata is the first step in this process.
+  Schema matching aims to find correspondences between concepts
+  describing the meaning of data sources.
+  Human-in-the-loop data integration, and specifically in matching,
+  has been recently challenged by the big data era.
+  With richer data source variety, bigger volumes,
+  and faster velocity, accessing and making use of humans’ input
+  has become much harder.<br>
 
-<h3 style="font-family: 'Courier New', Courier, monospace">
- The Task
-</h3>
- The task begins with providing personal information (e.g., nickname) and a (short) intelligence test.
- The intelligence test is restricted to 2 minutes. Try answering as many riddles as you can.<br>
- Subsequently, a subset of matching correspondences will be introduced.
- At the end, you will be able to analyze your performance using a dedicated dashboard.<br><br>
+  Acknowledging cognitive awareness in human matching, InCognitoMatch (<b>In</b>troducing
+  <b>Cogni</b>tive Biases <b>to</b> Crowdsourced
+  <b>Match</b>ing) is a handy tool to validate, annotate, and correct correspondences
+  using the crowd.
+  <br><br>
 
- In the main part of the session, several element pairs will be introduced.
- Each pair consists of two <b>terms</b>, one from a candidate schema and one from target schema.
- To accompany each pair, additional properties will be introduced including term names and types,
- instance examples, schemata hierarchy, algorithmic matching result and a majority decision of the other participants.<br><br>
+  <h3 style="font-family: 'Courier New', Courier, monospace">
+   The Task
+  </h3>
+  The task begins with providing personal information (e.g., nickname) and a (short) intelligence test.
+  The intelligence test is restricted to 2 minutes. Try answering as many riddles as you can.<br>
+  Subsequently, a subset of matching correspondences will be introduced.
+  At the end, you will be able to analyze your performance using a dedicated dashboard.<br><br>
 
- Your task is to provide feedback, stating whether a pair is a <b>match</b> (the two terms correspond) or <b>no match</b>
- accompanied by a confidence level in the decision on a [0,100] scale. Please note that you will not be able to choose confidence level of 50.
- During the task, you will have a limited time frame to answer the matching questions.<br><br>
+  In the main part of the session, several element pairs will be introduced.
+  Each pair consists of two <b>terms</b>, one from a candidate schema and one from target schema.
+  To accompany each pair, additional properties will be introduced including term names and types,
+  instance examples, schemata hierarchy, algorithmic matching result and a majority decision of the other participants.<br><br>
 
-<h4 style="font-family: 'Courier New', Courier, monospace">
- Example
-</h4>
+  Your task is to provide feedback, stating whether a pair is a <b>match</b> (the two terms correspond) or <b>no match</b>
+  accompanied by a confidence level in the decision on a [0,100] scale. Please note that you will not be able to choose confidence level of 50.
+  During the task, you will have a limited time frame to answer the matching questions.<br><br>
 
-<div>
- <img src="/images/questionScreen.PNG" width="68%" height="60%" alt="Task Screen Example"
- style="display: block; margin: 0 auto;">
-</div>
+  <h4 style="font-family: 'Courier New', Courier, monospace">
+   Example
+  </h4>
 
-<br>
- The figure above illustrates the matching task using a matching
- question regarding the pair <em>quantity</em> and <em>qty</em>.<br><br>
+  <div>
+   <img src="/images/questionScreen.PNG" width="68%" height="60%" alt="Task Screen Example"
+        style="display: block; margin: 0 auto;">
+  </div>
 
-The top right part provides an indication of the time remaining for the whole task.<br>
+  <br>
+  The figure above illustrates the matching task using a matching
+  question regarding the pair <em>quantity</em> and <em>qty</em>.<br><br>
 
- The two sides of screen show information about the two terms.
- Each term name appears clearly on top and marked in red in the center of the screen.<br>
- Following the name, the data types and instance examples are introduced.
- In this example, the types of <em>quantity</em> and <em>qty</em> are “Decimal” and “int”, respectively.
- An example instance of <em>quantity</em> is 4580.55 and <em>qty</em> instance is 35<br>
+  The top right part provides an indication of the time remaining for the whole task.<br>
 
-The center part of the screen displays the schemata hierarchy.
-The color legend is as follows:<br>
-<b style="color: green">Green</b> - Parents of the term.<br>
-<b style="color: red">Red</b> - The term.<br>
-<b style="color: blue">Blue</b> - Siblings of the term.
-<br>
-The direct parent of <em>quantity</em> is <em>Item</em> and a sibling term is, for
-example, <em>unitOfMeasure</em>.<br>
-As demonstrated below,
-the algorithm matching result is 29% and the majority decision of the crowd is 76.92%,
- both indicating a match decision.<br>
- Finally, the decision should be made (match\no match), the respective confidence should be selected
- and then press on the “submit” button.<br><br>
+  The two sides of screen show information about the two terms.
+  Each term name appears clearly on top and marked in red in the center of the screen.<br>
+  Following the name, the data types and instance examples are introduced.
+  In this example, the types of <em>quantity</em> and <em>qty</em> are “Decimal” and “int”, respectively.
+  An example instance of <em>quantity</em> is 4580.55 and <em>qty</em> instance is 35<br>
+
+  The center part of the screen displays the schemata hierarchy.
+  The color legend is as follows:<br>
+  <b style="color: green">Green</b> - Parents of the term.<br>
+  <b style="color: red">Red</b> - The term.<br>
+  <b style="color: blue">Blue</b> - Siblings of the term.
+  <br>
+  The direct parent of <em>quantity</em> is <em>Item</em> and a sibling term is, for
+  example, <em>unitOfMeasure</em>.<br>
+  As demonstrated below,
+  the algorithm matching result is 29% and the majority decision of the crowd is 76.92%,
+  both indicating a match decision.<br>
+  Finally, the decision should be made (match\no match), the respective confidence should be selected
+  and then press on the “submit” button.<br><br>
 
 
-<h4 style="font-family: 'Courier New', Courier, monospace">
- Task Settings
-</h4>
+  <h4 style="font-family: 'Courier New', Courier, monospace">
+   Task Settings
+  </h4>
 
-At this point there are two types of tasks - a short demonstration ("DEMO") or full task ("TASK").
-For the full task participants, the task will begin with a short period for training. <br>
-The demo takes about 5 minutes where the full task may last up to 20 minutes.<br><br>
+  At this point there are two types of tasks - a short demonstration ("DEMO") or full task ("TASK").
+  For the full task participants, the task will begin with a short period for training. <br>
+  The demo takes about 5 minutes where the full task may last up to 20 minutes.<br><br>
 
-By proceeding to the task, you approve having your personal information and task results stored in the system.
-This data will be used for academic research only.<br><br>
+  By proceeding to the task, you approve having your personal information and task results stored in the system.
+  This data will be used for academic research only.<br><br>
 
-Click on the button DEMO if you would like to participate in a short demonstration. <br>
-Otherwise, click on the TASK button.<br>
+  Click on the button DEMO if you would like to participate in a short demonstration. <br>
+  Otherwise, click on the TASK button.<br>
 
- <div style="text-align: center; margin-top: 3.5%;">
-  <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages(); show_exp('demo')">DEMO</button>
-  <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages(); show_exp('actual_task')">TASK</button>
+  <div style="text-align: center; margin-top: 3.5%;">
+   <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages(); show_exp('demo')">DEMO</button>
+   <button class="btn btn-md btn-info px-lg-5" type="button" ng-click="hide_pages(); show_exp('actual_task')">TASK</button>
+  </div>
+  <br><br>
  </div>
- <br><br>
+
 
 </div>
 
