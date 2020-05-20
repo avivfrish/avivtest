@@ -84,12 +84,6 @@ function SyncScroll(table_id) {
     }
 };*/
 
-$("#explore_button").click(function() {
-    $('html, body').animate({
-        scrollTop: $("#home_content").offset().top
-    }, 2000);
-});
-
 app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
 
     $scope.init_avivTest = function () {
@@ -163,6 +157,12 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         }
 
         document.getElementById("schemaMatchingExp").style.overflow = 'auto';
+    };
+
+    $scope.scroll_down_home = function (){
+        $('html, body').animate({
+            scrollTop: $("#home_content").offset().top
+        }, 2000);
     };
 
     $scope.show_riddle = function () {

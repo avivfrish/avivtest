@@ -3,7 +3,7 @@
  <header class="masthead">
   <div class="container">
    <div class="masthead-heading text-uppercase">Welcome To INCOGNITOMATCH</div>
-   <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="explore_button">Explore</a>
+   <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" id="explore_button" ng-click="scroll_down_home()">Explore</a>
   </div>
  </header>
 
@@ -84,8 +84,8 @@
      The two sides of screen show information about the two terms.
      Each term name appears clearly on top and marked in red in the center of the screen.<br>
      Following the name, the data types and instance examples are introduced.
-     In this example, the types of <em>quantity</em> and <em>qty</em> are “Decimal” and “int”, respectively.
-     An example instance of <em>quantity</em> is 4580.55 and <em>qty</em> instance is 35<br>
+     In this example, the types of both <em>contactName</em> (Term A) and <em>contactName</em> (Term B) are “str”.
+     An example instance of <em>contactName</em> (Term A) is "Dr. Gilboa Barak" and <em>contactName</em> (Term B) instance is "Ms Einat Hadar".<br>
 
      The center part of the screen displays the schemata hierarchy.
      The color legend is as follows:<br>
@@ -93,10 +93,10 @@
      <b style="color: red">Red</b> - The term.<br>
      <b style="color: blue">Blue</b> - Siblings of the term.
      <br>
-     The direct parent of <em>quantity</em> is <em>Item</em> and a sibling term is, for
-     example, <em>unitOfMeasure</em>.<br>
+     The direct parent of <em>contactName</em> (Term A) is <em>Contact</em> and a sibling term is, for
+     example, <em>telephone</em>.<br>
      As demonstrated below,
-     the algorithm matching result is 29% and the majority decision of the crowd is 76.92%,
+     the algorithm matching result is 100% and the majority decision of the crowd is 66.67%,
      both indicating a match decision.<br>
      Finally, the decision should be made (match\no match), the respective confidence should be selected
      and then press on the “submit” button.<br><br>
