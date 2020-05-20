@@ -447,31 +447,57 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					In this task you will be asked to decide whether pair is a match. <br>
-					Regarding each pair, you will be decided to scale your confidence level.
+					I<h3 style="font-family: 'Courier New', Courier, monospace">
+					The Task
+				</h3>
+					The task begins with providing personal information (e.g., nickname) and a (short) intelligence test.
+					The intelligence test is restricted to 2 minutes. Try answering as many riddles as you can.<br>
+					Subsequently, a subset of matching correspondences will be introduced.
+					At the end, you will be able to analyze your performance using a dedicated dashboard.<br><br>
+
+					In the main part of the session, several element pairs will be introduced.
+					Each pair consists of two <b>terms</b>, one from a candidate schema and one from target schema.
+					To accompany each pair, additional properties will be introduced including term names and types,
+					instance examples, schemata hierarchy, algorithmic matching result and a majority decision of the other participants.<br><br>
+
+					Your task is to provide feedback, stating whether a pair is a <b>match</b> (the two terms correspond) or <b>no match</b>
+					accompanied by a confidence level in the decision on a [0,100] scale. Please note that you will not be able to choose confidence level of 50.
+					During the task, you will have a limited time frame to answer the matching questions.<br><br>
+
+					<h4 style="font-family: 'Courier New', Courier, monospace">
+						Example
+					</h4>
+
+					<div>
+						<img src="/images/questionScreen.PNG" width="68%" height="60%" alt="Task Screen Example"
+							 style="display: block; margin: 0 auto;">
+					</div>
+
 					<br>
-					Each pair consists of 2 terms from two different schemata, where term is a field in schema.
+					The figure above illustrates the matching task using a matching
+					question regarding the pair <em>quantity</em> and <em>qty</em>.<br><br>
+
+					The top right part provides an indication of the time remaining for the whole task.<br>
+
+					The two sides of screen show information about the two terms.
+					Each term name appears clearly on top and marked in red in the center of the screen.<br>
+					Following the name, the data types and instance examples are introduced.
+					In this example, the types of <em>quantity</em> and <em>qty</em> are “Decimal” and “int”, respectively.
+					An example instance of <em>quantity</em> is 4580.55 and <em>qty</em> instance is 35<br>
+
+					The center part of the screen displays the schemata hierarchy.
+					The color legend is as follows:<br>
+					<b style="color: green">Green</b> - Parents of the term.<br>
+					<b style="color: red">Red</b> - The term.<br>
+					<b style="color: blue">Blue</b> - Siblings of the term.
 					<br>
-					For each term you might see its: name, type, hierarchy, instances (if exist), system suggestion, and
-					majority decision.
-					<br>
-					The color legend in the hierarchy:
-					<br>
-					<em style="color: green">Green</em> - Parent of the term in the hierarchy.
-					<br>
-					<em style="color: red">Red</em> - The Term.
-					<br>
-					<em style="color: blue">Blue</em> - Sibling of the term in the hierarchy.
-					<br>
-					<br>
-					There are three parts to the task:
-					<br>
-					(1) Logical riddles.
-					<br>
-					(2) Training phase.
-					<br>
-					(3) Actual task.
-					<br>
+					The direct parent of <em>quantity</em> is <em>Item</em> and a sibling term is, for
+					example, <em>unitOfMeasure</em>.<br>
+					As demonstrated below,
+					the algorithm matching result is 29% and the majority decision of the crowd is 76.92%,
+					both indicating a match decision.<br>
+					Finally, the decision should be made (match\no match), the respective confidence should be selected
+					and then press on the “submit” button.<br><br>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-md btn-info m-1 px-3" type="button" data-dismiss="modal" aria-label="Close">
