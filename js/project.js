@@ -1427,7 +1427,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             //[82.95, 55.58, 74.26, 65.36, 90.92, 42.12], //yDataConf, [68.92, 48.5, 34.56, 69.25, 86.8, 15.67], //yDataCorrAns,
                             datasets_val = [{
                                 label: "Avg. Confidence In User Exp",
-                                data: [88.42, 65.92, 69.5, 75, 96.36, 52.7], //yDataConf,
+                                data: yDataConf, //[88.42, 65.92, 69.5, 75, 96.36, 52.7]
                                 borderColor: "#ff8405",
                                 backgroundColor: "#ff8405",
                                 borderWidth: 0.7,
@@ -1437,7 +1437,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 fill: false,
                             }, {
                                 label: "Avg. Correct Answers In User Exp",
-                                data: [76.86, 58.5, 34.3, 64.1, 84.42, 25.29], //yDataCorrAns,
+                                data: yDataCorrAns, //[76.86, 58.5, 34.3, 64.1, 84.42, 25.29]
                                 borderColor: "#000dad",
                                 backgroundColor: "#000dad",
                                 borderWidth: 0.7,
@@ -1447,13 +1447,13 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                 fill: false,
                             }, {
                                 label: "User Confidence Level and Correct Answers",
-                                data: [63, 70, 85, 55, 75, 91],//yData_user,
+                                data: yData_user, //[63, 70, 85, 55, 75, 91]
                                 borderColor: "#000000",
                                 backgroundColor: "#000000",
                                 borderWidth: 0.7,
                                 pointRadius: 5,
                                 pointHoverRadius: 7,
-                                pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, checkmark_icon, x_icon],//point_styles,
+                                pointStyle: point_styles, //[checkmark_icon, x_icon, x_icon, checkmark_icon, checkmark_icon, x_icon]
                                 //pointBackgroundColor: colorOfPoints,
                                 fill: false,
                             }];
@@ -1936,7 +1936,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     j++;
                 }
 
-                colorOfPoints = ["#0ccd00", "#cd0800", "#cd0800", "#0ccd00","#0ccd00", "#cd0800"];
+                //colorOfPoints = ["#0ccd00", "#cd0800", "#cd0800", "#0ccd00","#0ccd00", "#cd0800"];
 
                 const ctx = document.getElementById("timeBarGraph").getContext("2d");
                 if ($scope.timeBarGraph){
@@ -1952,7 +1952,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     data: {
                         labels: xLabels,
                         datasets: [{
-                            data: [12, 25, 20, 15, 6, 32],//yData,
+                            data: yData, //[12, 25, 20, 15, 6, 32]
                             borderColor: "#000000",
                             backgroundColor: colorOfPoints,
                         }
