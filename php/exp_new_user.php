@@ -1,13 +1,13 @@
 <?php
-$u_nickname=addslashes(stripcslashes($_POST['u_nickname']));
-$email=addslashes(stripcslashes($_POST['email']));
-$u_country=addslashes(stripcslashes($_POST['u_country']));
-$education=addslashes(stripcslashes($_POST['education']));
-$occupation=addslashes(stripcslashes($_POST['occupation']));
-$english_level=addslashes(stripcslashes($_POST['english_level']));
-$age=addslashes(stripcslashes($_POST['age']));
-$gender=addslashes(stripcslashes($_POST['gender']));
-$u_exp_reason=addslashes(stripcslashes($_POST['u_exp_reason']));
+$u_nickname=stripcslashes($_POST['u_nickname']);
+$email=stripcslashes($_POST['email']);
+$u_country=stripcslashes($_POST['u_country']);
+$education=stripcslashes($_POST['education']);
+$occupation=stripcslashes($_POST['occupation']);
+$english_level=stripcslashes($_POST['english_level']);
+$age=stripcslashes($_POST['age']);
+$gender=stripcslashes($_POST['gender']);
+$u_exp_reason=stripcslashes($_POST['u_exp_reason']);
 
 $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Database" => "avivtest", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:avivtest.database.windows.net,1433";
