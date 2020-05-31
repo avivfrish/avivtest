@@ -2255,8 +2255,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     fontFamily: 'Calibri',
                     fontSize: 14
                 },
-                height: 100 + '%',
-                width: 100 + '%'
             },
             title: {
                 text: 'Mouse Location During The Task',
