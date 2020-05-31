@@ -467,40 +467,41 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
     $scope.new_user_exp = function(){
         // this function create new user for experiment.
-
-        $scope.curr_count_ans=0;
-        $http({
-            method: 'POST',
-            url: 'php/exp_new_user.php',
-            data: $.param({
-                u_nickname: document.getElementById("new_user_nickname").value,
-                email: document.getElementById("new_user_email").value,
-                u_country: document.getElementById("new_user_country").value,
-                education: document.getElementById("new_user_education").value,
-                occupation: document.getElementById("new_user_occupation").value,
-                english_level: document.getElementById("new_user_english_level").value,
-                age: document.getElementById("new_user_age").value,
-                gender: document.getElementById("new_user_gender").value,
-                u_exp_reason: document.getElementById("new_user_exp_reason").value,
-            }),
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            }
-        }).then(function (data) {
-            if (data.data !== "err")
-            {
-                $("#begin_exp_user").hide();
-                $scope.exp_after_test = data.data[0];
-                $scope.test_schema=data.data[1];
-                $scope.curr_user={"nickname":document.getElementById("new_user_nickname").value,
-                    "id": data.data[2]
-                };
-                $scope.show_riddle();
-                $scope.clear_user_form();
-            } else {
-                console.log(data.data);
-            }
-        });
+        if(document.getElementById("new_user_nickname").value !== ""){
+            $scope.curr_count_ans=0;
+            $http({
+                method: 'POST',
+                url: 'php/exp_new_user.php',
+                data: $.param({
+                    u_nickname: document.getElementById("new_user_nickname").value,
+                    email: document.getElementById("new_user_email").value,
+                    u_country: document.getElementById("new_user_country").value,
+                    education: document.getElementById("new_user_education").value,
+                    occupation: document.getElementById("new_user_occupation").value,
+                    english_level: document.getElementById("new_user_english_level").value,
+                    age: document.getElementById("new_user_age").value,
+                    gender: document.getElementById("new_user_gender").value,
+                    u_exp_reason: document.getElementById("new_user_exp_reason").value,
+                }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function (data) {
+                if (data.data !== "err")
+                {
+                    $("#begin_exp_user").hide();
+                    $scope.exp_after_test = data.data[0];
+                    $scope.test_schema=data.data[1];
+                    $scope.curr_user={"nickname":document.getElementById("new_user_nickname").value,
+                        "id": data.data[2]
+                    };
+                    $scope.show_riddle();
+                    $scope.clear_user_form();
+                } else {
+                    console.log(data.data);
+                }
+            });
+        }
     };
 
     $scope.send_comments = function(){
