@@ -451,8 +451,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         }).then(function (data) { });
     };
 
-    $scope.clear_user_form = function()
-    {
+    $scope.clear_user_form = function(){
         //this function clear the new user form after data saved.
         document.getElementById("new_user_nickname").value="";
         document.getElementById("new_user_email").value="";
@@ -529,7 +528,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }
         });
     };
-
 
     $scope.getExp2 = function (callback,exp_id) {
         // function to retrieves the term from shcema 1
@@ -1093,10 +1091,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.show_coordinate = function($event){
         var xCor = ( $event['pageX'] * 1280 ) / document.body.clientWidth;
         var yCor = ( $event['pageY'] * 720 ) / document.body.clientHeight;
-        console.log(xCor);
-        console.log(yCor);
+        //console.log(xCor);
+        //console.log(yCor);
     };
-
 
     $scope.captureCoordinate = function($event){
         // this function save mouse location every 500 milliseconds (0.5 second)
@@ -1631,7 +1628,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
                     datasets_val = [{
                         label: "Avg. Confidence",
-                        data: [82.95, 55.58, 74.26, 65.36, 90.92, 42.12], //yDataConf
+                        data: yDataConf, //[82.95, 55.58, 74.26, 65.36, 90.92, 42.12]
                         borderColor: "#ff8405",
                         backgroundColor: "#ff8405",
                         borderWidth: 0.7,
@@ -1641,7 +1638,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         fill: false,
                     }, {
                         label: "Avg. Correct Answers",
-                        data: [68.92, 48.5, 34.56, 69.25, 86.8, 15.67], //yDataCorrAns,
+                        data: yDataCorrAns, //[68.92, 48.5, 34.56, 69.25, 86.8, 15.67],
                         borderColor: "#000dad",
                         backgroundColor: "#000dad",
                         borderWidth: 0.7,
@@ -1822,9 +1819,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     data: {
                         labels: xLabels,
                         datasets: [{
-                            data: [63, 70, 85, 55, 75, 91], //yData,
+                            data: yData, //[63, 70, 85, 55, 75, 91],
                             borderColor: "#000000",
-                            pointStyle: [checkmark_icon, x_icon, x_icon, checkmark_icon, checkmark_icon, x_icon], //point_styles,
+                            pointStyle: point_styles, //[checkmark_icon, x_icon, x_icon, checkmark_icon, checkmark_icon, x_icon],
                             borderWidth: 0.7,
                             pointRadius: 5,
                             pointHoverRadius: 7,
@@ -2033,7 +2030,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             if (data.data.length !== 0) {
 
-                if ($scope.usersToShowStats.length == 1){
+                /*if ($scope.usersToShowStats.length == 1){
                     data.data = [{'avgTime': 12, 'avgCorrAns': 1},{'avgTime': 25, 'avgCorrAns': 0},
                         {'avgTime': 20, 'avgCorrAns': 0},{'avgTime': 15, 'avgCorrAns': 1},
                         {'avgTime': 6, 'avgCorrAns': 4},{'avgTime': 32, 'avgCorrAns': 0}];
@@ -2041,7 +2038,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     data.data = [{'avgTime': 8.214, 'avgCorrAns': 0.6892},{'avgTime': 22.23, 'avgCorrAns': 0.485},
                         {'avgTime': 27.124, 'avgCorrAns': 0.3456},{'avgTime': 16.87, 'avgCorrAns': 0.6925},
                         {'avgTime': 10.627, 'avgCorrAns': 0.868},{'avgTime': 40.3525, 'avgCorrAns': 0.1567}];
-                }
+                }*/
                 let xLabels = [];
                 let yData = [];
                 let avgCorrAnsArr = [];
@@ -2401,7 +2398,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         });
     };
 
-
     $scope.get_rel_exp_by_users = function (callback) {
         $http({
             method: 'POST',
@@ -2428,7 +2424,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }
         });
     };
-
 
     $scope.getDataForFiterStatistics = function (callback) {
 
@@ -2795,22 +2790,22 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                         {
                                             label: "Precision",
                                             backgroundColor: "blue",
-                                            data: [0.5 ,0.78] //precision_by_name
+                                            data: precision_by_name //[0.5 ,0.78]
                                         },
                                         {
                                             label: "Recall",
                                             backgroundColor: "green",
-                                            data: [0.5 ,0.6] //recall_by_name
+                                            data: recall_by_name //[0.5 ,0.6]
                                         },
                                         {
                                             label: "Calibration",
                                             backgroundColor: "orange",
-                                            data: [0.7 ,0.15] //cal_by_name
+                                            data: cal_by_name //[0.7 ,0.15]
                                         },
                                         {
                                             label: "Resolution",
                                             backgroundColor: "red",
-                                            data: [0.6 ,0.55] //res_by_name
+                                            data: res_by_name //[0.6 ,0.55]
                                         }]
                                 },
                                 options: {
@@ -2893,22 +2888,22 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                             {
                                 label: "Precision",
                                 backgroundColor: "blue",
-                                data: [0.78, 0.4]//precision_by_name
+                                data: precision_by_name //[0.78, 0.4]
                             },
                             {
                                 label: "Recall",
                                 backgroundColor: "green",
-                                data: [0.6, 0.7]//recall_by_name
+                                data: recall_by_name //[0.6, 0.7]
                             },
                             {
                                 label: "Calibration",
                                 backgroundColor: "orange",
-                                data: [0.15, 0.35]//cal_by_name
+                                data: cal_by_name //[0.15, 0.35]
                             },
                             {
                                 label: "Resolution",
                                 backgroundColor: "red",
-                                data: [0.55,0.6]//res_by_name
+                                data: res_by_name //[0.55,0.6]
                             }]
                     },
                     options: {
