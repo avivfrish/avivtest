@@ -2254,10 +2254,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 style: {
                     fontFamily: 'Calibri',
                     fontSize: 14
-                }
+                },
+                height: 100 + '%',
+                width: 100 + '%'
             },
-
-
             title: {
                 text: 'Mouse Location During The Task',
                 style: {
@@ -2311,9 +2311,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             responsive: {
                 rules: [{
-                    /*condition: {
-                        maxWidth: 500
-                    },*/
+                    condition: {
+                        maxWidth: 800
+                    },
                     chartOptions: {
                         yAxis: {
                             labels: {
