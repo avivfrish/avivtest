@@ -2311,9 +2311,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
             responsive: {
                 rules: [{
-                    condition: {
+                    /*condition: {
                         maxWidth: 500
-                    },
+                    },*/
                     chartOptions: {
                         yAxis: {
                             labels: {
