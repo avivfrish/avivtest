@@ -427,7 +427,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.curr_exp_id = exp['id'];
         $scope.total_ans_needed = exp['max_num_pairs'];
 
-        $scope.time_to_pause = Math.floor(exp['max_num_pairs']*1.2);//0.2);
+        $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.25);
+        if(exp['max_num_pairs']<=15){
+            $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.5);
+        }
         $scope.getExp($scope.curr_exp_id);
         document.getElementById("exp_hello").innerText = "Hello, " + $scope.curr_user["nickname"];
 
@@ -482,6 +485,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     age: document.getElementById("new_user_age").value,
                     gender: document.getElementById("new_user_gender").value,
                     u_exp_reason: document.getElementById("new_user_exp_reason").value,
+                    task_type: $scope.exp_type
                 }),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'

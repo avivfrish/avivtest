@@ -8,6 +8,7 @@ $english_level=stripcslashes($_POST['english_level']);
 $age=stripcslashes($_POST['age']);
 $gender=stripcslashes($_POST['gender']);
 $u_exp_reason=stripcslashes($_POST['u_exp_reason']);
+$task_type=stripcslashes($_POST['task_type']);
 
 $connectionInfo = array("UID" => "avivf@avivtest", "pwd" => "1qaZ2wsX!", "Database" => "avivtest", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
 $serverName = "tcp:avivtest.database.windows.net,1433";
@@ -30,7 +31,15 @@ while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
 }
 sqlsrv_free_stmt($getResults);
 
-$get_exp_id="SELECT * from experiments where is_active=1 and [name]!= 'Test'";
+$where_demo_or_not = "and schema_name";
+if($task_type === 'demo'){
+    $where_demo_or_not = $where_demo_or_not . "= 'Demo'";
+} else {
+    $where_demo_or_not = $where_demo_or_not . "!= 'Demo'";
+}
+
+
+$get_exp_id="SELECT * from experiments where is_active=1 and [name]!= 'Test'" . $where_demo_or_not;
 
 $getResults= sqlsrv_query($conn, $get_exp_id);
 if ($getResults == FALSE)
