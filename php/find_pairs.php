@@ -24,7 +24,7 @@ if ($getResults1 == FALSE)
 $true_pair_arr=array();
 while ($row = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)) {
     if($row['rel_order'] != 1 and
-        (($row['rel_order'] != 5 and $total_pairs<10) or ($row['rel_order'] != 15 and $total_pairs>=10))){
+        (($row['rel_order'] != 5 and $total_pairs<=10) or ($row['rel_order'] != 15 and $total_pairs>=10))){
         array_push($true_pair_arr, $row['rel_order']);
     }
 }
