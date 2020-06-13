@@ -1,5 +1,5 @@
 <?php
-$exp_id=stripcslashes($_POST['exp_id']);
+$exp_id=$_POST['exp_id'];
 $num_of_true_pairs=$_POST['num_of_true_pairs'] - 1;
 $num_of_false_pairs=$_POST['num_of_false_pairs'] - 1;
 $total_pairs = $_POST['num_of_false_pairs'] + $_POST['num_of_true_pairs'];
