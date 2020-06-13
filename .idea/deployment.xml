@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="avivtest">
+  <component name="PublishConfigData" serverName="InCognitoMatch">
     <serverData>
-      <paths name="avivtest">
+      <paths name="InCognitoMatch">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

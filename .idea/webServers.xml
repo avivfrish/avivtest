@@ -2,12 +2,11 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="9ed4e207-be1d-4cb2-90f3-7bdeea6915f1" name="avivtest" url="http://waws-prod-hk1-017.ftp.azurewebsites.windows.net">
+      <webServer id="9ed4e207-be1d-4cb2-90f3-7bdeea6915f1" name="InCognitoMatch" url="http://waws-prod-hk1-017.ftp.azurewebsites.windows.net">
         <fileTransfer host="waws-prod-hk1-017.ftp.azurewebsites.windows.net" port="21">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="21" />
         </fileTransfer>
       </webServer>
     </option>
