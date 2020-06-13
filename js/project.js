@@ -356,108 +356,114 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.begin_exp = function(exp){
         //this function set the experiment form accordingly to the correct settings and call getExp function
         // to get the first pair.
-
-        //$scope.userScreenWidth = document.body.clientWidth; //window.screen.availWidth;
-        //$scope.userScreenHeight = document.body.clientHeight; //window.screen.availHeight;
-
-        window.scrollTo(0,0);
-        document.getElementById("schemaMatchingExp").style.overflow = 'hidden';
-
-        $("#experiment").show();
-
-        // Set Height for Hierarchy area
-        //const HierarchyHeight = window.innerHeight - 330;
-        //document.getElementById("HierarchyTable").style.height = HierarchyHeight + 'px';
-
-        if (exp['disp_type'] === 0)
-        {
-            $("#row_type_A").hide();
-            $("#A_col_type").hide();
-            $("#row_type_B").hide();
-            $("#B_col_type").hide();
-        }
-        else
-        {
-            $("#row_type_A").show();
-            $("#A_col_type").show();
-            $("#row_type_B").show();
-            $("#B_col_type").show();
-        }
-        if (exp['disp_instance'] === 0)
-        {
-            $("#row_instance_A").hide();
-            $("#A_col_instance").hide();
-            $("#row_instance_B").hide();
-            $("#B_col_instance").hide();
-        }
-        else
-        {
-            $("#row_instance_A").show();
-            $("#A_col_instance").show();
-            $("#row_instance_B").show();
-            $("#B_col_instance").show();
-        }
-        if (exp['disp_h'] === 0)
-        {
-            $("#HierarchyTableA").hide();
-            $("#HierarchyTableB").hide();
-        }
-        else
-        {
-            $("#HierarchyTableA").show();
-            $("#HierarchyTableB").show();
-        }
-        if (exp['disp_system_sugg'] === 0)
-        {
-            $("#system_suggest").hide();
-            $("#exp_pair_score").hide();
-        }
-        else
-        {
-            $("#system_suggest").show();
-            $("#exp_pair_score").show();
-        }
-        if (exp['disp_major_res'] === 0)
-        {
-            $("#major_decision").hide();
-            $("#exp_pair_major").hide();
-        }
-        else
-        {
-            $("#major_decision").show();
-            $("#exp_pair_major").show();
-        }
-
         $scope.curr_exp_id = exp['id'];
-        $scope.total_ans_needed = exp['max_num_pairs'];
-        $scope.total_true_pair_ans_needed = Math.ceil($scope.total_ans_needed*0.4);
-        $scope.total_false_pair_ans_needed = $scope.total_ans_needed - $scope.total_true_pair_ans_needed;
 
-        $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.25);
-        if(exp['max_num_pairs']<=15){
-            $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.5);
-        }
-        $scope.getExp($scope.curr_exp_id);
-        document.getElementById("exp_hello").innerText = "Hello, " + $scope.curr_user["nickname"];
-
-        // Insert tuple that presents the start of the exp
         $http({
             method: 'POST',
-            url: 'php/exp_res.php',
+            url: 'php/find_optional_pairs.php',
             data: $.param({
                 exp_id: $scope.curr_exp_id,
-                user_id: $scope.curr_user['id'],
-                sch_id_1: 0,
-                sch_id_2: 0,
-                realconf: 1,
-                userconf: 0,
-                mouse_loc: [],
-                user_ans_match: 0
             }),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }).then(function (data) { });
+        }).then(function (data) {
+            console.log(data.data);
+
+            window.scrollTo(0,0);
+            document.getElementById("schemaMatchingExp").style.overflow = 'hidden';
+
+            $("#experiment").show();
+
+            if (exp['disp_type'] === 0)
+            {
+                $("#row_type_A").hide();
+                $("#A_col_type").hide();
+                $("#row_type_B").hide();
+                $("#B_col_type").hide();
+            }
+            else
+            {
+                $("#row_type_A").show();
+                $("#A_col_type").show();
+                $("#row_type_B").show();
+                $("#B_col_type").show();
+            }
+            if (exp['disp_instance'] === 0)
+            {
+                $("#row_instance_A").hide();
+                $("#A_col_instance").hide();
+                $("#row_instance_B").hide();
+                $("#B_col_instance").hide();
+            }
+            else
+            {
+                $("#row_instance_A").show();
+                $("#A_col_instance").show();
+                $("#row_instance_B").show();
+                $("#B_col_instance").show();
+            }
+            if (exp['disp_h'] === 0)
+            {
+                $("#HierarchyTableA").hide();
+                $("#HierarchyTableB").hide();
+            }
+            else
+            {
+                $("#HierarchyTableA").show();
+                $("#HierarchyTableB").show();
+            }
+            if (exp['disp_system_sugg'] === 0)
+            {
+                $("#system_suggest").hide();
+                $("#exp_pair_score").hide();
+            }
+            else
+            {
+                $("#system_suggest").show();
+                $("#exp_pair_score").show();
+            }
+            if (exp['disp_major_res'] === 0)
+            {
+                $("#major_decision").hide();
+                $("#exp_pair_major").hide();
+            }
+            else
+            {
+                $("#major_decision").show();
+                $("#exp_pair_major").show();
+            }
+
+            $scope.total_ans_needed = exp['max_num_pairs'];
+            $scope.total_true_pair_ans_needed = Math.ceil($scope.total_ans_needed*0.4);
+            $scope.total_false_pair_ans_needed = $scope.total_ans_needed - $scope.total_true_pair_ans_needed;
+
+            $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.25);
+            if(exp['max_num_pairs']<=15){
+                $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.5);
+            }
+            $scope.getExp($scope.curr_exp_id);
+            document.getElementById("exp_hello").innerText = "Hello, " + $scope.curr_user["nickname"];
+
+            // Insert tuple that presents the start of the exp
+            $http({
+                method: 'POST',
+                url: 'php/exp_res.php',
+                data: $.param({
+                    exp_id: $scope.curr_exp_id,
+                    user_id: $scope.curr_user['id'],
+                    sch_id_1: 0,
+                    sch_id_2: 0,
+                    realconf: 1,
+                    userconf: 0,
+                    mouse_loc: [],
+                    user_ans_match: 0
+                }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(function (data) { });
+        });
     };
 
     $scope.clear_user_form = function(){
