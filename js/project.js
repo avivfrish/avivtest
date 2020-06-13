@@ -798,7 +798,9 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         // show pause only for non-test schema
                         $("#pause_exp_modal").modal('show');
                     }
-                    $scope.getExp($scope.curr_exp_id);
+                    if ($scope.curr_count_ans < $scope.total_ans_needed){
+                        $scope.getExp($scope.curr_exp_id);
+                    }
                     document.getElementById("user_confidence").value = 50;
                     document.getElementById("text_confidence_input").value = 50;
 
