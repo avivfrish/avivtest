@@ -373,7 +373,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(function (data) {
-            console.log(data.data);
             $scope.pairs_order = [];
             for(let index in data.data){
                 $scope.pairs_order.push(data.data[index]);
@@ -557,6 +556,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         // function to retrieves the term from shcema 1
 
         //const chooseTrueOrFalse = Math.random();
+        console.log($scope.curr_order);
+        console.log($scope.pairs_order[$scope.curr_order-1])
         $http({
             method: 'POST',
             url: 'php/get_exp_info.php',
