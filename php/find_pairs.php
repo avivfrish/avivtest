@@ -67,7 +67,7 @@ $final_res = array();
 array_push($final_res, 1);
 $i = 2;
 foreach ($final_pairs_order as $order) {
-    if(($i = 15 and $total_pairs>=10) or ($i = 5 and $total_pairs>=10)){
+    if(($i == 15 and $total_pairs>=10) or ($i == 5 and $total_pairs>=10)){
         array_push($final_res, $i);
     }
     array_push($final_res, $order);
