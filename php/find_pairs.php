@@ -64,11 +64,11 @@ foreach ($random_false_keys2 as $key) {
 shuffle($final_pairs_order);
 
 $final_res = array();
-array_push($false_pair_arr, 1);
+array_push($final_res, 1);
 $i = 2;
 foreach ($final_pairs_order as $order) {
     if(($i = 15 and $total_pairs>=10) or ($i = 5 and $total_pairs>=10)){
-        array_push($false_pair_arr, $i);
+        array_push($final_res, $i);
     }
     array_push($final_res, $order);
     $i = $i + 1;
