@@ -100,6 +100,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.curr_exp_id="";
         $scope.curr_count_ans=0;
         $scope.total_ans_needed=0;
+        // Add number of true and false pairs
+        scope.total_true_pair_ans_needed=0;
+        scope.total_false_pair_ans_needed=0;
+
         $scope.curr_order=1;
         $scope.exclude_ids="";
         $scope.experiments=[];
@@ -426,6 +430,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
         $scope.curr_exp_id = exp['id'];
         $scope.total_ans_needed = exp['max_num_pairs'];
+        $scope.total_true_pair_ans_needed = Math.ceil($scope.total_ans_needed*0.4);
+        $scope.total_false_pair_ans_needed = $scope.total_ans_needed - $scope.total_true_pair_ans_needed;
 
         $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.25);
         if(exp['max_num_pairs']<=15){
@@ -722,7 +728,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         if ($scope.done_test === false) // check if user in test exp, if yes - show instruction, else show finished
                         {
                             $scope.done_test = true;
-                            $scope.curr_order = 0;
+                            $scope.curr_order = 1;
                             $scope.curr_count_ans = 0;
 
                             $("#experiment").hide();
