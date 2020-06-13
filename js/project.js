@@ -799,7 +799,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         $("#pause_exp_modal").modal('show');
                     }
 
-                    if ( ($scope.done_test == true && $scope.curr_count_ans == 0)|| ($scope.curr_count_ans < $scope.total_ans_needed)){
+                    if ( !($scope.done_test == true && $scope.curr_count_ans == 0)|| ($scope.curr_count_ans < $scope.total_ans_needed)){
                         $scope.getExp($scope.curr_exp_id);
                     }
                     document.getElementById("user_confidence").value = 50;
