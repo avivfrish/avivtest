@@ -2250,6 +2250,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         Highcharts.chart(idForHeatMap, {
 
             chart: {
+                height: (9 / 16 * 100) + '%', // 16:9 ratio
                 type: 'heatmap',
                 marginTop: 40,
                 marginBottom: 80,
