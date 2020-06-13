@@ -101,8 +101,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         $scope.curr_count_ans=0;
         $scope.total_ans_needed=0;
         // Add number of true and false pairs
-        scope.total_true_pair_ans_needed=0;
-        scope.total_false_pair_ans_needed=0;
+        $scope.total_true_pair_ans_needed=0;
+        $scope.total_false_pair_ans_needed=0;
 
         $scope.curr_order=1;
         $scope.exclude_ids="";
