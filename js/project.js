@@ -732,9 +732,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }
             }).then(function (data) {
                 if (data.data === "1") {
-                    $scope.getExp($scope.curr_exp_id); // TODO: check for move it to the end
-                    document.getElementById("user_confidence").value = 50;
-                    document.getElementById("text_confidence_input").value = 50;
+
 
                     // to disable init array of mouse locations add the comment sign
                     $scope.mouse_moves = [];
@@ -800,6 +798,10 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                         // show pause only for non-test schema
                         $("#pause_exp_modal").modal('show');
                     }
+                    $scope.getExp($scope.curr_exp_id);
+                    document.getElementById("user_confidence").value = 50;
+                    document.getElementById("text_confidence_input").value = 50;
+
                     $scope.last_ans = $scope.user_ans_match;
                     $scope.user_ans_match = false; // init radio button match/no match
                 } else // error while update the answer from user
