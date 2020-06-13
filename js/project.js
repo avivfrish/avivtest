@@ -357,18 +357,29 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
         //this function set the experiment form accordingly to the correct settings and call getExp function
         // to get the first pair.
         $scope.curr_exp_id = exp['id'];
+        $scope.total_ans_needed = exp['max_num_pairs'];
+        $scope.total_true_pair_ans_needed = Math.ceil($scope.total_ans_needed*0.4);
+        $scope.total_false_pair_ans_needed = $scope.total_ans_needed - $scope.total_true_pair_ans_needed;
 
         $http({
             method: 'POST',
-            url: 'php/find_optional_pairs.php',
+            url: 'php/find_pairs.php',
             data: $.param({
                 exp_id: $scope.curr_exp_id,
+                num_of_true_pairs: $scope.total_true_pair_ans_needed,
+                num_of_false_pairs: $scope.total_false_pair_ans_needed
             }),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         }).then(function (data) {
             console.log(data.data);
+            $scope.pairs_order = [];
+            for(let index in data.data){
+                $scope.pairs_order.push(data.data[index]);
+            }
+            console.log("$scope.pairs_order");
+            console.log($scope.pairs_order);
 
             window.scrollTo(0,0);
             document.getElementById("schemaMatchingExp").style.overflow = 'hidden';
@@ -433,10 +444,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 $("#major_decision").show();
                 $("#exp_pair_major").show();
             }
-
-            $scope.total_ans_needed = exp['max_num_pairs'];
-            $scope.total_true_pair_ans_needed = Math.ceil($scope.total_ans_needed*0.4);
-            $scope.total_false_pair_ans_needed = $scope.total_ans_needed - $scope.total_true_pair_ans_needed;
 
             $scope.time_to_pause = Math.floor(exp['max_num_pairs']*0.25);
             if(exp['max_num_pairs']<=15){
@@ -548,12 +555,14 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
 
     $scope.getExp2 = function (callback,exp_id) {
         // function to retrieves the term from shcema 1
+
+        //const chooseTrueOrFalse = Math.random();
         $http({
             method: 'POST',
             url: 'php/get_exp_info.php',
             data: $.param({
                 exp_id: exp_id,
-                order: $scope.curr_order,
+                order: $scope.curr_order, //TODO: change it to $scope.pairs_order[$scope.curr_order]
                 term_a_or_b: 'sch_id_1',
                 exclude_ids: $scope.exclude_ids
             }),
@@ -604,7 +613,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             // console.log("ex_id",$scope.exclude_ids);
             if ($scope.schema[0]['return_order'] === "change")
             {
-                $scope.curr_order = $scope.curr_order + 1;
+                $scope.curr_order = $scope.curr_order + 1; //TODO: always update this without the if
             }
             $scope.curr_realConf = $scope.schema[0]['realConf'];
             document.getElementById("user_confidence").value=50;
