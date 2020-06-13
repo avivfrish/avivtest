@@ -32,8 +32,6 @@ while ($row = sqlsrv_fetch_array($getResults1, SQLSRV_FETCH_ASSOC)) {
 $random_true_keys1=array_rand($true_pair_arr, $num_of_true_pairs);
 
 foreach ($random_true_keys1 as $key) {
-    echo $true_pair_arr[$key];
-    echo ' ';
     array_push($final_pairs_order, $true_pair_arr[$key]);
 }
 
@@ -60,8 +58,6 @@ sqlsrv_free_stmt($getResults2);
 
 $random_false_keys2=array_rand($false_pair_arr, $num_of_false_pairs);
 foreach ($random_false_keys2 as $key) {
-    echo $false_pair_arr[$key];
-    echo ' ';
     array_push($final_pairs_order, $false_pair_arr[$key]);
 }
 
@@ -71,8 +67,6 @@ $final_res = array();
 array_push($false_pair_arr, 1);
 $i = 2;
 foreach ($final_pairs_order as $order) {
-    echo " order ";
-    echo $order;
     if(($i = 15 and $total_pairs>=10) or ($i = 5 and $total_pairs>=10)){
         array_push($false_pair_arr, $i);
     }
