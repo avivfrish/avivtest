@@ -13,8 +13,7 @@ $final_pairs_order = array();
 $sql="select [order] as rel_order
 from exp_pairs                       
 where exp_id = ".$exp_id." and realConf = 1";
-echo $sql;
-echo '<br>';
+
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
 {
@@ -29,13 +28,13 @@ while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
         array_push($true_pair_arr, $row['rel_order']);
     }
 }
-sqlsrv_free_stmt($getResults);
-echo $true_pair_arr;
-echo '<br>';
+
 $random_true_keys=array_rand($true_pair_arr, $num_of_true_pairs);
 
 foreach ($random_true_keys as $key) {
-    array_push($final_pairs_order, $random_true_keys[$key]);
+    echo $true_pair_arr[$key];
+    echo ' ';
+    array_push($final_pairs_order, $true_pair_arr[$key]);
 }
 
 
@@ -57,13 +56,13 @@ while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
         array_push($false_pair_arr, $row['rel_order']);
     }
 }
-echo $false_pair_arr;
-echo '<br>';
 sqlsrv_free_stmt($getResults);
 
 $random_false_keys=array_rand($false_pair_arr, $num_of_false_pairs);
 foreach ($random_false_keys as $key) {
-    array_push($final_pairs_order, $random_false_keys[$key]);
+    echo $false_pair_arr[$key];
+    echo ' ';
+    array_push($final_pairs_order, $false_pair_arr[$key]);
 }
 
 shuffle($final_pairs_order);
