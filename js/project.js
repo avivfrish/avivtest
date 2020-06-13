@@ -562,7 +562,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             url: 'php/get_exp_info.php',
             data: $.param({
                 exp_id: exp_id,
-                order: $scope.curr_order, //TODO: change it to $scope.pairs_order[$scope.curr_order-1]
+                order: $scope.pairs_order[$scope.curr_order-1], //Instead of $scope.curr_order
                 term_a_or_b: 'sch_id_1',
                 exclude_ids: $scope.exclude_ids
             }),
@@ -611,10 +611,11 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             document.getElementById("A_col_instance").innerText=str_instance;
             $scope.exclude_ids = $scope.exclude_ids +  " and id!=" + $scope.schema[0]['index'];
             // console.log("ex_id",$scope.exclude_ids);
-            if ($scope.schema[0]['return_order'] === "change")
+            $scope.curr_order = $scope.curr_order + 1; // Instead of the IF
+            /*if ($scope.schema[0]['return_order'] === "change")
             {
-                $scope.curr_order = $scope.curr_order + 1; //TODO: always update this without the if
-            }
+                $scope.curr_order = $scope.curr_order + 1;
+            }*/
             $scope.curr_realConf = $scope.schema[0]['realConf'];
             document.getElementById("user_confidence").value=50;
             document.getElementById("text_confidence_input").value = 50;
