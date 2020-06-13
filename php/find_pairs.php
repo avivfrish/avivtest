@@ -62,8 +62,7 @@ foreach ($random_false_keys2 as $key) {
 }
 
 shuffle($final_pairs_order);
-echo $final_pairs_order;
-echo " ";
+
 $final_res = array();
 array_push($final_res, 1);
 $i = 2;
