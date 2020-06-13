@@ -562,7 +562,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             url: 'php/get_exp_info.php',
             data: $.param({
                 exp_id: exp_id,
-                order: $scope.curr_order, //TODO: change it to $scope.pairs_order[$scope.curr_order]
+                order: $scope.curr_order, //TODO: change it to $scope.pairs_order[$scope.curr_order-1]
                 term_a_or_b: 'sch_id_1',
                 exclude_ids: $scope.exclude_ids
             }),
@@ -821,7 +821,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             //console.log("pause");
         }
 
-        // TODO: for roee delete this.
+        // TODO: delete this?
         if ($scope.done_test === true)
         {
             $("#experiment").hide();
@@ -1538,14 +1538,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                             }
                                         }],
                                     },
-                                    /*legend: {
-                                display: true,
-                                useLineStyle: true,
-                                labels: {
-                                    usePointStyle: true,
-                                }
-                            },*/
-
                                     legend: false,
                                     legendCallback: function(chart) {
                                         var text = [];
@@ -1720,13 +1712,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                                     }
                                 }],
                             },
-                            /*legend: {
-                                display: true,
-                                useLineStyle: true,
-                                labels: {
-                                    usePointStyle: true,
-                                }
-                            },*/
 
                             legend: false,
                             legendCallback: function(chart) {
