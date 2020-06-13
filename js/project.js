@@ -378,7 +378,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 $scope.pairs_order.push(data.data[index]);
             }
             //console.log("$scope.pairs_order");
-            //console.log($scope.pairs_order);
+            console.log($scope.pairs_order);
 
             window.scrollTo(0,0);
             document.getElementById("schemaMatchingExp").style.overflow = 'hidden';
