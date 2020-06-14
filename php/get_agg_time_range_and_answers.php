@@ -71,7 +71,7 @@ FROM time_table time_table1
               ON ( time_table1.[order] = time_table2.[order] - 1
                   and time_table1.user_id = time_table2.user_id)
 GROUP BY time_table1.[order]
-order by time_table1.[order] asc";*/
+order by time_table1.[order] asc";
 
 $sql="WITH time_table AS (
     select user_id, [order], IIF(realconf = user_ans_is_match, 1, 0) as isCorrectAnswer, rec_time
@@ -90,8 +90,24 @@ FROM time_table time_table1
               ON ( time_table1.[order] = time_table2.[order] - 1
                   and time_table1.user_id = time_table2.user_id)
 GROUP BY time_table1.[order]
-order by time_table1.[order] asc";
+order by time_table1.[order] asc";*/
 
+
+$sql ="WITH time_table AS (
+    select user_id, IIF(realconf = user_ans_is_match, 1, 0) as isCorrectAnswer,
+           rec_time, ROW_NUMBER() over (partition by exp_results.exp_id, user_id order by rec_time) as row_number
+    from exp_results ".
+    $firstWhereClause ."
+    )
+SELECT time_table1.row_number as qOrder,
+       (AVG(datediff(second, time_table1.rec_time, time_table2.rec_time)))  as avgdiffSec,
+       AVG(CAST(time_table2.isCorrectAnswer AS DECIMAL(5,2))) as avgCorrAns
+FROM time_table time_table1
+         JOIN time_table time_table2
+              ON ( time_table1.row_number = time_table2.row_number - 1
+                  and time_table1.user_id = time_table2.user_id)
+GROUP BY time_table1.row_number
+order by time_table1.row_number";
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)
