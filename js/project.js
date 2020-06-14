@@ -690,7 +690,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     if (data.data === "1") { console.log(data.data); } //error
                     else {
                         let major_decision = data.data;
-                        console.log(major_decision);
                         if(major_decision == 'null' || major_decision == ''){
                             major_decision = (Math.random()*100).toFixed(2);
                         }
@@ -2704,7 +2703,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 let exps_to_compare = [];
                 let single_exp_name = expNames[0];
 
-                console.log("$scope.rel_exp_ids_checked[0]", $scope.rel_exp_ids_checked[0]);
+                //console.log("$scope.rel_exp_ids_checked[0]", $scope.rel_exp_ids_checked[0]);
                 $http({
                     method: 'POST',
                     url: 'php/check_comparison_for_evaluation_measures.php',
@@ -2718,7 +2717,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }).then(function (data) {
                     if (data.data !== '1') {
                         let count_other_u_same_exp = data.data;
-                        console.log("count_other_u_same_exp", count_other_u_same_exp);
+                        // console.log("count_other_u_same_exp", count_other_u_same_exp);
                         if($scope.groupsToShowStats.length === 1){
                             if($scope.usersToShowStats.length === 1){
                                 let user_name = '';
