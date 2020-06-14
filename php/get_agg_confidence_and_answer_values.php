@@ -42,10 +42,12 @@ foreach ($groupsToShowStats as $group){
     }
 
     if($secondWhereClause !== "where "){
-        $secondWhereClause = $secondWhereClause . "or (exp_id = " . $group["id"] . " and [order] <= " . $group["max_num_pairs"] . ") ";
+        $secondWhereClause = $secondWhereClause . "or (exp_id = " . $group["id"] . ") ";
+        //$secondWhereClause = $secondWhereClause . "or (exp_id = " . $group["id"] . " and [order] <= " . $group["max_num_pairs"] . ") ";
 
     } else{
-        $secondWhereClause = $secondWhereClause . "(exp_id = " . $group["id"] . " and [order] <= " . $group["max_num_pairs"] . ") ";
+        $secondWhereClause = $secondWhereClause . "(exp_id = " . $group["id"] . ") ";
+        //$secondWhereClause = $secondWhereClause . "(exp_id = " . $group["id"] . " and [order] <= " . $group["max_num_pairs"] . ") ";
     }
 }
 
@@ -98,7 +100,6 @@ from answers_table join (select exp_id, sch_id_1, sch_id_2
                              and answers_table.sch_id_2 = questions_orders.sch_id_2
                          group by row_number
                          order by row_number";
-echo $sql;
 
 $getResults= sqlsrv_query($conn, $sql);
 if ($getResults == FALSE)

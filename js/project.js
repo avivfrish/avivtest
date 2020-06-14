@@ -378,7 +378,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 $scope.pairs_order.push(data.data[index]);
             }
             //console.log("$scope.pairs_order");
-            console.log($scope.pairs_order);
+            //console.log($scope.pairs_order);
 
             window.scrollTo(0,0);
             document.getElementById("schemaMatchingExp").style.overflow = 'hidden';
@@ -555,7 +555,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
     $scope.getExp2 = function (callback,exp_id) {
         // function to retrieves the term from shcema 1
 
-        //const chooseTrueOrFalse = Math.random();
         //console.log($scope.curr_order);
         //console.log($scope.pairs_order[$scope.curr_order-1])
         $http({
@@ -1400,8 +1399,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }).then(function (data) {
                 if (data.data.length !== 0) {
 
-                    console.log(data.data);
-
                     let yDataConf = [];
                     let yDataCorrAns = [];
 
@@ -1641,7 +1638,6 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }
             }).then(function (data) {
                 if (data.data.length !== 0) {
-                    console.log(data.data);
 
                     let yDataConf = [];
                     let yDataCorrAns = [];
