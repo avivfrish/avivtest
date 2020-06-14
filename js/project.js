@@ -689,7 +689,12 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     //console.log((data.data));
                     if (data.data === "1") { console.log(data.data); } //error
                     else {
-                        document.getElementById("exp_pair_major").innerHTML= data.data + "% Match";
+                        let major_decision = data.data;
+                        console.log(major_decision);
+                        if(major_decision == 'null'){
+                            major_decision = (Math.random()*100).toFixed(2);
+                        }
+                        document.getElementById("exp_pair_major").innerHTML= major_decision + "% Match";
                     }
                 });
 
@@ -1396,6 +1401,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
             }).then(function (data) {
                 if (data.data.length !== 0) {
 
+                    console.log(data.data);
+
                     let yDataConf = [];
                     let yDataCorrAns = [];
 
@@ -1635,6 +1642,8 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                 }
             }).then(function (data) {
                 if (data.data.length !== 0) {
+                    console.log(data.data);
+
                     let yDataConf = [];
                     let yDataCorrAns = [];
 

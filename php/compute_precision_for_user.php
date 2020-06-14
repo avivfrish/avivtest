@@ -14,7 +14,7 @@ $sql="select (select count(*)
                  intersect
                  select sch_id_1, sch_id_2
                  from exp_pairs
-                 where realConf = 1 and exp_id = users.exp_id and exp_pairs.[order] <= experiments.max_num_pairs and exp_pairs.sch_id_1 != 0) A) as commonCorrNum,
+                 where realConf = 1 and exp_id = users.exp_id and exp_pairs.sch_id_1 != 0) A) as commonCorrNum,
        (select count(*)
         from exp_results
         where user_id = users.user_id and exp_id = users.exp_id and exp_results.user_ans_is_match = 1 and exp_results.sch_id_1 != 0) as matchNum
