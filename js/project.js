@@ -691,7 +691,7 @@ app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUplo
                     else {
                         let major_decision = data.data;
                         console.log(major_decision);
-                        if(major_decision == 'null'){
+                        if(major_decision == 'null' || major_decision == ''){
                             major_decision = (Math.random()*100).toFixed(2);
                         }
                         document.getElementById("exp_pair_major").innerHTML= major_decision + "% Match";
