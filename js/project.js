@@ -88,6 +88,7 @@ app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fi
 
     $scope.init_site = function () {
         // this function called when loading the site. init all params.
+        console.log("test");
         $scope.hide_pages();
         $scope.show_home();
         $scope.schema2=[];
