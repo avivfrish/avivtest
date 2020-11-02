@@ -84,9 +84,9 @@ function SyncScroll(table_id) {
     }
 };*/
 
-app.controller('avivTest', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
+app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fileUpload, $window, $element, $timeout) {
 
-    $scope.init_avivTest = function () {
+    $scope.init_site = function () {
         // this function called when loading the site. init all params.
         $scope.hide_pages();
         $scope.show_home();

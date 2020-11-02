@@ -53,7 +53,7 @@
     <!-- Your custom styles (optional) -->
     <link href="css/style.css" rel="stylesheet">
 </head>
-<body ng-controller='avivTest' ng-init="init_avivTest()" id="all_body">
+<body ng-controller='incognitomatch' ng-init="init_site()" id="all_body">
     
 	<?php
 		include "html/home.html";
