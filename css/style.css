@@ -127,6 +127,13 @@ header.masthead .masthead-heading {
 .divider-custom.divider-light .divider-custom-line{background-color:black}
 .divider-custom.divider-light .divider-custom-icon{color:black!important}
 
-body.modal-open {
-    overflow-y: hidden;
+.modal {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    overflow: scroll;
 }
