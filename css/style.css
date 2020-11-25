@@ -126,3 +126,7 @@ header.masthead .masthead-heading {
 .divider-custom .divider-custom-icon{color:black!important;font-size:2rem}
 .divider-custom.divider-light .divider-custom-line{background-color:black}
 .divider-custom.divider-light .divider-custom-icon{color:black!important}
+
+body.modal-open {
+    overflow-y: hidden;
+}
