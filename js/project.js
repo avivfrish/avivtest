@@ -88,7 +88,7 @@ app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fi
 
     $scope.init_site = function () {
         // this function called when loading the site. init all params.
-        console.log("test");
+        // console.log("test");
         $scope.hide_pages();
         $scope.show_home();
         $scope.schema2=[];
@@ -1103,7 +1103,7 @@ app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fi
                 },3000);
                 console.log((data.data));
             } else {
-                document.getElementById("add_exp_log").innerHTML="Added Succesfully! ";
+                document.getElementById("add_exp_log").innerHTML="Added Succesfully! The Task ID is" + data.data;
                 $timeout(function() {
                     document.getElementById("add_exp_log").innerHTML="";
                 },3000);
@@ -1133,7 +1133,7 @@ app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fi
     };
 
     $scope.captureCoordinate = function($event){
-        // this function save mouse location every 500 milliseconds (0.5 second)
+        // this function save mouse location every 250 milliseconds (0.25 second)
         let d = new Date();
         if ($scope.last_time_mouse.length === 0)
         {
