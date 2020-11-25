@@ -141,8 +141,7 @@ app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fi
     };
 
     $scope.hide_scroll = function(){
-        document.body.style.overflow = "hidden";
-        document.body.style.height = "100%";
+        document.getElementById("schemaMatchingExp").style.overflow = 'hidden';
     };
 
     $scope.hide_pages = function () {
@@ -988,7 +987,7 @@ app.controller('incognitomatch', function ($scope, $http,$compile, $interval, fi
                     document.getElementById("admin_email").value="";
                     document.getElementById("admin_pass").value="";
                     $('#admin_login').modal('hide')
-                    document.body.style.overflow = "auto";
+                    document.getElementById("schemaMatchingExp").style.overflow = 'auto';
                 },1000);
             }
 
